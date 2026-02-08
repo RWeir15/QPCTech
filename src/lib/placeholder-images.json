@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero",
+      "description": "Abstract technology background",
+      "imageUrl": "https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx0ZWNobm9sb2d5JTIwYWJzdHJhY3R8ZW58MHx8fHwxNzcwNTU5MTkwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "technology abstract"
+    },
+    {
+      "id": "managedIt",
+      "description": "Server room with a technician working",
+      "imageUrl": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxpdCUyMHNlcnZpY2VzfGVufDB8fHx8MTc3MDU3NTI2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "it services"
+    },
+    {
+      "id": "cybersecurity",
+      "description": "Digital lock on a screen",
+      "imageUrl": "https://images.unsplash.com/photo-1638645540399-40229456a236?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y3liZXJzZWN1cml0eSUyMGxvY2t8ZW58MHx8fHwxNzcwNDc2NDM3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cybersecurity lock"
+    },
+    {
+      "id": "cloudServices",
+      "description": "Cloud icons connected in a network",
+      "imageUrl": "https://images.unsplash.com/photo-1561736778-92e52a7769ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2xvdWQlMjBjb21wdXRpbmd8ZW58MHx8fHwxNzcwNDk1Mjg3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cloud computing"
+    },
+    {
+      "id": "networkInfrastructure",
+      "description": "Network server racks",
+      "imageUrl": "https://images.unsplash.com/photo-1599949104055-2d04026aee1e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxuZXR3b3JrJTIwc2VydmVyfGVufDB8fHx8MTc3MDU2MzEwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "network server"
+    }
+  ]
 }
