@@ -1,6 +1,8 @@
 import { CheckCircle2 } from "lucide-react";
 import Image from "next/image";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export const metadata = {
   title: "Cybersecurity - QPCTech",
@@ -64,25 +66,31 @@ export default function CybersecurityPage() {
             <CardTitle className="font-headline text-2xl text-primary">In the Field</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                <Card>
-                    <div className="relative aspect-video w-full overflow-hidden rounded-t-lg">
-                    <Image
-                        src="https://www.qpctech.com/wp-content/uploads/2024/12/Diagrams_Managed-EDR-Dark-768x371.webp"
-                        alt="Responsibility: Antivirus vs. EDR"
-                        width={768}
-                        height={371}
-                        className="object-cover"
-                    />
-                    </div>
-                    <CardHeader>
-                        <CardTitle className="font-headline text-xl text-primary">Responsibility: Antivirus vs. EDR</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <p className="text-black text-sm">Antivirus and Endpoint Detection and Response (EDR) serve distinct but complementary roles in cybersecurity....</p>
-                    </CardContent>
-                </Card>
-            </div>
+            <Card>
+                <div className="relative aspect-video w-full overflow-hidden rounded-t-lg">
+                <Image
+                    src="https://www.qpctech.com/wp-content/uploads/2024/12/Diagrams_Managed-EDR-Dark.webp"
+                    alt="Responsibility: Antivirus vs. EDR"
+                    fill
+                    className="object-cover"
+                />
+                </div>
+                <CardHeader>
+                    <CardTitle className="font-headline text-xl text-primary">Responsibility: Antivirus vs. EDR</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p className="text-black">
+                        Antivirus and Endpoint Detection and Response (EDR) serve distinct but complementary roles in cybersecurity. While antivirus focuses on preventing known malware, EDR goes further by detecting, responding to, and recovering from advanced threats that evade traditional defenses.
+                    </p>
+                </CardContent>
+                <CardFooter>
+                  <Button asChild>
+                    <Link href="/services/cybersecurity/responsibility-antivirus-vs-edr">
+                      Read More
+                    </Link>
+                  </Button>
+                </CardFooter>
+            </Card>
           </CardContent>
         </Card>
       </div>
