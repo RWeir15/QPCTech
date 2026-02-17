@@ -34,7 +34,7 @@ export default function ContactPage() {
         <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">
           Contact Us
         </h1>
-        <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+        <p className="mt-4 max-w-2xl mx-auto text-lg text-black">
           Need IT support? Contact QPCTech for professional, prompt assistance with all your IT needs.
         </p>
       </div>
@@ -50,11 +50,11 @@ export default function ContactPage() {
                         <div>
                             <h3 className="text-lg font-semibold">{title}</h3>
                             {href ? (
-                                <a href={href} className="text-muted-foreground hover:text-primary transition-colors">
+                                <a href={href} className="text-black hover:text-primary transition-colors">
                                     {value}
                                 </a>
                             ) : (
-                                <p className="text-muted-foreground">{value}</p>
+                                <p className="text-black">{value}</p>
                             )}
                         </div>
                     </div>
