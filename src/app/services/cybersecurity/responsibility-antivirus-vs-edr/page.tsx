@@ -1,4 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -137,6 +140,16 @@ export default function AntivirusVsEdrPage() {
             </CardContent>
           </Card>
         </div>
+
+        <nav className="mt-12" aria-label="Page navigation">
+          <Button asChild variant="outline">
+            <Link href="/services/cybersecurity">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Cybersecurity
+            </Link>
+          </Button>
+        </nav>
+        
       </div>
     </div>
   );
