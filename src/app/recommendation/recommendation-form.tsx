@@ -1,13 +1,13 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { getServiceRecommendation } from "@/lib/actions";
 import type { RecommendationState } from "@/lib/actions";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, Bot, Loader2, User } from "lucide-react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const initialState: RecommendationState = {};
 
@@ -30,7 +30,7 @@ function SubmitButton() {
 }
 
 export function RecommendationForm() {
-  const [state, formAction] = useFormState(
+  const [state, formAction] = useActionState(
     getServiceRecommendation,
     initialState
   );
