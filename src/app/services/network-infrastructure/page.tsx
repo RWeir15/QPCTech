@@ -30,7 +30,7 @@ export default function NetworkInfrastructurePage() {
                         <CardTitle className="font-headline text-3xl text-primary">Our Approach</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                        <p className="text-black">Our technicians and contractors have experience in Industrial, Residential, Hospitality and Healthcare installations and maintenance of all aspects of any network project.</p>
+                        <p className="text-black">A robust and reliable network is the lifeblood of any modern organization. At QPCTech, our approach to network infrastructure is built on a foundation of meticulous design, expert implementation, and proactive management. We understand that every environment has unique challenges, which is why our technicians and certified contractors bring a wealth of experience across a diverse range of sectors, including demanding industrial sites, residential complexes, high-traffic hospitality venues, and critical healthcare facilities. We handle every aspect of your network project, from initial consultation and design to the installation and ongoing maintenance, ensuring your infrastructure is not only powerful and scalable but also secure and resilient.</p>
                     </CardContent>
                 </Card>
             </div>
