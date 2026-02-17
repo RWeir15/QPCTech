@@ -94,7 +94,7 @@ const teamMembers = [
             'TestOut Ethical Hacker'
         ],
         socials: [
-             { Icon: Facebook, href: 'https://www.facebook.com/Qualitypcllc/' },
+             { Icon: Linkedin, href: 'https://www.linkedin.com/in/rodney-weir-a822b3275/' },
         ]
     }
 ];
