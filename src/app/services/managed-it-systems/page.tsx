@@ -50,7 +50,7 @@ export default function ManagedITSystemsPage() {
               <CardTitle className="font-headline text-2xl text-primary">Supported Applications</CardTitle>
             </CardHeader>
             <CardContent>
-                <ul className="columns-2 sm:columns-3 md:columns-4 gap-x-6 gap-y-2 text-black list-disc list-inside">
+                <ul className="columns-2 sm:columns-3 md:columns-4 gap-x-6 gap-y-2 text-black list-disc list-outside pl-4">
                     {applications.map(app => <li key={app} className="text-sm break-inside-avoid">{app}</li>)}
                 </ul>
             </CardContent>
