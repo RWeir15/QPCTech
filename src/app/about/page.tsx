@@ -34,7 +34,15 @@ const teamMembers = [
         name: 'Noah Pann',
         position: 'Technician',
         bio: 'Completed the cybersecurity program at Hillsdale Area Career Center.',
-        certifications: [],
+        certifications: [
+            'CompTIA ITF+',
+            'CompTIA PC Pro',
+            'CompTIA Linux Pro',
+            'CompTIA Security+',
+            'CompTIA Networking Pro',
+            'CompTIA CyberDefense Pro',
+            'CompTIA Ethical Hacker'
+        ],
         socials: [
              { Icon: Facebook, href: 'https://www.facebook.com/Qualitypcllc/' },
         ]
