@@ -38,7 +38,7 @@ const teamMembers = [
             'TestOut ITF+',
             'TestOut PC Pro',
             'TestOut Linux Pro',
-            'TestOut Security+',
+            'TestOut Security Pro',
             'TestOut Networking Pro',
             'TestOut CyberDefense Pro',
             'TestOut Ethical Hacker'
