@@ -106,7 +106,7 @@ export default function AboutPage() {
         <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">
           Meet The Team
         </h1>
-        <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
+        <p className="mt-4 max-w-3xl mx-auto text-lg text-black">
           At QPCTech, our veteran staff embodies values such as professionalism, honesty, integrity, and education. We work diligently to create and maintain a meaningful relationship with you in order to quickly analyze technical issues and provide you with a more personal level of service. Read on to learn more about our hardworking team.
         </p>
       </div>
@@ -116,15 +116,15 @@ export default function AboutPage() {
           <Card key={member.name} className="flex flex-col">
             <CardHeader>
               <CardTitle className="font-headline text-2xl">{member.name}</CardTitle>
-              <CardDescription>{member.position}</CardDescription>
+              <CardDescription className="text-black">{member.position}</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow flex flex-col space-y-4">
               <div className="flex-grow">
-                {member.bio && <p className="text-muted-foreground">{member.bio}</p>}
+                {member.bio && <p className="text-black">{member.bio}</p>}
                 {member.certifications && member.certifications.length > 0 && (
                   <div className="mt-4">
-                    <p className="text-muted-foreground font-semibold">Certifications:</p>
-                    <ul className="list-disc list-inside text-muted-foreground space-y-1 mt-1">
+                    <p className="text-black font-semibold">Certifications:</p>
+                    <ul className="list-disc list-inside text-black space-y-1 mt-1">
                       {member.certifications.map((cert) => (
                         <li key={cert}>{cert}</li>
                       ))}
@@ -134,7 +134,7 @@ export default function AboutPage() {
               </div>
               <div className="flex gap-2 pt-4">
                 {member.socials.map(({Icon, href}) => (
-                    <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="text-black hover:text-primary transition-colors">
                         <Icon className="h-5 w-5" />
                     </a>
                 ))}
