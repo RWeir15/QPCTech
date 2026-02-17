@@ -17,7 +17,7 @@ export function QPCLogo({ className }: { className?: string }) {
         fontFamily="'Barlow Semi Condensed', sans-serif"
         fontSize="20"
         fontWeight="bold"
-        fill="hsl(var(--foreground))"
+        fill="currentColor"
       >
         QPCTech
       </text>

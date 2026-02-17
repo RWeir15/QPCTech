@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { QPCLogo } from "./icons";
 
 export function Footer() {
   return (
@@ -9,7 +9,7 @@ export function Footer() {
             <div className="md:col-span-3">
                  <div className="flex flex-col items-center gap-2 md:items-start">
                     <Link href="/" className="flex items-center gap-2 mb-2">
-                       <Image src="https://www.qpctech.com/wp-content/uploads/2024/03/QPCTech-logo-white.png" alt="QPCTech Logo" width={120} height={64} />
+                       <QPCLogo className="w-28 text-primary-foreground" />
                     </Link>
                     <p className="text-sm text-center md:text-left">
                     &copy; {new Date().getFullYear()} QPCTech. All rights reserved.
