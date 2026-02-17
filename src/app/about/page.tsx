@@ -10,7 +10,13 @@ const teamMembers = [
     {
         name: 'Tim Lindley',
         position: 'Owner / Senior Technician',
-        bio: 'Tim attended Jackson College, Spring Arbor University, and New Tribes Bible Institute. Tim’s certifications include: MS Certified Technology Specialist, MCTS 70-673, MCTS 4-678, and ITIL V3 Foundations.',
+        bio: 'Tim attended Jackson College, Spring Arbor University, and New Tribes Bible Institute.',
+        certifications: [
+            'MS Certified Technology Specialist',
+            'MCTS 70-673',
+            'MCTS 4-678',
+            'ITIL V3 Foundations'
+        ],
         socials: [
             { Icon: Linkedin, href: 'https://linkedin.com/' },
         ]
@@ -19,6 +25,7 @@ const teamMembers = [
         name: 'Kimberly Lindley',
         position: 'Office Manager',
         bio: null,
+        certifications: [],
         socials: [
             { Icon: Facebook, href: 'https://www.facebook.com/Qualitypcllc/' },
         ]
@@ -26,7 +33,8 @@ const teamMembers = [
     {
         name: 'Noah Pann',
         position: 'Technician',
-        bio: 'Completed the cybersecurity program at Hillsdale Area Career Center. Noah\'s certifications include:',
+        bio: 'Completed the cybersecurity program at Hillsdale Area Career Center.',
+        certifications: [],
         socials: [
              { Icon: Facebook, href: 'https://www.facebook.com/Qualitypcllc/' },
         ]
@@ -34,7 +42,12 @@ const teamMembers = [
     {
         name: 'Nolan Korman',
         position: 'IT System Specialist',
-        bio: 'Completed the cybersecurity program at Jackson Area Career Center. Nolan\'s certifications include: ITF+, TestOut PC Pro, TestOut Security Pro.',
+        bio: 'Completed the cybersecurity program at Jackson Area Career Center.',
+        certifications: [
+            'ITF+',
+            'TestOut PC Pro',
+            'TestOut Security Pro'
+        ],
         socials: [
             { Icon: Mail, href: 'mailto:nolan@qpctech.com' },
         ]
@@ -42,7 +55,10 @@ const teamMembers = [
     {
         name: 'Jeremy Griffiths',
         position: 'Technician',
-        bio: 'Completed the cybersecurity program at Hillsdale Area Career Center. Jeremy\'s certifications include: TestOut.',
+        bio: 'Completed the cybersecurity program at Hillsdale Area Career Center.',
+        certifications: [
+            'TestOut'
+        ],
         socials: [
              { Icon: Facebook, href: 'https://www.facebook.com/Qualitypcllc/' },
         ]
@@ -68,9 +84,21 @@ export default function AboutPage() {
               <CardTitle className="font-headline text-2xl">{member.name}</CardTitle>
               <CardDescription>{member.position}</CardDescription>
             </CardHeader>
-            <CardContent className="flex-grow space-y-4">
-              {member.bio && <p className="text-muted-foreground">{member.bio}</p>}
-              <div className="flex gap-2">
+            <CardContent className="flex-grow flex flex-col space-y-4">
+              <div className="flex-grow">
+                {member.bio && <p className="text-muted-foreground">{member.bio}</p>}
+                {member.certifications && member.certifications.length > 0 && (
+                  <div className="mt-4">
+                    <p className="text-muted-foreground font-semibold">Certifications:</p>
+                    <ul className="list-disc list-inside text-muted-foreground space-y-1 mt-1">
+                      {member.certifications.map((cert) => (
+                        <li key={cert}>{cert}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+              <div className="flex gap-2 pt-4">
                 {member.socials.map(({Icon, href}) => (
                     <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                         <Icon className="h-5 w-5" />
