@@ -19,16 +19,40 @@
       "imageHint": "cybersecurity lock"
     },
     {
-      "id": "cloudServices",
-      "description": "Cloud icons connected in a network",
-      "imageUrl": "https://images.unsplash.com/photo-1561736778-92e52a7769ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2xvdWQlMjBjb21wdXRpbmd8ZW58MHx8fHwxNzcwNDk1Mjg3fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "cloud computing"
-    },
-    {
       "id": "networkInfrastructure",
       "description": "Network server racks",
       "imageUrl": "https://images.unsplash.com/photo-1599949104055-2d04026aee1e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxuZXR3b3JrJTIwc2VydmVyfGVufDB8fHx8MTc3MDU2MzEwMHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "network server"
+    },
+    {
+      "id": "phoneSystems",
+      "description": "A modern office phone on a desk",
+      "imageUrl": "https://images.unsplash.com/photo-1599052824962-a630a5c48b6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxPZkZpY2UlMjBQaG9uZXxlbnwwfHx8fDE3MTk0MjU0MzR8MA&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "office phone"
+    },
+    {
+      "id": "remoteSupport",
+      "description": "A person providing remote IT support",
+      "imageUrl": "https://images.unsplash.com/photo-1553775282-20af8073b261?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxyZW1vdGUlMjBzdXBwb3J0fGVufDB8fHx8MTcxOTQyNTQ2NHww&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "remote support"
+    },
+    {
+      "id": "physicalSecurity",
+      "description": "A security camera mounted on a wall",
+      "imageUrl": "https://images.unsplash.com/photo-1588043444002-a1b73e1103c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzZWN1cml0eSUyMGNhbWVyYXxlbnwwfHx8fDE3MTk0MjU0OTB8MA&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "security camera"
+    },
+    {
+      "id": "printingScanning",
+      "description": "An office printer and scanner",
+      "imageUrl": "https://images.unsplash.com/photo-1606562013899-73d70f444883?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxvZmZpY2UlMjBwcmludGVyfGVufDB8fHx8MTcxOTQyNTUxOHww&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "office printer"
+    },
+    {
+      "id": "communityWork",
+      "description": "A group of people volunteering in the community",
+      "imageUrl": "https://images.unsplash.com/photo-1532640232-232353350993?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjB2b2x1bnRlZXJ8ZW58MHx8fHwxNzE5NDI1NTQwfDA&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "community volunteer"
     }
   ]
 }

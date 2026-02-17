@@ -1,4 +1,13 @@
-import { Shield, Cloud, ServerCog, Network } from 'lucide-react';
+import {
+  Shield,
+  ServerCog,
+  Network,
+  Phone,
+  ScreenShare,
+  Camera,
+  Printer,
+  Users,
+} from 'lucide-react';
 import type { Service } from '@/lib/types';
 
 export const services: Service[] = [
@@ -45,27 +54,6 @@ export const services: Service[] = [
     imageId: 'cybersecurity',
   },
   {
-    id: '3',
-    slug: 'cloud-services',
-    title: 'Cloud Services',
-    shortDescription: 'Leverage the power of the cloud for scalability, flexibility, and innovation.',
-    longDescription:
-      'Embrace the future with QPCTech’s Cloud Services. We help you migrate, manage, and optimize your cloud infrastructure, whether you prefer public, private, or hybrid cloud environments. Our expertise covers cloud strategy, infrastructure as a service (IaaS), platform as a service (PaaS), and software as a service (SaaS). Achieve greater agility, scalability, and cost-effectiveness with our tailored cloud solutions.',
-    benefits: [
-      'Seamless migration to the cloud',
-      'Scalable resources on demand',
-      'Improved collaboration and accessibility',
-      'Cost savings on hardware and maintenance',
-      'Robust disaster recovery and business continuity',
-    ],
-    pricing: {
-      model: 'Pay-as-you-go & Reserved Instances',
-      details: 'Costs depend on cloud provider (AWS, Azure, Google Cloud) and usage. We provide cost optimization services.',
-    },
-    Icon: Cloud,
-    imageId: 'cloudServices',
-  },
-  {
     id: '4',
     slug: 'network-infrastructure',
     title: 'Network Infrastructure',
@@ -85,5 +73,110 @@ export const services: Service[] = [
     },
     Icon: Network,
     imageId: 'networkInfrastructure',
+  },
+  {
+    id: '5',
+    slug: 'phone-systems',
+    title: 'Phone Systems',
+    shortDescription: 'Modern, reliable business phone systems.',
+    longDescription:
+      'Upgrade your business communication with our advanced VoIP phone systems. We offer scalable and feature-rich solutions that provide crystal-clear call quality and seamless integration with your existing workflows. From small offices to large enterprises, we have a phone system to fit your needs.',
+    benefits: [
+      'Cost-effective calling plans',
+      'Advanced features like auto-attendant and voicemail-to-email',
+      'Scalable to grow with your business',
+      'Reliable and high-quality voice calls',
+      'Easy to manage and configure',
+    ],
+    pricing: {
+      model: 'Per-user subscription',
+      details: 'Affordable monthly plans that include hardware, support, and calling minutes.',
+    },
+    Icon: Phone,
+    imageId: 'phoneSystems',
+  },
+  {
+    id: '6',
+    slug: 'remote-support',
+    title: 'Remote Support',
+    shortDescription: 'Fast and secure remote assistance for your team.',
+    longDescription:
+      'Get immediate IT support when you need it most. Our remote support services allow our technicians to securely connect to your systems and resolve issues quickly, minimizing downtime and maximizing productivity. Whether it\'s a software glitch or a configuration issue, we\'re here to help.',
+    benefits: [
+      'Instant support from our expert technicians',
+      'Secure and encrypted remote connections',
+      'Reduced downtime and faster issue resolution',
+      'Support for a wide range of devices and software',
+      'No need for on-site visits for many common issues',
+    ],
+    pricing: {
+      model: 'Included with Managed IT',
+      details: 'Remote support is a core component of our managed IT service plans.',
+    },
+    Icon: ScreenShare,
+    imageId: 'remoteSupport',
+  },
+  {
+    id: '7',
+    slug: 'physical-security',
+    title: 'Physical Security',
+    shortDescription: 'Protect your premises with our security solutions.',
+    longDescription:
+      'Secure your business premises with our comprehensive physical security solutions. We design and install advanced surveillance camera systems, access control systems, and alarm systems to protect your assets and ensure the safety of your employees. Our solutions are tailored to your specific security needs.',
+    benefits: [
+      'High-definition video surveillance',
+      'Controlled access to sensitive areas',
+      '24/7 monitoring and alerts',
+      'Deterrent against theft and vandalism',
+      'Peace of mind knowing your property is protected',
+    ],
+    pricing: {
+      model: 'Project-based',
+      details: 'Custom quotes based on the scope of the installation and required hardware.',
+    },
+    Icon: Camera,
+    imageId: 'physicalSecurity',
+  },
+  {
+    id: '8',
+    slug: 'printing-and-scanning',
+    title: 'Printing & Scanning',
+    shortDescription: 'Managed printing and scanning services.',
+    longDescription:
+      'Streamline your document workflows with our managed printing and scanning services. We provide reliable, high-quality multifunction devices and manage their supplies, maintenance, and support. Reduce your printing costs and improve efficiency with our tailored solutions.',
+    benefits: [
+      'Cost savings on toner and supplies',
+      'Proactive maintenance to reduce downtime',
+      'Secure printing and scanning features',
+      'Detailed usage reporting and analytics',
+      'Environmentally friendly printing options',
+    ],
+    pricing: {
+      model: 'Per-page or subscription',
+      details: 'Flexible pricing models to fit your printing volume and budget.',
+    },
+    Icon: Printer,
+    imageId: 'printingScanning',
+  },
+  {
+    id: '9',
+    slug: 'community-work',
+    title: 'Community Work',
+    shortDescription: 'Our commitment to supporting the local community.',
+    longDescription:
+      'At QPCTech, we believe in giving back to the community that has supported us. We are proud to be involved in various local initiatives and partnerships that aim to make a positive impact. Learn more about our community involvement and how we are working to make a difference.',
+    benefits: [
+      'Supporting local non-profits and charities',
+      'Volunteering our time and expertise',
+      'Sponsoring community events',
+      'Promoting technology education',
+      'Fostering a culture of giving back',
+    ],
+    pricing: {
+      model: 'Not Applicable',
+      details: 'Our community work is a core part of our mission, not a paid service.',
+    },
+    Icon: Users,
+    imageId: 'communityWork',
   },
 ];
