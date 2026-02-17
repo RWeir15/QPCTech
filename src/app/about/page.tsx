@@ -1,5 +1,6 @@
-import { Linkedin, Mail, Facebook } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { FacebookLogo, LinkedInLogo } from '@/components/social-icons';
 
 export const metadata = {
   title: 'Who we Are - QPCTech',
@@ -18,7 +19,7 @@ const teamMembers = [
             'ITIL V3 Foundations'
         ],
         socials: [
-            { Icon: Linkedin, href: 'https://linkedin.com/' },
+            { Icon: LinkedInLogo, href: 'https://linkedin.com/' },
         ]
     },
     {
@@ -27,7 +28,7 @@ const teamMembers = [
         bio: null,
         certifications: [],
         socials: [
-            { Icon: Facebook, href: 'https://www.facebook.com/Qualitypcllc/' },
+            { Icon: FacebookLogo, href: 'https://www.facebook.com/Qualitypcllc/' },
         ]
     },
     {
@@ -44,7 +45,7 @@ const teamMembers = [
             'TestOut Ethical Hacker'
         ],
         socials: [
-             { Icon: Facebook, href: 'https://www.facebook.com/Qualitypcllc/' },
+             { Icon: FacebookLogo, href: 'https://www.facebook.com/Qualitypcllc/' },
         ]
     },
     {
@@ -68,7 +69,7 @@ const teamMembers = [
             'TestOut'
         ],
         socials: [
-             { Icon: Facebook, href: 'https://www.facebook.com/Qualitypcllc/' },
+             { Icon: FacebookLogo, href: 'https://www.facebook.com/Qualitypcllc/' },
         ]
     },
     {
@@ -77,7 +78,7 @@ const teamMembers = [
         bio: null,
         certifications: [],
         socials: [
-             { Icon: Facebook, href: 'https://www.facebook.com/Qualitypcllc/' },
+             { Icon: FacebookLogo, href: 'https://www.facebook.com/Qualitypcllc/' },
         ]
     },
     {
@@ -94,7 +95,7 @@ const teamMembers = [
             'TestOut Ethical Hacker'
         ],
         socials: [
-             { Icon: Linkedin, href: 'https://www.linkedin.com/in/rodney-weir-a822b3275/' },
+             { Icon: LinkedInLogo, href: 'https://www.linkedin.com/in/rodney-weir-a822b3275/' },
         ]
     }
 ];
