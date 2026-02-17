@@ -8,8 +8,8 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-12">
             <div className="md:col-span-3">
                  <div className="flex flex-col items-center gap-2 md:items-start">
-                    <Link href="/" className="flex items-center gap-2 mb-2 text-primary-foreground">
-                       <QPCLogo className="w-28" />
+                    <Link href="/" className="flex items-center gap-2 mb-2">
+                       <QPCLogo className="w-28 text-primary-foreground" />
                     </Link>
                     <p className="text-sm text-center md:text-left text-muted-foreground">
                     &copy; {new Date().getFullYear()} QPCTech. All rights reserved.
@@ -23,11 +23,11 @@ export function Footer() {
                         <Link href="/services/network-infrastructure" className="text-muted-foreground hover:text-primary">Network Infrastructure</Link>
                         <Link href="/services/cybersecurity" className="text-muted-foreground hover:text-primary">Cybersecurity</Link>
                         <Link href="/services/managed-it-systems" className="text-muted-foreground hover:text-primary">Managed IT Systems</Link>
-                        <Link href="#" className="text-muted-foreground hover:text-primary">Phone Systems</Link>
-                        <Link href="#" className="text-muted-foreground hover:text-primary">Remote Support</Link>
-                        <Link href="#" className="text-muted-foreground hover:text-primary">Physical Security</Link>
-                        <Link href="#" className="text-muted-foreground hover:text-primary">Printing & Scanning</Link>
-                        <Link href="#" className="text-muted-foreground hover:text-primary">Community Work</Link>
+                        <Link href="/services/phone-systems" className="text-muted-foreground hover:text-primary">Phone Systems</Link>
+                        <Link href="/services/remote-support" className="text-muted-foreground hover:text-primary">Remote Support</Link>
+                        <Link href="/services/physical-security" className="text-muted-foreground hover:text-primary">Physical Security</Link>
+                        <Link href="/services/printing-and-scanning" className="text-muted-foreground hover:text-primary">Printing & Scanning</Link>
+                        <Link href="/services/community-work" className="text-muted-foreground hover:text-primary">Community Work</Link>
                     </div>
                     <div className="flex flex-col gap-2">
                         <h3 className="font-semibold text-primary-foreground">Office</h3>
