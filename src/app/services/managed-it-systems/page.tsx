@@ -87,7 +87,7 @@ export default function ManagedITSystemsPage() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card id="q-bits">
             <CardHeader>
                 <CardTitle className="font-headline text-2xl text-primary">Q-BITS</CardTitle>
             </CardHeader>

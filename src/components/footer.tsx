@@ -39,11 +39,11 @@ export function Footer() {
                     </div>
                     <div className="flex flex-col gap-2">
                         <h3 className="font-semibold text-white">Links</h3>
-                        <Link href="#" className="text-white hover:text-gray-300">NinjaOne Portal</Link>
-                        <Link href="#" className="text-white hover:text-gray-300">Huntress Portal</Link>
-                        <Link href="#" className="text-white hover:text-gray-300">UniFi Portal</Link>
-                        <Link href="#" className="text-white hover:text-gray-300">ConnectWise Portal</Link>
-                        <Link href="#" className="text-white hover:text-gray-300">Q-BITS Landing Page</Link>
+                        <Link href="https://qpctech.rmmservices.net" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300">NinjaOne Portal</Link>
+                        <Link href="https://qpctech.huntress.io/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300">Huntress Portal</Link>
+                        <Link href="http://unifi.ui.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300">UniFi Portal</Link>
+                        <Link href="http://home.connectwise.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300">ConnectWise Portal</Link>
+                        <Link href="/services/managed-it-systems#q-bits" className="text-white hover:text-gray-300">Q-BITS Landing Page</Link>
                     </div>
                 </div>
             </div>
