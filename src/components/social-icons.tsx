@@ -23,4 +23,16 @@ export function LinkedInLogo(props: React.SVGProps<SVGSVGElement>) {
       </svg>
     );
   }
-  
+
+  export function OutlookLogo(props: React.SVGProps<SVGSVGElement>) {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        {...props}
+      >
+        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1.6 4.8-6.4 4-6.4-4V6.8l6.4 4 6.4-4v2z"/>
+      </svg>
+    );
+}

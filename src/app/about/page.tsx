@@ -1,6 +1,5 @@
-import { Mail } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { FacebookLogo, LinkedInLogo } from '@/components/social-icons';
+import { FacebookLogo, LinkedInLogo, OutlookLogo } from '@/components/social-icons';
 
 export const metadata = {
   title: 'Who we Are - QPCTech',
@@ -58,7 +57,7 @@ const teamMembers = [
             'TestOut Security Pro'
         ],
         socials: [
-            { Icon: Mail, href: 'mailto:nolan@qpctech.com' },
+            { Icon: OutlookLogo, href: 'mailto:nolan@qpctech.com' },
         ]
     },
     {
