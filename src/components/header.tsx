@@ -38,10 +38,10 @@ export function Header() {
   );
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-background/10 bg-foreground">
+    <header className="sticky top-0 z-50 w-full border-b border-background/10 bg-gray-800 text-gray-50">
       <div className="container flex h-20 items-center">
         <Link href="/" className="mr-6 flex items-center gap-2">
-          <QPCLogo className="w-28 text-primary-foreground" />
+          <QPCLogo className="w-28" />
         </Link>
 
         <div className="hidden md:flex flex-1 items-center justify-end gap-4">
