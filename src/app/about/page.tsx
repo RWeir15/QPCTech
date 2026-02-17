@@ -83,7 +83,7 @@ const teamMembers = [
     {
         name: 'Rodney Weir',
         position: 'Technician',
-        bio: null,
+        bio: 'Completed the cybersecurity program at Hillsdale Area Career Center.',
         certifications: [
             'TestOut ITF+',
             'TestOut PC Pro',
