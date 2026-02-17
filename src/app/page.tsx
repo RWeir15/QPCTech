@@ -69,7 +69,7 @@ export default function Home() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {inStoreServices.map((service) => {
               const cardContent = (
-                <Card className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full">
+                <Card className="flex flex-col overflow-hidden h-full transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105">
                   <CardHeader>
                     <div className="flex flex-col items-center text-center">
                       <service.Icon className="w-12 h-12 text-primary mb-4" />
@@ -88,13 +88,13 @@ export default function Home() {
               
               if (service.href) {
                 return (
-                  <Link href={service.href} key={service.title} target="_blank" rel="noopener noreferrer">
+                  <Link href={service.href} key={service.title} target="_blank" rel="noopener noreferrer" className="flex">
                     {cardContent}
                   </Link>
                 )
               }
 
-              return <div key={service.title}>{cardContent}</div>;
+              return <div key={service.title} className="flex">{cardContent}</div>;
             })}
           </div>
         </div>
