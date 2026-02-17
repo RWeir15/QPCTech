@@ -35,13 +35,13 @@ const teamMembers = [
         position: 'Technician',
         bio: 'Completed the cybersecurity program at Hillsdale Area Career Center.',
         certifications: [
-            'CompTIA ITF+',
-            'CompTIA PC Pro',
-            'CompTIA Linux Pro',
-            'CompTIA Security+',
-            'CompTIA Networking Pro',
-            'CompTIA CyberDefense Pro',
-            'CompTIA Ethical Hacker'
+            'TestOut ITF+',
+            'TestOut PC Pro',
+            'TestOut Linux Pro',
+            'TestOut Security+',
+            'TestOut Networking Pro',
+            'TestOut CyberDefense Pro',
+            'TestOut Ethical Hacker'
         ],
         socials: [
              { Icon: Facebook, href: 'https://www.facebook.com/Qualitypcllc/' },
