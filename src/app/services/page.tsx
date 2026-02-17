@@ -1,8 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { services } from "@/lib/data";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import {
   Card,
   CardContent,
@@ -34,7 +32,6 @@ export default function ServicesPage() {
 
         <div className="mt-16 grid gap-8 sm:grid-cols-1 md:grid-cols-2">
           {services.map((service) => {
-            const serviceImage = PlaceHolderImages.find(p => p.id === service.imageId);
             return (
               <Card key={service.id} className="flex flex-col transition-shadow duration-300 hover:shadow-xl">
                  <CardHeader>
@@ -47,18 +44,6 @@ export default function ServicesPage() {
                   </div>
                 </CardHeader>
                 <CardContent className="flex-grow">
-                  {serviceImage && (
-                    <div className="relative aspect-video w-full overflow-hidden rounded-lg">
-                      <Image
-                        src={serviceImage.imageUrl}
-                        alt={serviceImage.description}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        data-ai-hint={serviceImage.imageHint}
-                      />
-                    </div>
-                  )}
                 </CardContent>
                 <CardFooter>
                    <Button asChild className="w-full font-semibold">
