@@ -25,10 +25,10 @@ export function Header() {
           key={href}
           href={href}
           className={cn(
-            "text-sm font-medium transition-colors hover:text-primary",
+            "text-sm font-medium transition-colors hover:text-primary-foreground",
             pathname === href
               ? "text-primary"
-              : "text-muted-foreground"
+              : "text-primary-foreground/70"
           )}
         >
           {label}
@@ -38,10 +38,10 @@ export function Header() {
   );
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-card/80 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 w-full border-b border-background/10 bg-foreground">
       <div className="container flex h-20 items-center">
         <Link href="/" className="mr-6 flex items-center gap-2">
-          <Image src="https://www.qpctech.com/wp-content/uploads/2024/03/cropped-QPCTech-logo.png" alt="QPCTech Logo" width={120} height={64} />
+          <Image src="https://www.qpctech.com/wp-content/uploads/2024/03/QPCTech-logo-white.png" alt="QPCTech Logo" width={120} height={64} />
         </Link>
 
         <div className="hidden md:flex flex-1 items-center justify-end gap-4">
@@ -57,7 +57,7 @@ export function Header() {
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6" />
+                <Menu className="h-6 w-6 text-primary-foreground" />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
