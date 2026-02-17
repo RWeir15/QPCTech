@@ -70,6 +70,32 @@ const teamMembers = [
         socials: [
              { Icon: Facebook, href: 'https://www.facebook.com/Qualitypcllc/' },
         ]
+    },
+    {
+        name: 'Josh Hall',
+        position: 'Store and Tech Bench Specialist',
+        bio: null,
+        certifications: [],
+        socials: [
+             { Icon: Facebook, href: 'https://www.facebook.com/Qualitypcllc/' },
+        ]
+    },
+    {
+        name: 'Rodney Weir',
+        position: 'Technician',
+        bio: null,
+        certifications: [
+            'TestOut ITF+',
+            'TestOut PC Pro',
+            'TestOut Linux Pro',
+            'TestOut Security Pro',
+            'TestOut Networking Pro',
+            'TestOut CyberDefense Pro',
+            'TestOut Ethical Hacker'
+        ],
+        socials: [
+             { Icon: Facebook, href: 'https://www.facebook.com/Qualitypcllc/' },
+        ]
     }
 ];
 
