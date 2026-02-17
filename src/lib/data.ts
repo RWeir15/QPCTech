@@ -4,7 +4,7 @@ import type { Service } from '@/lib/types';
 export const services: Service[] = [
   {
     id: '1',
-    slug: 'managed-it',
+    slug: 'managed-it-systems',
     title: 'Managed IT Services',
     shortDescription: 'Proactive IT management and support to keep your business running smoothly.',
     longDescription:
