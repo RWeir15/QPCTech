@@ -62,7 +62,7 @@ const stats = [
 const trust = [
   { Icon: Shield, label: "Trusted & Local", sub: "Serving Hillsdale since 2014" },
   { Icon: Clock, label: "Fast Turnaround", sub: "Most repairs done same-day" },
-  { Icon: Star, label: "5-Star Rated", sub: "Loved by 500+ customers" },
+  { Icon: Star, label: "5-Star Rated", sub: "Loved by 1000+ customers" },
   { Icon: Phone, label: "Always Reachable", sub: "(517) 610-5372" },
 ];
 
@@ -330,7 +330,7 @@ export default function App() {
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: 48, paddingBottom: 48 }} className="footer-grid">
           <div>
             <img src="https://www.qpctech.com/wp-content/uploads/2024/03/cropped-QPCTech-logo.png" alt="QPCTech" style={{ height: 48, marginBottom: 16 }} />
-            <p style={{ fontSize: 14, lineHeight: 1.7, margin: "0 0 20px" }}>Managed IT services for southern Michigan businesses — trusted by 500+ local clients.</p>
+            <p style={{ fontSize: 14, lineHeight: 1.7, margin: "0 0 20px" }}>Managed IT services for southern Michigan businesses — trusted by 1000+ local clients.</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               <p style={{ color: "#4b5563", fontSize: 13, margin: 0 }}>37 Waldron St, Hillsdale, MI 49242</p>
               <a href="tel:5176105372" style={{ color: "#64748b", textDecoration: "none", fontSize: 13, display: "flex", alignItems: "center", gap: 6 }}
