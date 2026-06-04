@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Switch, Route } from "wouter";
 import {
   Wrench, Laptop, Monitor, Printer, KeyRound, Cpu, Bug, Tv2,
   ChevronDown, Menu, X, Phone, Mail, MapPin, ArrowRight,
@@ -65,7 +66,7 @@ const trust = [
 ];
 
 const serviceLinks = [
-  { label: "Network Infrastructure", href: "/network-infrastructure/" },
+  { label: "Network Infrastructure", href: "/network-infrastructure" },
   { label: "Cybersecurity", href: "/cybersecurity/" },
   { label: "Managed IT Systems", href: "/managed-it-systems/" },
   { label: "Phone Systems", href: "/phone-systems/" },
@@ -187,7 +188,7 @@ function Header() {
   );
 }
 
-export default function App() {
+function HomePage() {
   return (
     <div style={{ fontFamily: "'Roboto', sans-serif", color: "#1e293b", overflowX: "hidden" }}>
       <Header />
@@ -285,63 +286,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* ── NETWORK INFRASTRUCTURE ── */}
-      <section style={{ background: "linear-gradient(160deg, #0f172a 0%, #1e3a5f 55%, #0d3050 100%)", padding: "80px 24px 80px 0", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", right: -60, top: -80, width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle, rgba(55,181,230,0.1) 0%, transparent 70%)", pointerEvents: "none" }} />
-        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-            <Network size={20} color={TEAL} />
-            <span style={{ color: TEAL, fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Business Services</span>
-          </div>
-          <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 24 }} />
-
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }} className="hero-grid">
-            {/* Left column */}
-            <div>
-              <h2 style={{ color: "white", fontSize: 36, fontWeight: 800, margin: "0 0 16px", letterSpacing: "-0.02em", lineHeight: 1.15 }}>
-                Network Infrastructure
-              </h2>
-              <h3 style={{ color: TEAL, fontSize: 16, fontWeight: 700, margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.06em" }}>Our Approach</h3>
-              <p style={{ color: "#94a3b8", fontSize: 16, lineHeight: 1.8, margin: "0 0 32px" }}>
-                Our technicians and contractors have experience in Industrial, Residential, Hospitality and Healthcare installations and maintenance of all aspects of any network project.
-              </p>
-              <a
-                href="https://www.qpctech.com/network-infrastructure/"
-                target="_blank"
-                rel="noreferrer"
-                style={{ display: "inline-flex", alignItems: "center", gap: 8, background: TEAL, color: "white", padding: "12px 28px", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none" }}
-              >
-                Learn More <ArrowRight size={16} />
-              </a>
-            </div>
-
-            {/* Right column — checklist */}
-            <div style={{ background: "rgba(255,255,255,0.05)", borderRadius: 16, padding: "32px", border: "1px solid rgba(255,255,255,0.1)" }}>
-              <p style={{ color: "#e2e8f0", fontWeight: 700, fontSize: 15, margin: "0 0 20px" }}>What We Cover</p>
-              {[
-                "Indoor, Outdoor and Industrial Cabling",
-                "Wireless Access Points",
-                "Router and Firewall",
-                "Switch Configuration & Setup",
-                "Recertification of Existing Cables",
-                "New Installation or Datacenter Make-Over",
-              ].map((item) => (
-                <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 14 }}>
-                  <CheckCircle size={18} color={TEAL} style={{ flexShrink: 0, marginTop: 2 }} />
-                  <span style={{ color: "#cbd5e1", fontSize: 15, lineHeight: 1.5 }}>{item}</span>
-                </div>
-              ))}
-              <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", marginTop: 20, paddingTop: 20 }}>
-                <p style={{ color: "#94a3b8", fontSize: 13, margin: "0 0 4px" }}>For a quote, contact us:</p>
-                <a href="tel:5176105372" style={{ color: TEAL, fontWeight: 700, fontSize: 14, textDecoration: "none" }}>(517) 610-5372</a>
-                <span style={{ color: "#475569", margin: "0 8px" }}>·</span>
-                <a href="mailto:support@qpctech.com" style={{ color: TEAL, fontWeight: 700, fontSize: 14, textDecoration: "none" }}>support@qpctech.com</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── CTA CALLOUT ── */}
       <section style={{ padding: "0 24px 80px 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", background: "linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #0c4a6e 100%)", borderRadius: 16, padding: "48px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 24, boxShadow: "0 8px 32px rgba(0,0,0,0.18)" }}>
@@ -380,55 +324,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
-      <footer style={{ background: "#0f172a", color: "#64748b", padding: "56px 24px 0 0" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: 48, paddingBottom: 48 }} className="footer-grid">
-          <div>
-            <img src="https://www.qpctech.com/wp-content/uploads/2024/03/cropped-QPCTech-logo.png" alt="QPCTech" style={{ height: 48, marginBottom: 16 }} />
-            <p style={{ fontSize: 14, lineHeight: 1.7, margin: "0 0 20px" }}>Managed IT services for southern Michigan businesses — trusted by 1000+ local clients.</p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <p style={{ color: "#4b5563", fontSize: 13, margin: 0 }}>37 Waldron St, Hillsdale, MI 49242</p>
-              <a href="tel:5176105372" style={{ color: "#64748b", textDecoration: "none", fontSize: 13, display: "flex", alignItems: "center", gap: 6 }}
-                onMouseEnter={e => (e.currentTarget.style.color = TEAL)}
-                onMouseLeave={e => (e.currentTarget.style.color = "#64748b")}
-              ><Phone size={13} color={TEAL} />(517) 610-5372</a>
-              <a href="mailto:support@qpctech.com" style={{ color: "#64748b", textDecoration: "none", fontSize: 13, display: "flex", alignItems: "center", gap: 6 }}
-                onMouseEnter={e => (e.currentTarget.style.color = TEAL)}
-                onMouseLeave={e => (e.currentTarget.style.color = "#64748b")}
-              ><Mail size={13} color={TEAL} />support@qpctech.com</a>
-            </div>
-          </div>
-
-          <div>
-            <p style={{ color: "#e2e8f0", fontWeight: 700, fontSize: 14, marginTop: 0, marginBottom: 16 }}>Services</p>
-            {serviceLinks.map(link => (
-              <a key={link.href} href={link.href} style={{ display: "block", color: "#64748b", textDecoration: "none", fontSize: 14, marginBottom: 8 }}
-                onMouseEnter={e => (e.currentTarget.style.color = TEAL)}
-                onMouseLeave={e => (e.currentTarget.style.color = "#64748b")}
-              >{link.label}</a>
-            ))}
-          </div>
-
-          <div>
-            <p style={{ color: "#e2e8f0", fontWeight: 700, fontSize: 14, marginTop: 0, marginBottom: 16 }}>Quick Links</p>
-            {externalLinks.map(link => (
-              <a
-                key={link.href}
-                href={link.href}
-                target={link.href.startsWith("http") ? "_blank" : undefined}
-                rel={link.href.startsWith("http") ? "noreferrer noopener" : undefined}
-                style={{ display: "block", color: "#64748b", textDecoration: "none", fontSize: 14, marginBottom: 8 }}
-                onMouseEnter={e => (e.currentTarget.style.color = TEAL)}
-                onMouseLeave={e => (e.currentTarget.style.color = "#64748b")}
-              >{link.label}</a>
-            ))}
-          </div>
-        </div>
-
-        <div style={{ borderTop: "1px solid #1e293b", padding: "16px 0", textAlign: "center" }}>
-          <p style={{ color: "#334155", fontSize: 13, margin: 0 }}>Copyright &copy; 2026 QPCTech</p>
-        </div>
-      </footer>
+      <Footer />
 
       <style>{`
         @media (max-width: 768px) {
@@ -452,5 +348,149 @@ export default function App() {
         }
       `}</style>
     </div>
+  );
+}
+
+function Footer() {
+  return (
+    <footer style={{ background: "#0f172a", color: "#64748b", padding: "56px 24px 0 0" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: 48, paddingBottom: 48 }} className="footer-grid">
+        <div>
+          <img src="https://www.qpctech.com/wp-content/uploads/2024/03/cropped-QPCTech-logo.png" alt="QPCTech" style={{ height: 48, marginBottom: 16 }} />
+          <p style={{ fontSize: 14, lineHeight: 1.7, margin: "0 0 20px" }}>Managed IT services for southern Michigan businesses — trusted by 1000+ local clients.</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <p style={{ color: "#4b5563", fontSize: 13, margin: 0 }}>37 Waldron St, Hillsdale, MI 49242</p>
+            <a href="tel:5176105372" style={{ color: "#64748b", textDecoration: "none", fontSize: 13, display: "flex", alignItems: "center", gap: 6 }}
+              onMouseEnter={e => (e.currentTarget.style.color = TEAL)}
+              onMouseLeave={e => (e.currentTarget.style.color = "#64748b")}
+            ><Phone size={13} color={TEAL} />(517) 610-5372</a>
+            <a href="mailto:support@qpctech.com" style={{ color: "#64748b", textDecoration: "none", fontSize: 13, display: "flex", alignItems: "center", gap: 6 }}
+              onMouseEnter={e => (e.currentTarget.style.color = TEAL)}
+              onMouseLeave={e => (e.currentTarget.style.color = "#64748b")}
+            ><Mail size={13} color={TEAL} />support@qpctech.com</a>
+          </div>
+        </div>
+        <div>
+          <p style={{ color: "#e2e8f0", fontWeight: 700, fontSize: 14, marginTop: 0, marginBottom: 16 }}>Services</p>
+          {serviceLinks.map(link => (
+            <a key={link.href} href={link.href} style={{ display: "block", color: "#64748b", textDecoration: "none", fontSize: 14, marginBottom: 8 }}
+              onMouseEnter={e => (e.currentTarget.style.color = TEAL)}
+              onMouseLeave={e => (e.currentTarget.style.color = "#64748b")}
+            >{link.label}</a>
+          ))}
+        </div>
+        <div>
+          <p style={{ color: "#e2e8f0", fontWeight: 700, fontSize: 14, marginTop: 0, marginBottom: 16 }}>Quick Links</p>
+          {externalLinks.map(link => (
+            <a key={link.href} href={link.href}
+              target={link.href.startsWith("http") ? "_blank" : undefined}
+              rel={link.href.startsWith("http") ? "noreferrer noopener" : undefined}
+              style={{ display: "block", color: "#64748b", textDecoration: "none", fontSize: 14, marginBottom: 8 }}
+              onMouseEnter={e => (e.currentTarget.style.color = TEAL)}
+              onMouseLeave={e => (e.currentTarget.style.color = "#64748b")}
+            >{link.label}</a>
+          ))}
+        </div>
+      </div>
+      <div style={{ borderTop: "1px solid #1e293b", padding: "16px 0", textAlign: "center" }}>
+        <p style={{ color: "#334155", fontSize: 13, margin: 0 }}>Copyright &copy; 2026 QPCTech</p>
+      </div>
+    </footer>
+  );
+}
+
+function NetworkInfrastructurePage() {
+  return (
+    <div style={{ fontFamily: "'Roboto', sans-serif", color: "#1e293b", overflowX: "hidden" }}>
+      <Header />
+
+      {/* ── PAGE HERO ── */}
+      <section style={{ background: "linear-gradient(160deg, #0f172a 0%, #1e3a5f 55%, #0d3050 100%)", padding: "72px 24px 72px 0", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", right: -60, top: -80, width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle, rgba(55,181,230,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
+        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+            <a href="/" style={{ color: "#94a3b8", fontSize: 13, textDecoration: "none" }}>Home</a>
+            <span style={{ color: "#475569" }}>›</span>
+            <span style={{ color: "#94a3b8", fontSize: 13 }}>Services</span>
+            <span style={{ color: "#475569" }}>›</span>
+            <span style={{ color: TEAL, fontSize: 13, fontWeight: 600 }}>Network Infrastructure</span>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+            <Network size={22} color={TEAL} />
+            <span style={{ color: TEAL, fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Business Services</span>
+          </div>
+          <h1 style={{ color: "white", fontSize: 48, fontWeight: 800, margin: "0 0 16px", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+            Network Infrastructure
+          </h1>
+          <p style={{ color: "#94a3b8", fontSize: 17, lineHeight: 1.7, maxWidth: 600, margin: 0 }}>
+            Building and maintaining reliable, scalable networks for businesses across southern Michigan — from small offices to industrial facilities.
+          </p>
+        </div>
+      </section>
+
+      {/* ── MAIN CONTENT ── */}
+      <section style={{ background: "white", padding: "80px 24px 80px 0" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }} className="hero-grid">
+
+            {/* Left — Our Approach */}
+            <div>
+              <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 20 }} />
+              <h2 style={{ color: "#0f172a", fontSize: 30, fontWeight: 800, margin: "0 0 8px", letterSpacing: "-0.02em" }}>Our Approach</h2>
+              <p style={{ color: "#334155", fontSize: 16, lineHeight: 1.8, margin: "0 0 32px" }}>
+                Our technicians and contractors have experience in Industrial, Residential, Hospitality and Healthcare installations and maintenance of all aspects of any network project.
+              </p>
+              <div style={{ background: "#f0f9ff", borderRadius: 12, padding: "24px", border: `1px solid ${TEAL}30`, marginBottom: 32 }}>
+                <p style={{ color: "#0f172a", fontWeight: 700, fontSize: 15, margin: "0 0 8px" }}>Ready for a quote?</p>
+                <p style={{ color: "#475569", fontSize: 14, margin: "0 0 16px" }}>Contact us and we'll assess your needs and provide a detailed estimate.</p>
+                <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                  <a href="tel:5176105372" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: TEAL, color: "white", padding: "10px 22px", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none" }}>
+                    <Phone size={14} /> (517) 610-5372
+                  </a>
+                  <a href="mailto:support@qpctech.com" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "white", color: "#0f172a", padding: "10px 22px", borderRadius: 8, fontWeight: 600, fontSize: 14, textDecoration: "none", border: "1px solid #e2e8f0" }}>
+                    <Mail size={14} /> Email Us
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Right — What We Cover */}
+            <div style={{ background: "#f8fafc", borderRadius: 16, padding: "36px", border: "1px solid #e2e8f0", borderLeft: `4px solid ${TEAL}` }}>
+              <p style={{ color: "#0f172a", fontWeight: 800, fontSize: 18, margin: "0 0 24px" }}>What We Cover</p>
+              {[
+                "Indoor, Outdoor and Industrial Cabling",
+                "Wireless Access Points",
+                "Router and Firewall",
+                "Switch Configuration & Setup",
+                "Recertification of Existing Cables",
+                "New Installation or Datacenter Make-Over",
+              ].map((item) => (
+                <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 16 }}>
+                  <CheckCircle size={20} color={TEAL} style={{ flexShrink: 0, marginTop: 2 }} />
+                  <span style={{ color: "#1e293b", fontSize: 15, lineHeight: 1.5, fontWeight: 500 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+
+      <style>{`
+        @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr !important; } }
+        @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <Switch>
+      <Route path="/network-infrastructure" component={NetworkInfrastructurePage} />
+      <Route component={HomePage} />
+    </Switch>
   );
 }
