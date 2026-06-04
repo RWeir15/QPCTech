@@ -89,8 +89,8 @@ function Header() {
 
   return (
     <header style={{ background: "#111827", position: "sticky", top: 0, zIndex: 100, boxShadow: "0 2px 20px rgba(0,0,0,0.4)" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 80 }}>
-        <a href="/" style={{ display: "flex", alignItems: "center", marginLeft: -80 }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px 0 0", display: "flex", alignItems: "center", justifyContent: "space-between", height: 80 }}>
+        <a href="/" style={{ display: "flex", alignItems: "center" }}>
           <img
             src="https://www.qpctech.com/wp-content/uploads/2024/03/cropped-QPCTech-logo.png"
             alt="QPCTech"
@@ -203,7 +203,7 @@ export default function App() {
       </div>
 
       {/* ── HERO ── */}
-      <section style={{ background: "linear-gradient(160deg, #0f172a 0%, #1e3a5f 55%, #0d3050 100%)", padding: "80px 24px 72px", position: "relative", overflow: "hidden" }}>
+      <section style={{ background: "linear-gradient(160deg, #0f172a 0%, #1e3a5f 55%, #0d3050 100%)", padding: "80px 24px 72px 0", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", right: -60, top: -80, width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle, rgba(55,181,230,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", left: -60, bottom: -60, width: 280, height: 280, borderRadius: "50%", background: "radial-gradient(circle, rgba(55,181,230,0.07) 0%, transparent 70%)", pointerEvents: "none" }} />
 
@@ -242,7 +242,7 @@ export default function App() {
       </section>
 
       {/* ── STATS BAR ── */}
-      <div style={{ background: TEAL, padding: "28px 24px" }}>
+      <div style={{ background: TEAL, padding: "28px 24px 28px 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "center", gap: 160, textAlign: "center" }} className="stats-grid">
           {stats.map(s => (
             <div key={s.value}>
@@ -254,7 +254,7 @@ export default function App() {
       </div>
 
       {/* ── IN STORE SERVICES ── */}
-      <section id="services" style={{ padding: "80px 24px", background: "white" }}>
+      <section id="services" style={{ padding: "80px 24px 80px 0", background: "white" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ marginBottom: 48 }}>
             <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 16 }} />
@@ -286,7 +286,7 @@ export default function App() {
       </section>
 
       {/* ── CTA CALLOUT ── */}
-      <section style={{ padding: "0 24px 80px" }}>
+      <section style={{ padding: "0 24px 80px 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", background: "linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #0c4a6e 100%)", borderRadius: 16, padding: "48px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 24, boxShadow: "0 8px 32px rgba(0,0,0,0.18)" }}>
           <div>
             <h2 style={{ color: "white", fontSize: 26, fontWeight: 800, margin: "0 0 8px" }}>Need Reliable IT Support or Computer Repair?</h2>
@@ -306,7 +306,7 @@ export default function App() {
       </section>
 
       {/* ── MAP ── */}
-      <section style={{ padding: "0 24px 80px", background: "#f8fafc", paddingTop: 80 }}>
+      <section style={{ padding: "80px 24px 80px 0", background: "#f8fafc" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 16 }} />
           <h2 style={{ color: "#0f172a", fontSize: 28, fontWeight: 800, margin: "0 0 8px" }}>Where We Are Located</h2>
@@ -324,7 +324,7 @@ export default function App() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer style={{ background: "#0f172a", color: "#64748b", padding: "56px 24px 0" }}>
+      <footer style={{ background: "#0f172a", color: "#64748b", padding: "56px 24px 0 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: 48, paddingBottom: 48 }} className="footer-grid">
           <div>
             <img src="https://www.qpctech.com/wp-content/uploads/2024/03/cropped-QPCTech-logo.png" alt="QPCTech" style={{ height: 48, marginBottom: 16 }} />
