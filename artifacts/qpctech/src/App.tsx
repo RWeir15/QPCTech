@@ -71,7 +71,7 @@ const serviceLinks = [
   { label: "Managed IT Systems", href: "/managed-it-systems" },
   { label: "Phone Systems", href: "/phone-systems" },
 
-  { label: "Physical Security", href: "/physical-security/" },
+  { label: "Physical Security", href: "/physical-security" },
   { label: "Printing & Scanning", href: "/printing-and-scanning/" },
   { label: "Community Work", href: "/community-work/" },
 ];
@@ -820,6 +820,97 @@ function PhoneSystemsPage() {
   );
 }
 
+function PhysicalSecurityPage() {
+  return (
+    <div style={{ fontFamily: "'Roboto', sans-serif", color: "#1e293b", overflowX: "hidden" }}>
+      <Header />
+
+      {/* ── PAGE HERO ── */}
+      <section style={{ background: "linear-gradient(160deg, #0f172a 0%, #1e3a5f 55%, #0d3050 100%)", padding: "72px 24px 72px 0", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", right: -60, top: -80, width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle, rgba(55,181,230,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
+        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+            <a href="/" style={{ color: "#94a3b8", fontSize: 13, textDecoration: "none" }}>Home</a>
+            <span style={{ color: "#475569" }}>›</span>
+            <span style={{ color: "#94a3b8", fontSize: 13 }}>Services</span>
+            <span style={{ color: "#475569" }}>›</span>
+            <span style={{ color: TEAL, fontSize: 13, fontWeight: 600 }}>Physical Security</span>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+            <KeyRound size={22} color={TEAL} />
+            <span style={{ color: TEAL, fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Business Services</span>
+          </div>
+          <h1 style={{ color: "white", fontSize: 48, fontWeight: 800, margin: "0 0 16px", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+            Physical Security
+          </h1>
+          <p style={{ color: "#94a3b8", fontSize: 17, lineHeight: 1.7, maxWidth: 600, margin: 0 }}>
+            Secure your business with state-of-the-art physical security systems — surveillance cameras, burglar alarms, and access control installed by Michigan-licensed contractors.
+          </p>
+        </div>
+      </section>
+
+      {/* ── MAIN CONTENT ── */}
+      <section style={{ background: "white", padding: "80px 24px 80px 0" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }} className="hero-grid">
+
+            {/* Left — Approach */}
+            <div>
+              <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 20 }} />
+              <h2 style={{ color: "#0f172a", fontSize: 30, fontWeight: 800, margin: "0 0 16px", letterSpacing: "-0.02em" }}>Approach to Physical Security</h2>
+              <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.8, margin: "0 0 16px" }}>
+                <strong>Surveillance Cameras</strong> — Like phones, cameras have become far more affordable. But the camera is often the easy part — the video management application is what separates the good solutions from the bad. Our technicians and expert contractors will talk through your requirements and select the right solution for your growing business. Buyer beware: today's marketplace is full of popular solutions that do not pass NIST Cybersecurity Certification, which could be compromising the security of your customers.
+              </p>
+              <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.8, margin: "0 0 32px" }}>
+                <strong>Burglar Alarms and Building Access Control</strong> — QPC's expert contractors are licensed by the State of Michigan to provide installation and service of these critical security technologies. Before you resign yourself to a DIY solution, give us a call — we'd love to help you define your strategy and make sure your investment holds up to the challenge.
+              </p>
+              <div style={{ background: "#f0f9ff", borderRadius: 12, padding: "24px", border: `1px solid ${TEAL}30` }}>
+                <p style={{ color: "#0f172a", fontWeight: 700, fontSize: 15, margin: "0 0 8px" }}>Ready to secure your facility?</p>
+                <p style={{ color: "#475569", fontSize: 14, margin: "0 0 16px" }}>Call us for a free consultation and we'll help you build the right security strategy.</p>
+                <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                  <a href="tel:5176105372" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: TEAL, color: "white", padding: "10px 22px", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none" }}>
+                    <Phone size={14} /> (517) 610-5372
+                  </a>
+                  <a href="mailto:support@qpctech.com" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "white", color: "#0f172a", padding: "10px 22px", borderRadius: 8, fontWeight: 600, fontSize: 14, textDecoration: "none", border: "1px solid #e2e8f0" }}>
+                    <Mail size={14} /> Email Us
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Right — What We Cover */}
+            <div style={{ background: "#f8fafc", borderRadius: 16, padding: "36px", border: "1px solid #e2e8f0", borderLeft: `4px solid ${TEAL}` }}>
+              <p style={{ color: "#0f172a", fontWeight: 800, fontSize: 18, margin: "0 0 24px" }}>What We Cover</p>
+              {[
+                "Surveillance Cameras",
+                "Video Management Systems",
+                "NIST-Certified Solutions",
+                "Burglar Alarms",
+                "Building Access Control Systems",
+                "Licensed by the State of Michigan",
+                "Security Strategy Consultation",
+              ].map((item) => (
+                <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 16 }}>
+                  <CheckCircle size={20} color={TEAL} style={{ flexShrink: 0, marginTop: 2 }} />
+                  <span style={{ color: "#1e293b", fontSize: 15, lineHeight: 1.5, fontWeight: 500 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+
+      <style>{`
+        @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr !important; } }
+        @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <Switch>
@@ -827,6 +918,7 @@ export default function App() {
       <Route path="/cybersecurity" component={CybersecurityPage} />
       <Route path="/managed-it-systems" component={ManagedITPage} />
       <Route path="/phone-systems" component={PhoneSystemsPage} />
+      <Route path="/physical-security" component={PhysicalSecurityPage} />
       <Route component={HomePage} />
     </Switch>
   );
