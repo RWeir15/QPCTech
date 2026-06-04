@@ -211,7 +211,7 @@ export default function App() {
           <div>
             <h1 style={{ color: "white", fontSize: 52, fontWeight: 800, lineHeight: 1.1, margin: "0 0 20px", letterSpacing: "-0.02em" }}>
               Technology That{" "}
-              <span style={{ color: TEAL }}>Just Works.</span>
+              <span style={{ color: TEAL }}>Works For You.</span>
             </h1>
             <p style={{ color: "#94a3b8", fontSize: 17, lineHeight: 1.7, margin: "0 0 32px" }}>
               From quick walk-in computer repairs to comprehensive managed IT services — QPCTech keeps local residents and businesses running smoothly, securely, and efficiently.
