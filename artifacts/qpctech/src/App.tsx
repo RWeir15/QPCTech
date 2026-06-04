@@ -6,7 +6,6 @@ import {
 } from "lucide-react";
 
 const TEAL = "#37b5e6";
-const GREEN = "#22c55e";
 
 const services = [
   {
@@ -229,18 +228,15 @@ export default function App() {
 
           {/* Trust cards */}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }} className="trust-grid">
-            {trust.map((t, i) => {
-              const accent = i === 2 ? GREEN : TEAL;
-              return (
+            {trust.map((t, i) => (
               <div key={i} style={{ background: "rgba(255,255,255,0.06)", borderRadius: 12, padding: "20px", border: "1px solid rgba(255,255,255,0.12)", boxShadow: "0 2px 12px rgba(0,0,0,0.2)" }}>
-                <div style={{ width: 40, height: 40, borderRadius: 10, background: `${accent}25`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
-                  <t.Icon size={20} color={accent} />
+                <div style={{ width: 40, height: 40, borderRadius: 10, background: `${TEAL}25`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
+                  <t.Icon size={20} color={TEAL} />
                 </div>
                 <p style={{ color: "white", fontWeight: 700, fontSize: 14, margin: "0 0 4px" }}>{t.label}</p>
                 <p style={{ color: "#94a3b8", fontSize: 12, margin: 0 }}>{t.sub}</p>
               </div>
-              );
-            })}
+            ))}
           </div>
         </div>
       </section>
@@ -261,13 +257,13 @@ export default function App() {
       <section id="services" style={{ padding: "80px 24px 80px 0", background: "white" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ marginBottom: 48 }}>
-            <div style={{ width: 40, height: 4, background: `linear-gradient(to right, ${TEAL}, ${GREEN})`, borderRadius: 2, marginBottom: 16 }} />
+            <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 16 }} />
             <h2 style={{ color: "#0f172a", fontSize: 32, fontWeight: 800, margin: "0 0 10px", letterSpacing: "-0.02em" }}>In Store Services</h2>
             <p style={{ color: "#111827", fontSize: 16, margin: 0 }}>Walk in and we'll take care of the rest — no appointment needed for most services.</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }} className="services-grid">
             {services.map((s, i) => (
-              <div key={i} style={{ background: "#f8fafc", borderRadius: 12, padding: "28px 24px", border: "1px solid #e2e8f0", borderLeft: `4px solid ${i % 2 === 0 ? TEAL : GREEN}`, display: "flex", flexDirection: "column", gap: 14 }}>
+              <div key={i} style={{ background: "#f8fafc", borderRadius: 12, padding: "28px 24px", border: "1px solid #e2e8f0", borderLeft: `4px solid ${TEAL}`, display: "flex", flexDirection: "column", gap: 14 }}>
                 <div style={{ width: 44, height: 44, borderRadius: 10, background: "white", border: "1px solid #e2e8f0", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 1px 3px rgba(0,0,0,0.06)", flexShrink: 0 }}>
                   <s.Icon size={20} color={TEAL} />
                 </div>
@@ -312,7 +308,7 @@ export default function App() {
       {/* ── MAP ── */}
       <section style={{ padding: "80px 24px 80px 0", background: "#f8fafc" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ width: 40, height: 4, background: `linear-gradient(to right, ${TEAL}, ${GREEN})`, borderRadius: 2, marginBottom: 16 }} />
+          <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 16 }} />
           <h2 style={{ color: "#0f172a", fontSize: 28, fontWeight: 800, margin: "0 0 8px" }}>Where We Are Located</h2>
           <p style={{ color: "#64748b", fontSize: 15, margin: "0 0 28px" }}>37 Waldron St, Hillsdale, MI 49242</p>
           <div style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", height: 420, border: "1px solid #e2e8f0" }}>
