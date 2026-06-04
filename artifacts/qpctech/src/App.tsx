@@ -259,21 +259,21 @@ export default function App() {
           <div style={{ marginBottom: 48 }}>
             <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 16 }} />
             <h2 style={{ color: "#0f172a", fontSize: 32, fontWeight: 800, margin: "0 0 10px", letterSpacing: "-0.02em" }}>In Store Services</h2>
-            <p style={{ color: "#64748b", fontSize: 16, margin: 0 }}>Walk in and we'll take care of the rest — no appointment needed for most services.</p>
+            <p style={{ color: "#111827", fontSize: 16, margin: 0 }}>Walk in and we'll take care of the rest — no appointment needed for most services.</p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }} className="services-grid">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }} className="services-grid">
             {services.map((s, i) => (
-              <div key={i} style={{ background: "#f8fafc", borderRadius: 12, padding: "24px", border: "1px solid #e2e8f0", borderLeft: `4px solid ${TEAL}`, display: "flex", flexDirection: "column", gap: 12 }}>
+              <div key={i} style={{ background: "#f8fafc", borderRadius: 12, padding: "28px 24px", border: "1px solid #e2e8f0", borderLeft: `4px solid ${TEAL}`, display: "flex", flexDirection: "column", gap: 14 }}>
                 <div style={{ width: 44, height: 44, borderRadius: 10, background: "white", border: "1px solid #e2e8f0", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 1px 3px rgba(0,0,0,0.06)", flexShrink: 0 }}>
                   <s.Icon size={20} color={TEAL} />
                 </div>
-                <h3 style={{ color: "#0f172a", fontSize: 14, fontWeight: 700, margin: 0, lineHeight: 1.3 }}>
+                <h3 style={{ color: "#111827", fontSize: 15, fontWeight: 700, margin: 0, lineHeight: 1.3 }}>
                   {s.link
-                    ? <a href={s.link} target="_blank" rel="noreferrer" style={{ color: "#0f172a", textDecoration: "none" }}>{s.title}</a>
+                    ? <a href={s.link} target="_blank" rel="noreferrer" style={{ color: "#111827", textDecoration: "none" }}>{s.title}</a>
                     : s.title
                   }
                 </h3>
-                <p style={{ color: "#64748b", fontSize: 13, lineHeight: 1.6, margin: 0, flex: 1 }}>{s.desc}</p>
+                <p style={{ color: "#111827", fontSize: 13, lineHeight: 1.7, margin: 0, flex: 1 }}>{s.desc}</p>
                 {s.link && (
                   <a href={s.link} target="_blank" rel="noreferrer" style={{ color: TEAL, fontSize: 12, fontWeight: 600, textDecoration: "none", display: "flex", alignItems: "center", gap: 4 }}>
                     Visit site <ArrowUpRight size={11} />
