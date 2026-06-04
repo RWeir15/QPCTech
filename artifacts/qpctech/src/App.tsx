@@ -245,7 +245,7 @@ export default function App() {
 
       {/* ── STATS BAR ── */}
       <div style={{ background: TEAL, padding: "28px 24px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "center", gap: 80, textAlign: "center" }} className="stats-grid">
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "center", gap: 160, textAlign: "center" }} className="stats-grid">
           {stats.map(s => (
             <div key={s.value}>
               <div style={{ color: "white", fontSize: 32, fontWeight: 800, lineHeight: 1 }}>{s.value}</div>
