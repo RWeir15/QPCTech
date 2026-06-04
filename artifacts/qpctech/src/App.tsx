@@ -90,7 +90,7 @@ function Header() {
   return (
     <header style={{ background: "#111827", position: "sticky", top: 0, zIndex: 100, boxShadow: "0 2px 20px rgba(0,0,0,0.4)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 80 }}>
-        <a href="/" style={{ display: "flex", alignItems: "center", marginLeft: -12 }}>
+        <a href="/" style={{ display: "flex", alignItems: "center", marginLeft: -24 }}>
           <img
             src="https://www.qpctech.com/wp-content/uploads/2024/03/cropped-QPCTech-logo.png"
             alt="QPCTech"
