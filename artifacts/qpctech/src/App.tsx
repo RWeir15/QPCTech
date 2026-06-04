@@ -212,9 +212,6 @@ export default function App() {
 
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center", position: "relative" }} className="hero-grid">
           <div>
-            <div style={{ display: "inline-block", background: "rgba(55,181,230,0.18)", border: `1px solid ${TEAL}50`, borderRadius: 20, padding: "6px 16px", marginBottom: 24 }}>
-              <span style={{ color: TEAL, fontSize: 13, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" }}>Southern Michigan's IT Experts</span>
-            </div>
             <h1 style={{ color: "white", fontSize: 52, fontWeight: 800, lineHeight: 1.1, margin: "0 0 20px", letterSpacing: "-0.02em" }}>
               Technology That{" "}
               <span style={{ color: TEAL }}>Just Works.</span>
