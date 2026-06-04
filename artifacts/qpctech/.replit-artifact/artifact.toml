@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "QPCTech"
+version = "1.0.0"
+id = "artifacts/qpctech"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 26031
+
+[services.development]
+run = "pnpm --filter @workspace/qpctech run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/qpctech", "run", "build" ]
+publicDir = "artifacts/qpctech/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "26031"
+BASE_PATH = "/"
