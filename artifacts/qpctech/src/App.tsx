@@ -127,7 +127,7 @@ function Header() {
             )}
           </div>
 
-          <a href="/about-us/" style={{ color: "#e5e7eb", textDecoration: "none", fontSize: 14, fontWeight: 500 }}>Who we Are</a>
+          <a href="/about-us/" style={{ color: "#e5e7eb", textDecoration: "none", fontSize: 14, fontWeight: 500 }}>Who We Are</a>
           <a href="/contact/" style={{ color: "#e5e7eb", textDecoration: "none", fontSize: 14, fontWeight: 500 }}>Contact Us</a>
           <a
             href="https://qpctech.rmmservices.net/connect/#/9951961931"
@@ -167,7 +167,7 @@ function Header() {
               </div>
             )}
           </div>
-          <a href="/about-us/" style={{ display: "block", color: "#e5e7eb", textDecoration: "none", padding: "10px 0", fontSize: 15 }}>Who we Are</a>
+          <a href="/about-us/" style={{ display: "block", color: "#e5e7eb", textDecoration: "none", padding: "10px 0", fontSize: 15 }}>Who We Are</a>
           <a href="/contact/" style={{ display: "block", color: "#e5e7eb", textDecoration: "none", padding: "10px 0", fontSize: 15 }}>Contact Us</a>
           <a
             href="https://qpctech.rmmservices.net/connect/#/9951961931"
