@@ -11,7 +11,7 @@ const services = [
   {
     Icon: Wrench,
     title: "Computer Repair",
-    desc: "Fast, reliable desktop and laptop diagnostics and repairs. (Please note: We specialize in PCs and do not service phones or tablets.)",
+    desc: (<>Fast, reliable desktop and laptop diagnostics and repairs.<br /><br /><strong>(Please note: We specialize in PCs and do not service phones or tablets.)</strong></>),
   },
   {
     Icon: Laptop,
