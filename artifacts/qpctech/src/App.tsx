@@ -11,40 +11,38 @@ const services = [
   {
     Icon: Wrench,
     title: "Computer Repair",
-    desc: (
-      <>We repair desktop and laptop PCs.<br /><em>We do not repair phones or tablets.</em></>
-    ),
+    desc: "Fast, reliable desktop and laptop diagnostics and repairs. (Please note: We specialize in PCs and do not service phones or tablets.)",
   },
   {
     Icon: Laptop,
     title: "Computer Sales",
-    desc: "We purchase and refurbish computers and ensure they meet our quality standards.",
+    desc: "High-quality, rigorously tested refurbished computers. Get premium performance without the brand-new price tag.",
   },
   {
     Icon: Monitor,
     title: "Windows OS Upgrade",
-    desc: "Operating Systems need to stay up-to-date to ensure security vulnerabilities get patched.",
+    desc: "Keep your computer safe and fast. We seamlessly upgrade your Windows OS to ensure you have the latest security patches and features.",
   },
   {
     Icon: Printer,
     title: "Printer Sales",
-    desc: "We've partnered with Printer Source Plus and sell quality EPSON printers.",
+    desc: "Reliable printing solutions. Through our partnership with Printer Source Plus, we offer top-tier EPSON printers perfect for home or office use.",
     link: "https://printersourceplus.com/",
   },
   {
     Icon: KeyRound,
     title: "Password Reset",
-    desc: "Forgot your computer login password? We have the tools to reset it.",
+    desc: "Locked out of your computer? Don't panic. We have the tools to safely reset your password and get you right back to work.",
   },
   {
     Icon: Cpu,
     title: "Hardware Installation",
-    desc: "Have a computer part you don't feel comfortable installing yourself? Let our technicians handle it.",
+    desc: "Upgrading your hardware? Let our certified technicians safely install graphics cards, RAM, hard drives, and more.",
   },
   {
     Icon: Bug,
     title: "Virus Removal",
-    desc: "We can detect and remove footholds created by viruses, keeping your system safe.",
+    desc: "Comprehensive malware and virus removal. We completely eliminate hidden threats and optimize your system for maximum security.",
   },
   {
     Icon: Tv2,
@@ -63,7 +61,7 @@ const trust = [
   { Icon: Shield, label: "Trusted & Local", sub: "Serving Hillsdale since 2014" },
   { Icon: Clock, label: "Fast Turnaround", sub: "Most repairs done same-day" },
   { Icon: Star, label: "5-Star Rated", sub: "Loved by 1000+ customers" },
-  { Icon: Phone, label: "Always Reachable", sub: "(517) 610-5372" },
+  { Icon: Phone, label: "Easy to Reach", sub: "(517) 610-5372" },
 ];
 
 const serviceLinks = [
@@ -291,11 +289,11 @@ export default function App() {
       <section style={{ padding: "0 24px 80px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", background: "linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #0c4a6e 100%)", borderRadius: 16, padding: "48px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 24, boxShadow: "0 8px 32px rgba(0,0,0,0.18)" }}>
           <div>
-            <h2 style={{ color: "white", fontSize: 26, fontWeight: 800, margin: "0 0 8px" }}>Need IT support for your business?</h2>
+            <h2 style={{ color: "white", fontSize: 26, fontWeight: 800, margin: "0 0 8px" }}>Need Reliable IT Support or Computer Repair?</h2>
             <p style={{ color: "#94a3b8", fontSize: 15, margin: 0 }}>
-              Call us at{" "}
+              Whether you're a local business looking for managed IT or a neighbor needing a quick computer fix, we're here to help. Call us at{" "}
               <a href="tel:5176105372" style={{ color: TEAL, textDecoration: "none", fontWeight: 700 }}>(517) 610-5372</a>
-              {" "}or stop by our Hillsdale office.
+              {" "}or stop by our Hillsdale office today!
             </p>
           </div>
           <div style={{ display: "flex", gap: 12, flexShrink: 0 }}>
