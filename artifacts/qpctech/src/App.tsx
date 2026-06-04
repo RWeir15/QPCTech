@@ -216,7 +216,7 @@ export default function App() {
               <span style={{ color: TEAL }}>Just Works.</span>
             </h1>
             <p style={{ color: "#94a3b8", fontSize: 17, lineHeight: 1.7, margin: "0 0 32px" }}>
-              From computer repair to full managed IT services — QPCTech keeps Hillsdale businesses running smoothly, securely, and efficiently.
+              From quick walk-in computer repairs to comprehensive managed IT services — QPCTech keeps local residents and businesses running smoothly, securely, and efficiently.
             </p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
               <a href="#services" style={{ background: TEAL, color: "white", padding: "13px 30px", borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: "none", display: "flex", alignItems: "center", gap: 8 }}>
