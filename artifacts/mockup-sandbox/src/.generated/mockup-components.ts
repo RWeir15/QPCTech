@@ -2,6 +2,7 @@
 type ModuleMap = Record<string, () => Promise<Record<string, unknown>>>;
 export const modules: ModuleMap = {
   "./components/mockups/qpctech-variants/BoldDark.tsx": () => import("../components/mockups/qpctech-variants/BoldDark.tsx"),
+  "./components/mockups/qpctech-variants/HeroCleanMix.tsx": () => import("../components/mockups/qpctech-variants/HeroCleanMix.tsx"),
   "./components/mockups/qpctech-variants/HeroVibrant.tsx": () => import("../components/mockups/qpctech-variants/HeroVibrant.tsx"),
   "./components/mockups/qpctech-variants/ModernClean.tsx": () => import("../components/mockups/qpctech-variants/ModernClean.tsx")
 };
