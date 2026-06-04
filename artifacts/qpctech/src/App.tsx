@@ -70,7 +70,7 @@ const serviceLinks = [
   { label: "Cybersecurity", href: "/cybersecurity" },
   { label: "Managed IT Systems", href: "/managed-it-systems" },
   { label: "Phone Systems", href: "/phone-systems" },
-  { label: "Remote Support", href: "/remote-support/" },
+
   { label: "Physical Security", href: "/physical-security/" },
   { label: "Printing & Scanning", href: "/printing-and-scanning/" },
   { label: "Community Work", href: "/community-work/" },
