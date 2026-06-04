@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
   Wrench, Laptop, Monitor, Printer, KeyRound, Cpu, Bug, Tv2,
   ChevronDown, Menu, X, Phone, Mail, MapPin, ArrowRight,
-  ArrowUpRight, Shield, Clock, Star,
+  ArrowUpRight, Shield, Clock, Star, CheckCircle, Network,
 } from "lucide-react";
 
 const TEAL = "#37b5e6";
@@ -281,6 +281,63 @@ export default function App() {
                 )}
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── NETWORK INFRASTRUCTURE ── */}
+      <section style={{ background: "linear-gradient(160deg, #0f172a 0%, #1e3a5f 55%, #0d3050 100%)", padding: "80px 24px 80px 0", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", right: -60, top: -80, width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle, rgba(55,181,230,0.1) 0%, transparent 70%)", pointerEvents: "none" }} />
+        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+            <Network size={20} color={TEAL} />
+            <span style={{ color: TEAL, fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Business Services</span>
+          </div>
+          <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 24 }} />
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }} className="hero-grid">
+            {/* Left column */}
+            <div>
+              <h2 style={{ color: "white", fontSize: 36, fontWeight: 800, margin: "0 0 16px", letterSpacing: "-0.02em", lineHeight: 1.15 }}>
+                Network Infrastructure
+              </h2>
+              <h3 style={{ color: TEAL, fontSize: 16, fontWeight: 700, margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.06em" }}>Our Approach</h3>
+              <p style={{ color: "#94a3b8", fontSize: 16, lineHeight: 1.8, margin: "0 0 32px" }}>
+                Our technicians and contractors have experience in Industrial, Residential, Hospitality and Healthcare installations and maintenance of all aspects of any network project.
+              </p>
+              <a
+                href="https://www.qpctech.com/network-infrastructure/"
+                target="_blank"
+                rel="noreferrer"
+                style={{ display: "inline-flex", alignItems: "center", gap: 8, background: TEAL, color: "white", padding: "12px 28px", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none" }}
+              >
+                Learn More <ArrowRight size={16} />
+              </a>
+            </div>
+
+            {/* Right column — checklist */}
+            <div style={{ background: "rgba(255,255,255,0.05)", borderRadius: 16, padding: "32px", border: "1px solid rgba(255,255,255,0.1)" }}>
+              <p style={{ color: "#e2e8f0", fontWeight: 700, fontSize: 15, margin: "0 0 20px" }}>What We Cover</p>
+              {[
+                "Indoor, Outdoor and Industrial Cabling",
+                "Wireless Access Points",
+                "Router and Firewall",
+                "Switch Configuration & Setup",
+                "Recertification of Existing Cables",
+                "New Installation or Datacenter Make-Over",
+              ].map((item) => (
+                <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 14 }}>
+                  <CheckCircle size={18} color={TEAL} style={{ flexShrink: 0, marginTop: 2 }} />
+                  <span style={{ color: "#cbd5e1", fontSize: 15, lineHeight: 1.5 }}>{item}</span>
+                </div>
+              ))}
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", marginTop: 20, paddingTop: 20 }}>
+                <p style={{ color: "#94a3b8", fontSize: 13, margin: "0 0 4px" }}>For a quote, contact us:</p>
+                <a href="tel:5176105372" style={{ color: TEAL, fontWeight: 700, fontSize: 14, textDecoration: "none" }}>(517) 610-5372</a>
+                <span style={{ color: "#475569", margin: "0 8px" }}>·</span>
+                <a href="mailto:support@qpctech.com" style={{ color: TEAL, fontWeight: 700, fontSize: 14, textDecoration: "none" }}>support@qpctech.com</a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
