@@ -56,7 +56,6 @@ const services = [
 const stats = [
   { value: "500+", label: "Clients Served" },
   { value: "10+", label: "Years Experience" },
-  { value: "24hr", label: "Avg. Turnaround" },
   { value: "100%", label: "Local Business" },
 ];
 
