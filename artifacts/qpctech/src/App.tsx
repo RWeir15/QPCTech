@@ -68,7 +68,7 @@ const trust = [
 const serviceLinks = [
   { label: "Network Infrastructure", href: "/network-infrastructure" },
   { label: "Cybersecurity", href: "/cybersecurity" },
-  { label: "Managed IT Systems", href: "/managed-it-systems/" },
+  { label: "Managed IT Systems", href: "/managed-it-systems" },
   { label: "Phone Systems", href: "/phone-systems/" },
   { label: "Remote Support", href: "/remote-support/" },
   { label: "Physical Security", href: "/physical-security/" },
@@ -580,11 +580,162 @@ function CybersecurityPage() {
   );
 }
 
+function ManagedITPage() {
+  const apps = [
+    "AutoDesk AutoCAD", "BlackMagic", "BrightTree", "CamWorks", "CompuLink",
+    "GageTrack", "Hypertherm ProNest", "Infor Visual Manufacturing", "JobBoss",
+    "MS SQL Server", "MS Teams", "MS Windows BitLocker", "Peachtree Accounting",
+    "QuickBooks", "Sage Accounting", "SharePoint", "SolidWorks", "Synology",
+    "Thompson Reuters", "WINrx", "Zoom",
+  ];
+  return (
+    <div style={{ fontFamily: "'Roboto', sans-serif", color: "#1e293b", overflowX: "hidden" }}>
+      <Header />
+
+      {/* ── PAGE HERO ── */}
+      <section style={{ background: "linear-gradient(160deg, #0f172a 0%, #1e3a5f 55%, #0d3050 100%)", padding: "72px 24px 72px 0", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", right: -60, top: -80, width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle, rgba(55,181,230,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
+        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+            <a href="/" style={{ color: "#94a3b8", fontSize: 13, textDecoration: "none" }}>Home</a>
+            <span style={{ color: "#475569" }}>›</span>
+            <span style={{ color: "#94a3b8", fontSize: 13 }}>Services</span>
+            <span style={{ color: "#475569" }}>›</span>
+            <span style={{ color: TEAL, fontSize: 13, fontWeight: 600 }}>Managed IT Systems</span>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+            <Cpu size={22} color={TEAL} />
+            <span style={{ color: TEAL, fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Business Services</span>
+          </div>
+          <h1 style={{ color: "white", fontSize: 48, fontWeight: 800, margin: "0 0 16px", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+            Managed IT Systems
+          </h1>
+          <p style={{ color: "#94a3b8", fontSize: 17, lineHeight: 1.7, maxWidth: 600, margin: 0 }}>
+            We can optimize and manage your IT systems with tailored solutions for businesses of all sizes — from hardware and servers to backups and business applications.
+          </p>
+        </div>
+      </section>
+
+      {/* ── APPROACH + CHECKLIST ── */}
+      <section style={{ background: "white", padding: "80px 24px 64px 0" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }} className="hero-grid">
+
+            {/* Left — Approach */}
+            <div>
+              <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 20 }} />
+              <h2 style={{ color: "#0f172a", fontSize: 30, fontWeight: 800, margin: "0 0 20px", letterSpacing: "-0.02em" }}>Approach to IT Systems</h2>
+              <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.8, margin: "0 0 16px" }}>
+                <strong>Hardware</strong> — QPC technicians have more than 60 years of combined experience across all areas of IT. Our guiding axiom: <em>"High-value IT Service Delivery begins with careful IT Service Design."</em> Our customers get the most value when they spend time being proactive, not reactive.
+              </p>
+              <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.8, margin: "0 0 16px" }}>
+                <strong>Platform</strong> — QPCTech can manage your server platform whether it is a physical server, virtualized server, or a cloud-hosted virtual server, keeping it healthy and delivering business value reliably.
+              </p>
+              <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.8, margin: "0 0 16px" }}>
+                <strong>Backups</strong> — We design automated and monitored backups for clients both onsite and in the cloud. For customers who prefer to stay out of the cloud, we provide Network Attached Storage (NAS) solutions via Synology — running entirely on your hardware and your terms.
+              </p>
+              <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.8, margin: 0 }}>
+                <strong>Applications</strong> — QPCTech supports a large and growing catalog of business applications, and can help you stay on top of licensing, software updates, and patch management.
+              </p>
+            </div>
+
+            {/* Right — What We Cover */}
+            <div style={{ background: "#f8fafc", borderRadius: 16, padding: "36px", border: "1px solid #e2e8f0", borderLeft: `4px solid ${TEAL}` }}>
+              <p style={{ color: "#0f172a", fontWeight: 800, fontSize: 18, margin: "0 0 24px" }}>What We Cover</p>
+              {[
+                "Hardware Procurement & Setup",
+                "Server Platform Management",
+                "Business Applications Support",
+                "Automated Onsite & Cloud Backups",
+                "NAS (Network Attached Storage) Devices",
+                "Licensing & Software Updates",
+              ].map((item) => (
+                <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 16 }}>
+                  <CheckCircle size={20} color={TEAL} style={{ flexShrink: 0, marginTop: 2 }} />
+                  <span style={{ color: "#1e293b", fontSize: 15, lineHeight: 1.5, fontWeight: 500 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Q-BITS PACKAGE ── */}
+      <section style={{ background: "#f8fafc", padding: "64px 24px 64px 0" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start" }} className="hero-grid">
+            <div>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: `${TEAL}18`, border: `1px solid ${TEAL}40`, borderRadius: 20, padding: "4px 14px", marginBottom: 16 }}>
+                <span style={{ color: TEAL, fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Our IT Management Package</span>
+              </div>
+              <h2 style={{ color: "#0f172a", fontSize: 30, fontWeight: 800, margin: "0 0 12px", letterSpacing: "-0.02em" }}>Q-BITS</h2>
+              <p style={{ color: "#475569", fontSize: 15, lineHeight: 1.8, margin: "0 0 28px" }}>
+                Q-BITS is our all-in-one IT management package combining <strong>NinjaOne</strong> for patching and remote support with <strong>Huntress</strong> for managed antivirus — keeping your endpoints secure and your systems running smoothly.
+              </p>
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                <a href="tel:5176105372" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: TEAL, color: "white", padding: "10px 22px", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none" }}>
+                  <Phone size={14} /> (517) 610-5372
+                </a>
+                <a href="mailto:support@qpctech.com" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "white", color: "#0f172a", padding: "10px 22px", borderRadius: 8, fontWeight: 600, fontSize: 14, textDecoration: "none", border: "1px solid #e2e8f0" }}>
+                  <Mail size={14} /> Email Us
+                </a>
+              </div>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+              <div style={{ background: "white", borderRadius: 12, padding: "24px", border: "1px solid #e2e8f0", borderTop: `3px solid ${TEAL}` }}>
+                <p style={{ color: "#0f172a", fontWeight: 800, fontSize: 15, margin: "0 0 12px" }}>NinjaOne RMM</p>
+                {["Endpoint management", "Remote support", "Patching", "Scripting"].map(f => (
+                  <div key={f} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                    <CheckCircle size={14} color={TEAL} style={{ flexShrink: 0 }} />
+                    <span style={{ color: "#475569", fontSize: 13 }}>{f}</span>
+                  </div>
+                ))}
+              </div>
+              <div style={{ background: "white", borderRadius: 12, padding: "24px", border: "1px solid #e2e8f0", borderTop: `3px solid ${TEAL}` }}>
+                <p style={{ color: "#0f172a", fontWeight: 800, fontSize: 15, margin: "0 0 12px" }}>Huntress EDR</p>
+                {["Managed antivirus", "Threat detection", "Malware prevention", "24/7 SOC"].map(f => (
+                  <div key={f} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                    <CheckCircle size={14} color={TEAL} style={{ flexShrink: 0 }} />
+                    <span style={{ color: "#475569", fontSize: 13 }}>{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SUPPORTED APPLICATIONS ── */}
+      <section style={{ background: "white", padding: "64px 24px 80px 0" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 16 }} />
+          <h2 style={{ color: "#0f172a", fontSize: 26, fontWeight: 800, margin: "0 0 6px" }}>Supported Applications</h2>
+          <p style={{ color: "#64748b", fontSize: 15, margin: "0 0 32px" }}>A sample of the business software we support and manage for our clients.</p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+            {apps.map(app => (
+              <span key={app} style={{ background: "#f1f5f9", color: "#1e293b", fontSize: 13, fontWeight: 500, padding: "6px 14px", borderRadius: 20, border: "1px solid #e2e8f0" }}>{app}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+
+      <style>{`
+        @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr !important; } }
+        @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <Switch>
       <Route path="/network-infrastructure" component={NetworkInfrastructurePage} />
       <Route path="/cybersecurity" component={CybersecurityPage} />
+      <Route path="/managed-it-systems" component={ManagedITPage} />
       <Route component={HomePage} />
     </Switch>
   );
