@@ -1121,7 +1121,7 @@ const teamMembers = [
   {
     name: "Nolan Korman",
     title: "IT System Specialist",
-    bio: "Completed the cybersecurity program at Jackson Area Career Center.",
+    bio: "Experienced in Networking, Cloud-Based Services, and Administration.",
     certs: ["ITF+", "TestOut PC Pro", "TestOut Security Pro"],
   },
   {
