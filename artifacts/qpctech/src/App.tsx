@@ -132,7 +132,7 @@ function Header() {
             )}
           </div>
 
-          <a href="/about-us/" style={{ color: "#e5e7eb", textDecoration: "none", fontSize: 14, fontWeight: 500 }}>Who We Are</a>
+          <a href="/who-we-are" style={{ color: "#e5e7eb", textDecoration: "none", fontSize: 14, fontWeight: 500 }}>Who We Are</a>
           <a href="/contact/" style={{ color: "#e5e7eb", textDecoration: "none", fontSize: 14, fontWeight: 500 }}>Contact Us</a>
           <a
             href="https://qpctech.rmmservices.net/connect/#/9951961931"
@@ -172,7 +172,7 @@ function Header() {
               </div>
             )}
           </div>
-          <a href="/about-us/" style={{ display: "block", color: "#e5e7eb", textDecoration: "none", padding: "10px 0", fontSize: 15 }}>Who We Are</a>
+          <a href="/who-we-are" style={{ display: "block", color: "#e5e7eb", textDecoration: "none", padding: "10px 0", fontSize: 15 }}>Who We Are</a>
           <a href="/contact/" style={{ display: "block", color: "#e5e7eb", textDecoration: "none", padding: "10px 0", fontSize: 15 }}>Contact Us</a>
           <a
             href="https://qpctech.rmmservices.net/connect/#/9951961931"
@@ -1099,6 +1099,123 @@ function CommunityWorkPage() {
   );
 }
 
+const teamMembers = [
+  {
+    name: "Tim Lindley",
+    title: "Owner / Senior Technician",
+    bio: "Tim attended Jackson College, Spring Arbor University, and New Tribes Bible Institute.",
+    certs: ["MS Certified Technology Specialist", "MCTS 70-673", "MCTS 4-678", "ITIL V3 Foundations"],
+  },
+  {
+    name: "Kimberly Lindley",
+    title: "Office Manager",
+    bio: "",
+    certs: [],
+  },
+  {
+    name: "Rodney Weir",
+    title: "Technician",
+    bio: "Completed the cybersecurity program at Hillsdale Area Career Center.",
+    certs: [],
+  },
+  {
+    name: "Nolan Korman",
+    title: "IT System Specialist",
+    bio: "Completed the cybersecurity program at Jackson Area Career Center.",
+    certs: ["ITF+", "TestOut PC Pro", "TestOut Security Pro"],
+  },
+  {
+    name: "Jeremy Griffiths",
+    title: "Technician",
+    bio: "Completed the cybersecurity program at Hillsdale Area Career Center.",
+    certs: ["TestOut"],
+  },
+  {
+    name: "Josh Hall",
+    title: "Technician",
+    bio: "",
+    certs: [],
+  },
+];
+
+function WhoWeArePage() {
+  return (
+    <div style={{ fontFamily: "'Roboto', sans-serif", color: "#1e293b", overflowX: "hidden" }}>
+      <Header />
+
+      {/* ── HERO ── */}
+      <section style={{ background: "linear-gradient(160deg, #0f172a 0%, #1e3a5f 55%, #0d3050 100%)", padding: "72px 24px 72px 0", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", right: -60, top: -80, width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle, rgba(55,181,230,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
+        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+            <a href="/" style={{ color: "#94a3b8", fontSize: 13, textDecoration: "none" }}>Home</a>
+            <span style={{ color: "#475569" }}>›</span>
+            <span style={{ color: TEAL, fontSize: 13, fontWeight: 600 }}>Who We Are</span>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+            <Users size={22} color={TEAL} />
+            <span style={{ color: TEAL, fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Our Team</span>
+          </div>
+          <h1 style={{ color: "white", fontSize: 48, fontWeight: 800, margin: "0 0 16px", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+            Meet The Team
+          </h1>
+          <p style={{ color: "#94a3b8", fontSize: 17, lineHeight: 1.7, maxWidth: 660, margin: 0 }}>
+            At QPCTech, our veteran staff embodies professionalism, honesty, integrity, and education. We work diligently to create and maintain a meaningful relationship with you — providing a more personal level of service.
+          </p>
+        </div>
+      </section>
+
+      {/* ── TEAM GRID ── */}
+      <section style={{ background: "white", padding: "80px 24px 80px 0" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 28 }} className="team-grid">
+            {teamMembers.map(member => (
+              <div key={member.name} style={{ background: "#f8fafc", borderRadius: 16, padding: "32px 28px", border: "1px solid #e2e8f0", borderTop: `4px solid ${TEAL}`, display: "flex", flexDirection: "column", gap: 12 }}>
+                {/* Avatar initials */}
+                <div style={{ width: 64, height: 64, borderRadius: "50%", background: `linear-gradient(135deg, #0c4a6e, ${TEAL})`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 4 }}>
+                  <span style={{ color: "white", fontWeight: 800, fontSize: 20, letterSpacing: "-0.02em" }}>
+                    {member.name.split(" ").map(n => n[0]).join("")}
+                  </span>
+                </div>
+
+                <div>
+                  <h3 style={{ color: "#0f172a", fontSize: 19, fontWeight: 800, margin: "0 0 4px" }}>{member.name}</h3>
+                  <p style={{ color: TEAL, fontSize: 13, fontWeight: 700, margin: 0, textTransform: "uppercase", letterSpacing: "0.06em" }}>{member.title}</p>
+                </div>
+
+                {member.bio && (
+                  <p style={{ color: "#475569", fontSize: 14, lineHeight: 1.7, margin: 0 }}>{member.bio}</p>
+                )}
+
+                {member.certs.length > 0 && (
+                  <div>
+                    <p style={{ color: "#0f172a", fontSize: 13, fontWeight: 700, margin: "0 0 8px" }}>Certifications</p>
+                    {member.certs.map(cert => (
+                      <div key={cert} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+                        <CheckCircle size={14} color={TEAL} style={{ flexShrink: 0 }} />
+                        <span style={{ color: "#334155", fontSize: 13 }}>{cert}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+
+      <style>{`
+        @media (max-width: 1024px) { .team-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 600px) { .team-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr !important; } }
+        @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <Switch>
@@ -1109,6 +1226,7 @@ export default function App() {
       <Route path="/physical-security" component={PhysicalSecurityPage} />
       <Route path="/printing-and-scanning" component={PrintingAndScanningPage} />
       <Route path="/community-work" component={CommunityWorkPage} />
+      <Route path="/who-we-are" component={WhoWeArePage} />
       <Route component={HomePage} />
     </Switch>
   );
