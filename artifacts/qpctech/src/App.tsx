@@ -1105,6 +1105,7 @@ const teamMembers = [
     title: "Owner / Senior Technician",
     bio: "Tim attended Jackson College, Spring Arbor University, and New Tribes Bible Institute.",
     certs: ["MS Certified Technology Specialist", "MCTS 70-673", "MCTS 4-678", "ITIL V3 Foundations"],
+    photo: "/tim-lindley.jpg",
   },
   {
     name: "Kimberly Lindley",
@@ -1171,12 +1172,20 @@ function WhoWeArePage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 28 }} className="team-grid">
             {teamMembers.map(member => (
               <div key={member.name} style={{ background: "#f8fafc", borderRadius: 16, padding: "32px 28px", border: "1px solid #e2e8f0", borderTop: `4px solid ${TEAL}`, display: "flex", flexDirection: "column", gap: 12 }}>
-                {/* Avatar initials */}
-                <div style={{ width: 64, height: 64, borderRadius: "50%", background: `linear-gradient(135deg, #0c4a6e, ${TEAL})`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 4 }}>
-                  <span style={{ color: "white", fontWeight: 800, fontSize: 20, letterSpacing: "-0.02em" }}>
-                    {member.name.split(" ").map(n => n[0]).join("")}
-                  </span>
-                </div>
+                {/* Avatar — photo or initials */}
+                {"photo" in member && member.photo ? (
+                  <img
+                    src={member.photo}
+                    alt={member.name}
+                    style={{ width: 80, height: 80, borderRadius: "50%", objectFit: "cover", objectPosition: "center top", border: `3px solid ${TEAL}`, marginBottom: 4 }}
+                  />
+                ) : (
+                  <div style={{ width: 64, height: 64, borderRadius: "50%", background: `linear-gradient(135deg, #0c4a6e, ${TEAL})`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 4 }}>
+                    <span style={{ color: "white", fontWeight: 800, fontSize: 20, letterSpacing: "-0.02em" }}>
+                      {member.name.split(" ").map(n => n[0]).join("")}
+                    </span>
+                  </div>
+                )}
 
                 <div>
                   <h3 style={{ color: "#0f172a", fontSize: 19, fontWeight: 800, margin: "0 0 4px" }}>{member.name}</h3>
