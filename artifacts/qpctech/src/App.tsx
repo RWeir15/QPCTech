@@ -105,11 +105,14 @@ function Header() {
 
           <div
             style={{ position: "relative" }}
-            onMouseEnter={() => setServicesOpen(true)}
             onMouseLeave={() => setServicesOpen(false)}
           >
-            <a href="#" style={{ color: "#e5e7eb", textDecoration: "none", fontSize: 14, fontWeight: 500, display: "flex", alignItems: "center", gap: 5 }}>
-              Services <ChevronDown size={12} />
+            <a
+              href="#"
+              onClick={e => { e.preventDefault(); setServicesOpen(o => !o); }}
+              style={{ color: "#e5e7eb", textDecoration: "none", fontSize: 14, fontWeight: 500, display: "flex", alignItems: "center", gap: 5 }}
+            >
+              Services <ChevronDown size={12} style={{ transition: "transform 0.2s", transform: servicesOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
             </a>
             {servicesOpen && (
               <div style={{
