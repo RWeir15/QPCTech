@@ -1134,6 +1134,9 @@ const teamMembers = [
     title: "Office Supervisor",
     bio: "Experienced Retail Advisor and Outstanding Hardware Technician.",
     certs: [],
+    photo: "/josh-hall.jpg",
+    photoPosition: "center 30%",
+    photoScale: 1.3,
   },
   {
     name: "Mike Raker",
