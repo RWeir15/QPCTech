@@ -1115,8 +1115,8 @@ const teamMembers = [
   {
     name: "Rodney Weir",
     title: "Technician",
-    bio: "Completed the cybersecurity program at Hillsdale Area Career Center.",
-    certs: [],
+    bio: "Experienced Web Designer and Cloud Based Provider.",
+    certs: ["ITF+", "TestOut PC Pro", "TestOut Security Pro", "TestOut Linux Pro", "TestOut Networking Pro", "TestOut CyberDefense Pro", "TestOut Ethical Hacker Pro"],
   },
   {
     name: "Nolan Korman",
