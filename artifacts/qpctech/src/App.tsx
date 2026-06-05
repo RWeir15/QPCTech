@@ -1135,7 +1135,7 @@ const teamMembers = [
     bio: "Experienced Retail Advisor and Outstanding Hardware Technician.",
     certs: [],
     photo: "/josh-hall.jpg",
-    photoPosition: "center 30%",
+    photoPosition: "center 42%",
     photoScale: 1.3,
   },
   {
