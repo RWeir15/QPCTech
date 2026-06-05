@@ -1130,6 +1130,12 @@ const teamMembers = [
     bio: "Experienced Retail Advisor and Outstanding Hardware Technician.",
     certs: [],
   },
+  {
+    name: "Mike Raker",
+    title: "Technician",
+    bio: "Experienced in NinjaOne Services and Sales.",
+    certs: [],
+  },
 ];
 
 function WhoWeArePage() {
