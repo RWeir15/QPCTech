@@ -1109,7 +1109,7 @@ const teamMembers = [
   {
     name: "Kimberly Lindley",
     title: "Office Manager",
-    bio: "",
+    bio: "Experienced Bookkeeper with a Certified Background in Finance.",
     certs: [],
   },
   {
@@ -1126,8 +1126,8 @@ const teamMembers = [
   },
   {
     name: "Josh Hall",
-    title: "Technician",
-    bio: "",
+    title: "Office Supervisor",
+    bio: "Experienced Retail Advisor and Outstanding Hardware Technician.",
     certs: [],
   },
 ];
