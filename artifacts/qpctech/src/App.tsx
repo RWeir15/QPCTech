@@ -1125,12 +1125,6 @@ const teamMembers = [
     certs: ["ITF+", "TestOut PC Pro", "TestOut Security Pro"],
   },
   {
-    name: "Jeremy Griffiths",
-    title: "Technician",
-    bio: "Completed the cybersecurity program at Hillsdale Area Career Center.",
-    certs: ["TestOut"],
-  },
-  {
     name: "Josh Hall",
     title: "Technician",
     bio: "",
