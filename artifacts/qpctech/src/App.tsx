@@ -1125,6 +1125,9 @@ const teamMembers = [
     title: "IT System Specialist",
     bio: "Experienced in Networking, Cloud-Based Services, and Administration.",
     certs: ["ITF+", "TestOut PC Pro", "TestOut Security Pro"],
+    photo: "/nolan-korman.jpg",
+    photoPosition: "center 30%",
+    photoScale: 1.3,
   },
   {
     name: "Josh Hall",
