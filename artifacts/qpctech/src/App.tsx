@@ -1120,7 +1120,7 @@ const teamMembers = [
     bio: "Experienced Web Designer and Cloud Based Provider.",
     certs: ["ITF+", "TestOut PC Pro", "TestOut Security Pro", "TestOut Linux Pro", "TestOut Networking Pro", "TestOut CyberDefense Pro", "TestOut Ethical Hacker Pro"],
     photo: "/rodney-weir.jpg",
-    photoPosition: "center 30%",
+    photoPosition: "center 42%",
     photoScale: 1.3,
     photoFilter: "sepia(20%) saturate(1.4) brightness(1.05)",
   },
