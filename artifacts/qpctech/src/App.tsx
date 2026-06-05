@@ -1106,6 +1106,7 @@ const teamMembers = [
     bio: "Tim attended Jackson College, Spring Arbor University, and New Tribes Bible Institute.",
     certs: ["MS Certified Technology Specialist", "MCTS 70-673", "MCTS 4-678", "ITIL V3 Foundations"],
     photo: "/tim-lindley.jpg",
+    photoPosition: "center 45%",
   },
   {
     name: "Kimberly Lindley",
@@ -1137,6 +1138,8 @@ const teamMembers = [
     bio: "Experienced in NinjaOne Services and Sales.",
     certs: [],
     photo: "/mike-raker.jpg",
+    photoPosition: "center 22%",
+    photoScale: 1.6,
   },
 ];
 
@@ -1175,11 +1178,13 @@ function WhoWeArePage() {
               <div key={member.name} style={{ background: "#f8fafc", borderRadius: 16, padding: "32px 28px", border: "1px solid #e2e8f0", borderTop: `4px solid ${TEAL}`, display: "flex", flexDirection: "column", gap: 12 }}>
                 {/* Avatar — photo or initials */}
                 {"photo" in member && member.photo ? (
-                  <img
-                    src={member.photo}
-                    alt={member.name}
-                    style={{ width: 100, height: 100, borderRadius: "50%", objectFit: "cover", objectPosition: "center 45%", border: `3px solid ${TEAL}`, display: "block", margin: "0 auto 4px" }}
-                  />
+                  <div style={{ width: 100, height: 100, borderRadius: "50%", overflow: "hidden", border: `3px solid ${TEAL}`, display: "block", margin: "0 auto 4px", flexShrink: 0 }}>
+                    <img
+                      src={member.photo}
+                      alt={member.name}
+                      style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: ("photoPosition" in member ? member.photoPosition : "center 45%") as string, transform: "photoScale" in member ? `scale(${member.photoScale})` : "none", transformOrigin: ("photoPosition" in member ? member.photoPosition : "center 45%") as string }}
+                    />
+                  </div>
                 ) : (
                   <div style={{ width: 64, height: 64, borderRadius: "50%", background: `linear-gradient(135deg, #0c4a6e, ${TEAL})`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 4 }}>
                     <span style={{ color: "white", fontWeight: 800, fontSize: 20, letterSpacing: "-0.02em" }}>
