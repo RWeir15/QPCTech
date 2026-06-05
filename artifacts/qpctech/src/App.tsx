@@ -1138,8 +1138,8 @@ const teamMembers = [
     bio: "Experienced in NinjaOne Services and Sales.",
     certs: [],
     photo: "/mike-raker.jpg",
-    photoPosition: "center 22%",
-    photoScale: 1.6,
+    photoPosition: "center 30%",
+    photoScale: 1.3,
   },
 ];
 
