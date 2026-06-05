@@ -115,9 +115,10 @@ function Header() {
               Services <ChevronDown size={12} style={{ transition: "transform 0.2s", transform: servicesOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
             </a>
             {servicesOpen && (
+              <div style={{ position: "absolute", top: "100%", left: 0, paddingTop: 8, zIndex: 200, minWidth: 220 }}>
               <div style={{
-                position: "absolute", top: "calc(100% + 8px)", left: 0, background: "white",
-                boxShadow: "0 8px 24px rgba(0,0,0,0.15)", minWidth: 220, zIndex: 200,
+                background: "white",
+                boxShadow: "0 8px 24px rgba(0,0,0,0.15)",
                 border: "1px solid #e2e8f0", borderRadius: 8, padding: "6px 0",
               }}>
                 {serviceLinks.map(link => (
@@ -126,6 +127,7 @@ function Header() {
                     onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#334155"; }}
                   >{link.label}</a>
                 ))}
+              </div>
               </div>
             )}
           </div>
