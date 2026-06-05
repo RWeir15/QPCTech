@@ -1177,7 +1177,7 @@ function WhoWeArePage() {
                   <img
                     src={member.photo}
                     alt={member.name}
-                    style={{ width: 80, height: 80, borderRadius: "50%", objectFit: "cover", objectPosition: "center top", border: `3px solid ${TEAL}`, marginBottom: 4 }}
+                    style={{ width: 80, height: 80, borderRadius: "50%", objectFit: "cover", objectPosition: "center top", border: `3px solid ${TEAL}`, marginBottom: 4, display: "block", margin: "0 auto 4px" }}
                   />
                 ) : (
                   <div style={{ width: 64, height: 64, borderRadius: "50%", background: `linear-gradient(135deg, #0c4a6e, ${TEAL})`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 4 }}>
