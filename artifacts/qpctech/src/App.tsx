@@ -1120,8 +1120,7 @@ const teamMembers = [
     bio: "Experienced Web Designer and Cloud Based Provider.",
     certs: ["ITF+", "TestOut PC Pro", "TestOut Security Pro", "TestOut Linux Pro", "TestOut Networking Pro", "TestOut CyberDefense Pro", "TestOut Ethical Hacker Pro"],
     photo: "/rodney-weir.jpg",
-    photoPosition: "center 42%",
-    photoScale: 1.3,
+    photoPosition: "center 52%",
     photoFilter: "sepia(20%) saturate(1.4) brightness(1.05)",
   },
   {
@@ -1131,7 +1130,6 @@ const teamMembers = [
     certs: ["ITF+", "TestOut PC Pro", "TestOut Security Pro"],
     photo: "/nolan-korman.jpg",
     photoPosition: "center 30%",
-    photoScale: 1.3,
   },
   {
     name: "Josh Hall",
@@ -1140,7 +1138,6 @@ const teamMembers = [
     certs: [],
     photo: "/josh-hall.jpg",
     photoPosition: "center 42%",
-    photoScale: 1.3,
   },
   {
     name: "Mike Raker",
@@ -1149,7 +1146,6 @@ const teamMembers = [
     certs: [],
     photo: "/mike-raker.jpg",
     photoPosition: "center 30%",
-    photoScale: 1.3,
   },
 ];
 
@@ -1192,7 +1188,7 @@ function WhoWeArePage() {
                     <img
                       src={member.photo}
                       alt={member.name}
-                      style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: ("photoPosition" in member ? member.photoPosition : "center 45%") as string, transform: "photoScale" in member ? `scale(${member.photoScale})` : "none", transformOrigin: ("photoPosition" in member ? member.photoPosition : "center 45%") as string, filter: ("photoFilter" in member ? member.photoFilter : "none") as string }}
+                      style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: ("photoPosition" in member ? member.photoPosition : "center 45%") as string, filter: ("photoFilter" in member ? member.photoFilter : "none") as string }}
                     />
                   </div>
                 ) : (
