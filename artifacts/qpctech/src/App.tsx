@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Switch, Route } from "wouter";
 import {
   Wrench, Laptop, Monitor, Printer, KeyRound, Cpu, Bug, Tv2,
@@ -343,24 +343,9 @@ const FALLBACK_REVIEWS = [
 ];
 
 function HomePage() {
-  const [reviewsData, setReviewsData] = useState<{
-    rating: number;
-    total: number;
-    reviews: Array<{ name: string; date: string; stars: number; text: string; profilePhoto?: string }>;
-  } | null>(null);
-
-  useEffect(() => {
-    fetch("/api/reviews")
-      .then(r => r.ok ? r.json() : Promise.reject())
-      .then(data => setReviewsData(data))
-      .catch(() => {});
-  }, []);
-
-  const displayReviews = reviewsData
-    ? reviewsData.reviews.filter(r => r.stars >= 4 && r.text.trim().length > 10).slice(0, 6)
-    : FALLBACK_REVIEWS;
-  const rating = reviewsData?.rating ?? 4.7;
-  const total = reviewsData?.total ?? 59;
+  const displayReviews = FALLBACK_REVIEWS;
+  const rating = 4.7;
+  const total = 59;
 
   return (
     <div style={{ fontFamily: "'Inter', sans-serif", color: "#1e293b", overflowX: "hidden" }}>
