@@ -1096,11 +1096,11 @@ const INPUT_STYLE: React.CSSProperties = {
 };
 
 function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", company: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", notes: "" });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
   function set(field: string) {
-    return (e: React.ChangeEvent<HTMLInputElement>) =>
+    return (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
       setForm(f => ({ ...f, [field]: e.target.value }));
   }
 
@@ -1116,12 +1116,13 @@ function ContactPage() {
           Email: form.email,
           Phone: form.phone,
           Company: form.company || "—",
+          Notes: form.notes,
           _subject: "New Contact Form Submission — QPCTech Website",
           _template: "table",
         }),
       });
       setStatus(res.ok ? "success" : "error");
-      if (res.ok) setForm({ name: "", email: "", phone: "", company: "" });
+      if (res.ok) setForm({ name: "", email: "", phone: "", company: "", notes: "" });
     } catch {
       setStatus("error");
     }
@@ -1245,6 +1246,23 @@ function ContactPage() {
                       value={form.company}
                       onChange={set("company")}
                       style={INPUT_STYLE}
+                      onFocus={e => { e.currentTarget.style.borderColor = TEAL; e.currentTarget.style.boxShadow = `0 0 0 3px ${TEAL}20`; }}
+                      onBlur={e => { e.currentTarget.style.borderColor = "#e2e8f0"; e.currentTarget.style.boxShadow = "none"; }}
+                    />
+                  </div>
+
+                  {/* Notes (required) */}
+                  <div>
+                    <label style={{ display: "block", color: "#374151", fontSize: 13, fontWeight: 600, marginBottom: 6 }}>
+                      Describe Your Issue <span style={{ color: TEAL }}>*</span>
+                    </label>
+                    <textarea
+                      required
+                      rows={5}
+                      placeholder="Tell us what's going on — the more detail, the better we can help."
+                      value={form.notes}
+                      onChange={set("notes")}
+                      style={{ ...INPUT_STYLE, resize: "vertical", minHeight: 120 }}
                       onFocus={e => { e.currentTarget.style.borderColor = TEAL; e.currentTarget.style.boxShadow = `0 0 0 3px ${TEAL}20`; }}
                       onBlur={e => { e.currentTarget.style.borderColor = "#e2e8f0"; e.currentTarget.style.boxShadow = "none"; }}
                     />
