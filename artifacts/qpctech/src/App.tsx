@@ -472,6 +472,65 @@ function HomePage() {
         </div>
       </section>
 
+      {/* ── Q-BITS TEASER ── */}
+      <section style={{ padding: "0 24px 0", background: "white" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{
+            background: `linear-gradient(135deg, ${DARK} 0%, #0c3a5a 50%, #0f172a 100%)`,
+            borderRadius: 20,
+            padding: "48px 52px",
+            display: "grid",
+            gridTemplateColumns: "1fr auto",
+            gap: 40,
+            alignItems: "center",
+            border: `1px solid ${TEAL}30`,
+            position: "relative",
+            overflow: "hidden",
+          }} className="qbits-grid">
+            {/* decorative glow */}
+            <div style={{ position: "absolute", right: 180, top: "50%", transform: "translateY(-50%)", width: 340, height: 340, borderRadius: "50%", background: `radial-gradient(circle, ${TEAL}18 0%, transparent 65%)`, pointerEvents: "none" }} />
+            <div style={{ position: "absolute", left: -60, bottom: -80, width: 220, height: 220, borderRadius: "50%", background: `radial-gradient(circle, ${TEAL2}10 0%, transparent 65%)`, pointerEvents: "none" }} />
+
+            <div style={{ position: "relative" }}>
+              {/* badge */}
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: `${TEAL}22`, border: `1px solid ${TEAL}50`, borderRadius: 20, padding: "5px 14px", marginBottom: 18 }}>
+                <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, boxShadow: `0 0 6px ${TEAL}` }} />
+                <span style={{ color: TEAL, fontSize: 11, fontWeight: 700, letterSpacing: "0.09em", textTransform: "uppercase" }}>IT Management Package</span>
+              </div>
+
+              {/* heading */}
+              <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 12, flexWrap: "wrap" }}>
+                <h2 style={{ color: "white", fontSize: 30, fontWeight: 900, margin: 0, letterSpacing: "-0.02em" }}>
+                  Ask us about{" "}
+                  <span style={{ background: `linear-gradient(135deg, ${TEAL}, ${TEAL2})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Q-BITS</span>
+                </h2>
+              </div>
+
+              <p style={{ color: "#94a3b8", fontSize: 15, lineHeight: 1.75, margin: "0 0 0", maxWidth: 560 }}>
+                Our all-in-one IT management bundle — <strong style={{ color: "#e2e8f0" }}>NinjaOne</strong> for remote support & patching plus <strong style={{ color: "#e2e8f0" }}>Huntress</strong> for managed antivirus — keeping your endpoints secure and your business running without interruption.
+              </p>
+            </div>
+
+            {/* right side buttons */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "stretch", position: "relative", flexShrink: 0 }}>
+              <a
+                href="/q-bits/"
+                className="btn-teal"
+                style={{ background: `linear-gradient(135deg, ${TEAL}, ${TEAL2})`, color: "white", padding: "13px 28px", borderRadius: 10, fontWeight: 700, fontSize: 14, textDecoration: "none", textAlign: "center", whiteSpace: "nowrap", boxShadow: `0 4px 20px ${TEAL}40` }}
+              >
+                Learn About Q-BITS →
+              </a>
+              <a
+                href="tel:5176105372"
+                style={{ background: "rgba(255,255,255,0.08)", color: "#e2e8f0", padding: "12px 28px", borderRadius: 10, fontWeight: 600, fontSize: 14, textDecoration: "none", border: "1px solid rgba(255,255,255,0.15)", textAlign: "center", whiteSpace: "nowrap" }}
+              >
+                Call to Ask
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA CALLOUT ── */}
       <section style={{ padding: "80px 24px", background: "white" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", background: `linear-gradient(135deg, ${TEAL} 0%, ${TEAL2} 40%, #0284c7 100%)`, borderRadius: 20, padding: "56px 48px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 28, boxShadow: `0 12px 48px ${TEAL}40`, position: "relative", overflow: "hidden" }}>
@@ -520,7 +579,7 @@ function HomePage() {
       <Footer />
 
       <style>{`
-        @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr !important; } .trust-grid { display: none !important; } }
+        @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr !important; } .trust-grid { display: none !important; } .qbits-grid { grid-template-columns: 1fr !important; } }
         @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(2,1fr) !important; } .why-grid { grid-template-columns: 1fr !important; } .stats-flex { flex-direction: column; gap: 20px; } .footer-grid { grid-template-columns: 1fr 1fr !important; } }
         @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr !important; } .stats-flex { flex-direction: column; gap: 20px; } .footer-grid { grid-template-columns: 1fr !important; } h1 { font-size: 38px !important; } }
       `}</style>
