@@ -597,19 +597,43 @@ function HomePage() {
           </div>
 
           {/* Review cards */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24, marginBottom: 40 }} className="reviews-grid">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, marginBottom: 40 }} className="reviews-grid">
             {[
               {
-                name: "Cullan W.",
-                date: "March 2020",
+                name: "Ashton St John",
+                date: "1 year ago",
                 stars: 5,
-                text: "Larry hooked me up with a super fast computer at an incredible deal. Great experience from start to finish — I was blown away by the value.",
+                text: "Excellent customer service and very efficient. Jeremy was fantastic — he took the time to explain what was wrong with my PC, and once the parts arrived, he had it fixed in under an hour. If I ever have another computer issue, this is where I'll go.",
               },
               {
-                name: "Joey B.",
-                date: "Facebook Review",
+                name: "Tiffany Vaughn",
+                date: "2 years ago",
                 stars: 5,
-                text: "Great service, very professional. If you're having a problem with your PC, this is the place to go. Highly recommend QPCTech to anyone in the area.",
+                text: "Such a wonderful company! Was able to get a house call the same day and were honest and up front. No price gouging or selling things we didn't need. Would highly recommend them!",
+              },
+              {
+                name: "channel 85",
+                date: "Local Guide · 4 years ago",
+                stars: 5,
+                text: "Larry is very knowledgeable, and the staff is friendly. Everyone there delivered amazing customer service. I would HIGHLY recommend them!",
+              },
+              {
+                name: "Jeff La Rue",
+                date: "6 years ago",
+                stars: 5,
+                text: "This company is fantastic. I came in and had a major meltdown over a situation with my computer. They were so kind and understanding and very reassuring. Everything was corrected in a timely manner — I left feeling much better.",
+              },
+              {
+                name: "Alix Ott",
+                date: "3 years ago",
+                stars: 5,
+                text: "With 3 dual-monitor systems, multiple laptops and tablets, two printers, and massive storage auto back-up — you'd better know what you're doing. THEY DO. Have worked with the owners for many years, trust their work and their integrity.",
+              },
+              {
+                name: "Patrick Lucas",
+                date: "Local Guide · 6 years ago",
+                stars: 5,
+                text: "Very helpful and friendly staff. They explained the process so that I understood. Quick service and reasonably priced.",
               },
             ].map(({ name, date, stars, text }) => (
               <div key={name} className="why-card" style={{ background: "#f8fafc", borderRadius: 16, padding: "28px 32px", border: "1px solid #e2e8f0", display: "flex", flexDirection: "column", gap: 16 }}>
@@ -677,8 +701,8 @@ function HomePage() {
 
       <style>{`
         @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr !important; } .trust-grid { display: none !important; } .qbits-grid { grid-template-columns: 1fr !important; } .reviews-grid { grid-template-columns: 1fr !important; } }
-        @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(2,1fr) !important; } .why-grid { grid-template-columns: 1fr !important; } .stats-flex { flex-direction: column; gap: 20px; } .footer-grid { grid-template-columns: 1fr 1fr !important; } }
-        @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr !important; } .stats-flex { flex-direction: column; gap: 20px; } .footer-grid { grid-template-columns: 1fr !important; } h1 { font-size: 38px !important; } }
+        @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(2,1fr) !important; } .why-grid { grid-template-columns: 1fr !important; } .stats-flex { flex-direction: column; gap: 20px; } .footer-grid { grid-template-columns: 1fr 1fr !important; } .reviews-grid { grid-template-columns: repeat(2,1fr) !important; } }
+        @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr !important; } .stats-flex { flex-direction: column; gap: 20px; } .footer-grid { grid-template-columns: 1fr !important; } .reviews-grid { grid-template-columns: 1fr !important; } h1 { font-size: 38px !important; } }
       `}</style>
     </div>
   );
