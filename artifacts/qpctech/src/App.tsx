@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 
 const TEAL = "#37b5e6";
+const TEAL2 = "#0ea5e9";
 const DARK = "#0f172a";
 
 const GLOBAL_CSS = `
@@ -395,12 +396,13 @@ function HomePage() {
       </section>
 
       {/* ── STATS BAR ── */}
-      <div style={{ background: DARK, borderBottom: "1px solid #1e293b", padding: "32px 24px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "center" }} className="stats-flex">
+      <div style={{ background: `linear-gradient(135deg, ${DARK} 0%, #0c4a6e 50%, #1e3a5f 100%)`, borderBottom: `2px solid ${TEAL}40`, padding: "36px 24px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `radial-gradient(circle at 20% 50%, ${TEAL}18 0%, transparent 50%), radial-gradient(circle at 80% 50%, ${TEAL2}12 0%, transparent 50%)`, pointerEvents: "none" }} />
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "center", position: "relative" }} className="stats-flex">
           {stats.map((s, i) => (
-            <div key={s.value} style={{ flex: 1, maxWidth: 280, textAlign: "center", borderRight: i < stats.length - 1 ? "1px solid #1e293b" : "none", padding: "0 24px" }}>
-              <div style={{ color: TEAL, fontSize: 36, fontWeight: 900, lineHeight: 1, letterSpacing: "-0.02em" }}>{s.value}</div>
-              <div style={{ color: "#64748b", fontSize: 12, marginTop: 6, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase" }}>{s.label}</div>
+            <div key={s.value} style={{ flex: 1, maxWidth: 280, textAlign: "center", borderRight: i < stats.length - 1 ? `1px solid ${TEAL}30` : "none", padding: "0 24px" }}>
+              <div style={{ background: `linear-gradient(135deg, ${TEAL}, ${TEAL2})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontSize: 42, fontWeight: 900, lineHeight: 1, letterSpacing: "-0.02em" }}>{s.value}</div>
+              <div style={{ color: "#94a3b8", fontSize: 12, marginTop: 8, fontWeight: 600, letterSpacing: "0.07em", textTransform: "uppercase" }}>{s.label}</div>
             </div>
           ))}
         </div>
@@ -410,7 +412,8 @@ function HomePage() {
       <section id="services" style={{ padding: "88px 24px", background: "white" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ marginBottom: 52 }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: `${TEAL}12`, border: `1px solid ${TEAL}35`, borderRadius: 20, padding: "4px 14px", marginBottom: 16 }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: `linear-gradient(135deg, ${TEAL}22, ${TEAL2}18)`, border: `1px solid ${TEAL}50`, borderRadius: 20, padding: "5px 16px", marginBottom: 16 }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: `linear-gradient(135deg, ${TEAL}, ${TEAL2})` }} />
               <span style={{ color: TEAL, fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Walk-In Services</span>
             </div>
             <h2 style={{ color: DARK, fontSize: 34, fontWeight: 800, margin: "0 0 12px", letterSpacing: "-0.025em" }}>In Store Services</h2>
@@ -418,8 +421,8 @@ function HomePage() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20 }} className="services-grid">
             {services.map((s, i) => (
-              <div key={i} className="service-card" style={{ background: "#f8fafc", borderRadius: 14, padding: "28px 22px", border: "1px solid #e2e8f0", borderLeft: `4px solid ${TEAL}`, display: "flex", flexDirection: "column", gap: 12 }}>
-                <div style={{ width: 46, height: 46, borderRadius: 12, background: "white", border: "1px solid #e8edf2", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 1px 4px rgba(0,0,0,0.06)", flexShrink: 0 }}>
+              <div key={i} className="service-card" style={{ background: "white", borderRadius: 14, padding: "28px 22px", border: "1px solid #e2e8f0", borderTop: `3px solid ${TEAL}`, display: "flex", flexDirection: "column", gap: 12, boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
+                <div style={{ width: 46, height: 46, borderRadius: 12, background: `linear-gradient(135deg, ${TEAL}20, ${TEAL2}14)`, border: `1px solid ${TEAL}30`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   <s.Icon size={21} color={TEAL} />
                 </div>
                 <h3 style={{ color: "#111827", fontSize: 15, fontWeight: 700, margin: 0, lineHeight: 1.3 }}>
@@ -441,25 +444,28 @@ function HomePage() {
       </section>
 
       {/* ── WHY QPCTECH ── */}
-      <section style={{ padding: "88px 24px", background: "#f8fafc", borderTop: "1px solid #e2e8f0", borderBottom: "1px solid #e2e8f0" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <section style={{ padding: "88px 24px", background: `linear-gradient(160deg, #0f172a 0%, #0c4a6e 50%, #1e3a5f 100%)`, position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)", backgroundSize: "28px 28px", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", width: 700, height: 700, borderRadius: "50%", background: `radial-gradient(circle, ${TEAL}10 0%, transparent 65%)`, pointerEvents: "none" }} />
+        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
           <div style={{ textAlign: "center", marginBottom: 56 }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: `${TEAL}12`, border: `1px solid ${TEAL}35`, borderRadius: 20, padding: "4px 14px", marginBottom: 16 }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: `${TEAL}22`, border: `1px solid ${TEAL}50`, borderRadius: 20, padding: "5px 16px", marginBottom: 16 }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: `linear-gradient(135deg, ${TEAL}, ${TEAL2})` }} />
               <span style={{ color: TEAL, fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Why Choose Us</span>
             </div>
-            <h2 style={{ color: DARK, fontSize: 34, fontWeight: 800, margin: "0 0 14px", letterSpacing: "-0.025em" }}>The QPCTech Difference</h2>
-            <p style={{ color: "#475569", fontSize: 16, margin: "0 auto", maxWidth: 520, lineHeight: 1.7 }}>
+            <h2 style={{ color: "white", fontSize: 34, fontWeight: 800, margin: "0 0 14px", letterSpacing: "-0.025em" }}>The QPCTech Difference</h2>
+            <p style={{ color: "#94a3b8", fontSize: 16, margin: "0 auto", maxWidth: 520, lineHeight: 1.7 }}>
               We're not a faceless tech giant — we're your neighbors. Here's what makes working with us different.
             </p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 28 }} className="why-grid">
             {whyUs.map((item, i) => (
-              <div key={i} className="why-card" style={{ background: "white", borderRadius: 16, padding: "36px 32px", border: "1px solid #e2e8f0", display: "flex", flexDirection: "column", gap: 16 }}>
-                <div style={{ width: 52, height: 52, borderRadius: 14, background: `${TEAL}15`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <div key={i} className="why-card" style={{ background: "rgba(255,255,255,0.06)", backdropFilter: "blur(4px)", borderRadius: 16, padding: "36px 32px", border: `1px solid ${TEAL}25`, borderTop: `3px solid ${TEAL}`, display: "flex", flexDirection: "column", gap: 16 }}>
+                <div style={{ width: 52, height: 52, borderRadius: 14, background: `linear-gradient(135deg, ${TEAL}30, ${TEAL2}20)`, border: `1px solid ${TEAL}40`, display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <item.Icon size={24} color={TEAL} />
                 </div>
-                <h3 style={{ color: DARK, fontSize: 18, fontWeight: 800, margin: 0, letterSpacing: "-0.01em" }}>{item.title}</h3>
-                <p style={{ color: "#475569", fontSize: 14, lineHeight: 1.8, margin: 0 }}>{item.desc}</p>
+                <h3 style={{ color: "white", fontSize: 18, fontWeight: 800, margin: 0, letterSpacing: "-0.01em" }}>{item.title}</h3>
+                <p style={{ color: "#94a3b8", fontSize: 14, lineHeight: 1.8, margin: 0 }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -467,19 +473,24 @@ function HomePage() {
       </section>
 
       {/* ── CTA CALLOUT ── */}
-      <section style={{ padding: "80px 24px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", background: "linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #0c4a6e 100%)", borderRadius: 20, padding: "56px 48px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 28, boxShadow: "0 12px 48px rgba(0,0,0,0.2)" }}>
-          <div>
-            <h2 style={{ color: "white", fontSize: 26, fontWeight: 800, margin: "0 0 10px", letterSpacing: "-0.02em" }}>Need Reliable IT Support or Computer Repair?</h2>
-            <p style={{ color: "#94a3b8", fontSize: 15, margin: 0, maxWidth: 520, lineHeight: 1.7 }}>
+      <section style={{ padding: "80px 24px", background: "white" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", background: `linear-gradient(135deg, ${TEAL} 0%, ${TEAL2} 40%, #0284c7 100%)`, borderRadius: 20, padding: "56px 48px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 28, boxShadow: `0 12px 48px ${TEAL}40`, position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", right: -60, top: -60, width: 300, height: 300, borderRadius: "50%", background: "rgba(255,255,255,0.08)", pointerEvents: "none" }} />
+          <div style={{ position: "absolute", left: -40, bottom: -60, width: 200, height: 200, borderRadius: "50%", background: "rgba(255,255,255,0.06)", pointerEvents: "none" }} />
+          <div style={{ position: "relative" }}>
+            <h2 style={{ color: "white", fontSize: 28, fontWeight: 800, margin: "0 0 10px", letterSpacing: "-0.02em" }}>Need Reliable IT Support or Computer Repair?</h2>
+            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: 15, margin: 0, maxWidth: 520, lineHeight: 1.7 }}>
               Whether you're a local business looking for managed IT or a neighbor needing a quick computer fix, we're here to help. Call us at{" "}
-              <a href="tel:5176105372" style={{ color: TEAL, textDecoration: "none", fontWeight: 700 }}>(517) 610-5372</a>
+              <a href="tel:5176105372" style={{ color: "white", textDecoration: "none", fontWeight: 700, borderBottom: "1px solid rgba(255,255,255,0.5)" }}>(517) 610-5372</a>
               {" "}or stop by our Hillsdale office today!
             </p>
           </div>
-          <div style={{ display: "flex", gap: 12, flexShrink: 0 }}>
-            <a href="/contact" className="btn-teal" style={{ background: TEAL, color: "white", padding: "13px 28px", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none" }}>Get In Touch</a>
-            <a href="tel:5176105372" style={{ background: "rgba(255,255,255,0.1)", color: "white", padding: "13px 24px", borderRadius: 8, fontWeight: 600, fontSize: 14, textDecoration: "none", border: "1px solid rgba(255,255,255,0.2)" }}>
+          <div style={{ display: "flex", gap: 12, flexShrink: 0, position: "relative" }}>
+            <a href="/contact" style={{ background: "white", color: TEAL, padding: "13px 28px", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none", boxShadow: "0 4px 16px rgba(0,0,0,0.12)", transition: "transform 0.18s, box-shadow 0.18s" }}
+              onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.18)"; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "0 4px 16px rgba(0,0,0,0.12)"; }}
+            >Get In Touch</a>
+            <a href="tel:5176105372" style={{ background: "rgba(255,255,255,0.18)", color: "white", padding: "13px 24px", borderRadius: 8, fontWeight: 600, fontSize: 14, textDecoration: "none", border: "1px solid rgba(255,255,255,0.3)" }}>
               Call Now
             </a>
           </div>
