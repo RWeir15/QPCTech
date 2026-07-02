@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Switch, Route } from "wouter";
 import {
   Wrench, Laptop, Monitor, Printer, KeyRound, Cpu, Bug, Tv2,
@@ -336,7 +336,32 @@ function ContactBox({ headline, body }: { headline: string; body: string }) {
 }
 
 /* ────────────────────────────────────── HOME PAGE ── */
+const FALLBACK_REVIEWS = [
+  { name: "Google Reviewer", date: "3 weeks ago", stars: 5, text: "I went to this company for a gaming PC — I personally didn't know much about PCs. They not only took the task of building my gaming rig, but they took the time to educate me. Mike was very knowledgeable and very respectful through the entire process." },
+  { name: "Brenda Reed", date: "2 months ago", stars: 5, text: "Always friendly, knowledgeable, and helpful!" },
+  { name: "Ashton St John", date: "1 year ago", stars: 5, text: "Excellent customer service and very efficient. Jeremy was fantastic — he took the time to explain what was wrong with my PC, and once the parts arrived, he had it fixed in under an hour. If I ever have another computer issue, this is where I'll go." },
+];
+
 function HomePage() {
+  const [reviewsData, setReviewsData] = useState<{
+    rating: number;
+    total: number;
+    reviews: Array<{ name: string; date: string; stars: number; text: string; profilePhoto?: string }>;
+  } | null>(null);
+
+  useEffect(() => {
+    fetch("/api/reviews")
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(data => setReviewsData(data))
+      .catch(() => {});
+  }, []);
+
+  const displayReviews = reviewsData
+    ? reviewsData.reviews.filter(r => r.stars >= 4 && r.text.trim().length > 10).slice(0, 6)
+    : FALLBACK_REVIEWS;
+  const rating = reviewsData?.rating ?? 4.7;
+  const total = reviewsData?.total ?? 59;
+
   return (
     <div style={{ fontFamily: "'Inter', sans-serif", color: "#1e293b", overflowX: "hidden" }}>
       <style>{GLOBAL_CSS}</style>
@@ -584,58 +609,21 @@ function HomePage() {
               </svg>
               <div style={{ textAlign: "left" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                  <span style={{ color: DARK, fontSize: 22, fontWeight: 800, lineHeight: 1 }}>4.7</span>
+                  <span style={{ color: DARK, fontSize: 22, fontWeight: 800, lineHeight: 1 }}>{rating.toFixed(1)}</span>
                   <div style={{ display: "flex", gap: 2 }}>
                     {[1,2,3,4,5].map(i => (
-                      <Star key={i} size={16} color="#FBBC05" fill={i <= 4 ? "#FBBC05" : "none"} strokeWidth={i === 5 ? 1.5 : 0} />
+                      <Star key={i} size={16} color="#FBBC05" fill={i <= Math.round(rating) ? "#FBBC05" : "none"} strokeWidth={i > Math.round(rating) ? 1.5 : 0} />
                     ))}
                   </div>
                 </div>
-                <p style={{ color: "#64748b", fontSize: 12, margin: "2px 0 0", fontWeight: 500 }}>59 reviews on Google</p>
+                <p style={{ color: "#64748b", fontSize: 12, margin: "2px 0 0", fontWeight: 500 }}>{total} reviews on Google</p>
               </div>
             </a>
           </div>
 
           {/* Review cards */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, marginBottom: 40 }} className="reviews-grid">
-            {[
-              {
-                name: "Ashton St John",
-                date: "1 year ago",
-                stars: 5,
-                text: "Excellent customer service and very efficient. Jeremy was fantastic — he took the time to explain what was wrong with my PC, and once the parts arrived, he had it fixed in under an hour. If I ever have another computer issue, this is where I'll go.",
-              },
-              {
-                name: "Tiffany Vaughn",
-                date: "2 years ago",
-                stars: 5,
-                text: "Such a wonderful company! Was able to get a house call the same day and were honest and up front. No price gouging or selling things we didn't need. Would highly recommend them!",
-              },
-              {
-                name: "channel 85",
-                date: "Local Guide · 4 years ago",
-                stars: 5,
-                text: "Larry is very knowledgeable, and the staff is friendly. Everyone there delivered amazing customer service. I would HIGHLY recommend them!",
-              },
-              {
-                name: "Jeff La Rue",
-                date: "6 years ago",
-                stars: 5,
-                text: "This company is fantastic. I came in and had a major meltdown over a situation with my computer. They were so kind and understanding and very reassuring. Everything was corrected in a timely manner — I left feeling much better.",
-              },
-              {
-                name: "Alix Ott",
-                date: "3 years ago",
-                stars: 5,
-                text: "With 3 dual-monitor systems, multiple laptops and tablets, two printers, and massive storage auto back-up — you'd better know what you're doing. THEY DO. Have worked with the owners for many years, trust their work and their integrity.",
-              },
-              {
-                name: "Patrick Lucas",
-                date: "Local Guide · 6 years ago",
-                stars: 5,
-                text: "Very helpful and friendly staff. They explained the process so that I understood. Quick service and reasonably priced.",
-              },
-            ].map(({ name, date, stars, text }) => (
+            {displayReviews.map(({ name, date, stars, text }) => (
               <div key={name} className="why-card" style={{ background: "#f8fafc", borderRadius: 16, padding: "28px 32px", border: "1px solid #e2e8f0", display: "flex", flexDirection: "column", gap: 16 }}>
                 <div style={{ display: "flex", gap: 3 }}>
                   {[1,2,3,4,5].map(i => (
@@ -671,7 +659,7 @@ function HomePage() {
               className="btn-teal"
               style={{ display: "inline-flex", alignItems: "center", gap: 8, background: TEAL, color: "white", padding: "13px 28px", borderRadius: 10, fontWeight: 700, fontSize: 14, textDecoration: "none", boxShadow: `0 4px 20px ${TEAL}40` }}
             >
-              See All 59 Reviews on Google <ArrowUpRight size={16} />
+              See All {total} Reviews on Google <ArrowUpRight size={16} />
             </a>
           </div>
         </div>
