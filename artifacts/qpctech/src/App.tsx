@@ -350,7 +350,7 @@ function HomePage() {
   } | null>(null);
 
   useEffect(() => {
-    fetch(import.meta.env.VITE_REVIEWS_WORKER_URL ?? "/api/reviews")
+    fetch("/api/reviews")
       .then(r => r.ok ? r.json() : Promise.reject())
       .then(data => setReviewsData(data))
       .catch(() => {});
