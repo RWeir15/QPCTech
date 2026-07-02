@@ -9,6 +9,7 @@ import {
 
 const TEAL = "#37b5e6";
 const TEAL2 = "#0ea5e9";
+const REMOTE_URL = "https://qpctech.rmmservices.net/connect/#/9951961931";
 const DARK = "#0f172a";
 
 const GLOBAL_CSS = `
@@ -507,7 +508,7 @@ function HomePage() {
               </div>
 
               <p style={{ color: "#94a3b8", fontSize: 15, lineHeight: 1.75, margin: "0 0 0", maxWidth: 560 }}>
-                Our all-in-one IT management bundle — <strong style={{ color: "#e2e8f0" }}>NinjaOne</strong> for remote support & patching plus <strong style={{ color: "#e2e8f0" }}>Huntress</strong> for managed antivirus — keeping your endpoints secure and your business running without interruption.
+                Our all-in-one IT management bundle — <strong style={{ color: "#e2e8f0" }}>NinjaOne</strong> for <a href={REMOTE_URL} target="_blank" rel="noreferrer" style={{ color: TEAL, textDecoration: "underline" }}>remote support</a> & patching plus <strong style={{ color: "#e2e8f0" }}>Huntress</strong> for managed antivirus — keeping your endpoints secure and your business running without interruption.
               </p>
             </div>
 
@@ -731,7 +732,7 @@ function ManagedITPage() {
               </div>
               <h2 style={{ color: DARK, fontSize: 30, fontWeight: 800, margin: "0 0 12px", letterSpacing: "-0.02em" }}>Q-BITS</h2>
               <p style={{ color: "#475569", fontSize: 15, lineHeight: 1.8, margin: "0 0 28px" }}>
-                Q-BITS is our all-in-one IT management package combining <strong>NinjaOne</strong> for patching and remote support with <strong>Huntress</strong> for managed antivirus — keeping your endpoints secure and your systems running smoothly.
+                Q-BITS is our all-in-one IT management package combining <strong>NinjaOne</strong> for patching and <a href={REMOTE_URL} target="_blank" rel="noreferrer" style={{ color: TEAL, textDecoration: "underline" }}>remote support</a> with <strong>Huntress</strong> for managed antivirus — keeping your endpoints secure and your systems running smoothly.
               </p>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                 <a href="tel:5176105372" className="btn-teal" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: TEAL, color: "white", padding: "10px 22px", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none" }}>
@@ -748,7 +749,11 @@ function ManagedITPage() {
                 {["Endpoint management", "Remote support", "Patching", "Scripting"].map(f => (
                   <div key={f} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
                     <CheckCircle size={14} color={TEAL} style={{ flexShrink: 0 }} />
-                    <span style={{ color: "#475569", fontSize: 13 }}>{f}</span>
+                    {f === "Remote support" ? (
+                      <a href={REMOTE_URL} target="_blank" rel="noreferrer" style={{ color: TEAL, fontSize: 13, textDecoration: "underline" }}>{f}</a>
+                    ) : (
+                      <span style={{ color: "#475569", fontSize: 13 }}>{f}</span>
+                    )}
                   </div>
                 ))}
               </div>
