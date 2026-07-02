@@ -138,10 +138,10 @@ function Header() {
 
   return (
     <header style={{ background: "#111827", position: "sticky", top: 0, zIndex: 100, boxShadow: "0 2px 20px rgba(0,0,0,0.4)" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 80 }}>
+      <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 80 }}>
         <a href="/" style={{ display: "flex", alignItems: "center" }}>
           <img
-            src="https://www.qpctech.com/wp-content/uploads/2024/03/cropped-QPCTech-logo.png"
+            src="/logo.png"
             alt="QPCTech"
             style={{ height: 56, width: "auto" }}
           />
@@ -238,9 +238,9 @@ function Header() {
 function Footer() {
   return (
     <footer style={{ background: DARK, borderTop: `3px solid ${TEAL}`, color: "#64748b", padding: "56px 24px 0" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: 48, paddingBottom: 48 }} className="footer-grid">
+      <div style={{ maxWidth: 1400, margin: "0 auto", display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: 48, paddingBottom: 48 }} className="footer-grid">
         <div>
-          <img src="https://www.qpctech.com/wp-content/uploads/2024/03/cropped-QPCTech-logo.png" alt="QPCTech" style={{ height: 48, marginBottom: 18 }} />
+          <img src="/logo.png" alt="QPCTech" style={{ height: 48, marginBottom: 18 }} />
           <p style={{ fontSize: 14, lineHeight: 1.75, margin: "0 0 20px", maxWidth: 280 }}>Managed IT services for southern Michigan businesses — trusted by 1,000+ local clients.</p>
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             <span style={{ color: "#4b5563", fontSize: 13 }}>37 Waldron St, Hillsdale, MI 49242</span>
@@ -295,7 +295,7 @@ function PageHero({ breadcrumb, label, icon: Icon, title, subtitle }: {
     <section style={{ background: "linear-gradient(160deg, #0f172a 0%, #1e3a5f 55%, #0d3050 100%)", padding: "72px 24px", position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)", backgroundSize: "28px 28px", pointerEvents: "none" }} />
       <div style={{ position: "absolute", right: -60, top: -80, width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle, rgba(55,181,230,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
-      <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
+      <div style={{ maxWidth: 1400, margin: "0 auto", position: "relative" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
           <a href="/" style={{ color: "#94a3b8", fontSize: 13, textDecoration: "none", transition: "color 0.18s" }}
             onMouseEnter={e => (e.currentTarget.style.color = TEAL)}
@@ -368,7 +368,7 @@ function HomePage() {
         <div style={{ position: "absolute", right: -80, top: -100, width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(55,181,230,0.13) 0%, transparent 70%)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", left: -60, bottom: -60, width: 320, height: 320, borderRadius: "50%", background: "radial-gradient(circle, rgba(55,181,230,0.07) 0%, transparent 70%)", pointerEvents: "none" }} />
 
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center", position: "relative" }} className="hero-grid">
+        <div style={{ maxWidth: 1400, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center", position: "relative" }} className="hero-grid">
           <div>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(55,181,230,0.15)", border: "1px solid rgba(55,181,230,0.3)", borderRadius: 20, padding: "5px 14px", marginBottom: 20 }}>
               <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL }} />
@@ -409,7 +409,7 @@ function HomePage() {
       {/* ── STATS BAR ── */}
       <div style={{ background: `linear-gradient(135deg, ${DARK} 0%, #0c4a6e 50%, #1e3a5f 100%)`, borderBottom: `2px solid ${TEAL}40`, padding: "36px 24px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: `radial-gradient(circle at 20% 50%, ${TEAL}18 0%, transparent 50%), radial-gradient(circle at 80% 50%, ${TEAL2}12 0%, transparent 50%)`, pointerEvents: "none" }} />
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "center", position: "relative" }} className="stats-flex">
+        <div style={{ maxWidth: 1400, margin: "0 auto", display: "flex", justifyContent: "center", position: "relative" }} className="stats-flex">
           {stats.map((s, i) => (
             <div key={s.value} style={{ flex: 1, maxWidth: 280, textAlign: "center", borderRight: i < stats.length - 1 ? `1px solid ${TEAL}30` : "none", padding: "0 24px" }}>
               <div style={{ background: `linear-gradient(135deg, ${TEAL}, ${TEAL2})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontSize: 42, fontWeight: 900, lineHeight: 1, letterSpacing: "-0.02em" }}>{s.value}</div>
@@ -421,7 +421,7 @@ function HomePage() {
 
       {/* ── IN STORE SERVICES ── */}
       <section id="services" style={{ padding: "88px 24px", background: "white" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{ marginBottom: 52 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: `linear-gradient(135deg, ${TEAL}22, ${TEAL2}18)`, border: `1px solid ${TEAL}50`, borderRadius: 20, padding: "5px 16px", marginBottom: 16 }}>
               <div style={{ width: 6, height: 6, borderRadius: "50%", background: `linear-gradient(135deg, ${TEAL}, ${TEAL2})` }} />
@@ -458,7 +458,7 @@ function HomePage() {
       <section style={{ padding: "88px 24px", background: `linear-gradient(160deg, #0f172a 0%, #0c4a6e 50%, #1e3a5f 100%)`, position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)", backgroundSize: "28px 28px", pointerEvents: "none" }} />
         <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", width: 700, height: 700, borderRadius: "50%", background: `radial-gradient(circle, ${TEAL}10 0%, transparent 65%)`, pointerEvents: "none" }} />
-        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", position: "relative" }}>
           <div style={{ textAlign: "center", marginBottom: 56 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: `${TEAL}22`, border: `1px solid ${TEAL}50`, borderRadius: 20, padding: "5px 16px", marginBottom: 16 }}>
               <div style={{ width: 6, height: 6, borderRadius: "50%", background: `linear-gradient(135deg, ${TEAL}, ${TEAL2})` }} />
@@ -485,7 +485,7 @@ function HomePage() {
 
       {/* ── Q-BITS TEASER ── */}
       <section style={{ padding: "72px 24px 0", background: "white" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{
             background: `linear-gradient(135deg, ${DARK} 0%, #0c3a5a 50%, #0f172a 100%)`,
             borderRadius: 20,
@@ -544,7 +544,7 @@ function HomePage() {
 
       {/* ── CTA CALLOUT ── */}
       <section style={{ padding: "80px 24px", background: "white" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", background: `linear-gradient(135deg, ${TEAL} 0%, ${TEAL2} 40%, #0284c7 100%)`, borderRadius: 20, padding: "56px 48px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 28, boxShadow: `0 12px 48px ${TEAL}40`, position: "relative", overflow: "hidden" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", background: `linear-gradient(135deg, ${TEAL} 0%, ${TEAL2} 40%, #0284c7 100%)`, borderRadius: 20, padding: "56px 48px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 28, boxShadow: `0 12px 48px ${TEAL}40`, position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", right: -60, top: -60, width: 300, height: 300, borderRadius: "50%", background: "rgba(255,255,255,0.08)", pointerEvents: "none" }} />
           <div style={{ position: "absolute", left: -40, bottom: -60, width: 200, height: 200, borderRadius: "50%", background: "rgba(255,255,255,0.06)", pointerEvents: "none" }} />
           <div style={{ position: "relative" }}>
@@ -569,7 +569,7 @@ function HomePage() {
 
       {/* ── GOOGLE REVIEWS ── */}
       <section style={{ padding: "0 24px 80px", background: "white" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", marginBottom: 48 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: `${TEAL}12`, border: `1px solid ${TEAL}35`, borderRadius: 20, padding: "4px 14px", marginBottom: 16 }}>
               <Star size={12} color={TEAL} fill={TEAL} />
@@ -652,7 +652,7 @@ function HomePage() {
 
       {/* ── MAP ── */}
       <section style={{ padding: "0 24px 88px", background: "white" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: `${TEAL}12`, border: `1px solid ${TEAL}35`, borderRadius: 20, padding: "4px 14px", marginBottom: 16 }}>
             <span style={{ color: TEAL, fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Find Us</span>
           </div>
@@ -693,7 +693,7 @@ function NetworkInfrastructurePage() {
         subtitle="Building and maintaining reliable, scalable networks for businesses across southern Michigan — from small offices to industrial facilities."
       />
       <section style={{ background: "white", padding: "80px 24px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }} className="hero-grid">
             <div>
               <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 20 }} />
@@ -733,7 +733,7 @@ function CybersecurityPage() {
         subtitle="Protect your business with comprehensive cybersecurity solutions — from managed antivirus and patch management to emerging security standards."
       />
       <section style={{ background: "white", padding: "80px 24px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }} className="hero-grid">
             <div>
               <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 20 }} />
@@ -786,7 +786,7 @@ function ManagedITPage() {
         subtitle="We can optimize and manage your IT systems with tailored solutions for businesses of all sizes — from hardware and servers to backups and business applications."
       />
       <section style={{ background: "white", padding: "80px 24px 64px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }} className="hero-grid">
             <div>
               <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 20 }} />
@@ -817,7 +817,7 @@ function ManagedITPage() {
         </div>
       </section>
       <section style={{ background: "#f8fafc", padding: "64px 24px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start" }} className="hero-grid">
             <div>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: `${TEAL}18`, border: `1px solid ${TEAL}40`, borderRadius: 20, padding: "4px 14px", marginBottom: 16 }}>
@@ -864,7 +864,7 @@ function ManagedITPage() {
         </div>
       </section>
       <section style={{ background: "white", padding: "64px 24px 80px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 16 }} />
           <h2 style={{ color: DARK, fontSize: 26, fontWeight: 800, margin: "0 0 6px" }}>Supported Applications</h2>
           <p style={{ color: "#64748b", fontSize: 15, margin: "0 0 32px" }}>A sample of the business software we support and manage for our clients.</p>
@@ -893,7 +893,7 @@ function PhoneSystemsPage() {
         subtitle="Upgrade your communication with cost-effective VoIP solutions designed for seamless business connectivity — tailored to your organization, not the other way around."
       />
       <section style={{ background: "white", padding: "80px 24px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }} className="hero-grid">
             <div>
               <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 20 }} />
@@ -936,7 +936,7 @@ function PhysicalSecurityPage() {
         subtitle="Secure your business with state-of-the-art physical security systems — surveillance cameras, burglar alarms, and access control installed by Michigan-licensed contractors."
       />
       <section style={{ background: "white", padding: "80px 24px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }} className="hero-grid">
             <div>
               <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 20 }} />
@@ -979,7 +979,7 @@ function PrintingAndScanningPage() {
         subtitle="Simplify office workflows with managed printing and scanning solutions that save time and resources — backed by over 3 decades of hands-on IT experience."
       />
       <section style={{ background: "white", padding: "80px 24px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }} className="hero-grid">
             <div>
               <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 20 }} />
@@ -1022,7 +1022,7 @@ function CommunityWorkPage() {
         subtitle="Supporting nonprofits, schools, and career centers with reliable IT solutions — because great technology shouldn't be out of reach for organizations doing important work."
       />
       <section style={{ background: "white", padding: "80px 24px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }} className="hero-grid">
             <div>
               <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 20 }} />
@@ -1117,7 +1117,7 @@ function WhoWeArePage() {
       <section style={{ background: "linear-gradient(160deg, #0f172a 0%, #1e3a5f 55%, #0d3050 100%)", padding: "72px 24px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)", backgroundSize: "28px 28px", pointerEvents: "none" }} />
         <div style={{ position: "absolute", right: -60, top: -80, width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle, rgba(55,181,230,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
-        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", position: "relative" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
             <a href="/" style={{ color: "#94a3b8", fontSize: 13, textDecoration: "none" }}>Home</a>
             <span style={{ color: "#475569" }}>›</span>
@@ -1135,7 +1135,7 @@ function WhoWeArePage() {
       </section>
 
       <section style={{ background: "white", padding: "80px 24px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 28 }} className="team-grid">
             {teamMembers.map(member => (
               <div key={member.name} className="team-card" style={{ background: "#f8fafc", borderRadius: 16, padding: "32px 28px", border: "1px solid #e2e8f0", borderTop: `4px solid ${TEAL}`, display: "flex", flexDirection: "column", gap: 12 }}>
@@ -1235,7 +1235,7 @@ function ContactPage() {
       <section style={{ background: "linear-gradient(160deg, #0f172a 0%, #1e3a5f 55%, #0d3050 100%)", padding: "72px 24px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)", backgroundSize: "28px 28px", pointerEvents: "none" }} />
         <div style={{ position: "absolute", right: -60, top: -80, width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle, rgba(55,181,230,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
-        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", position: "relative" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
             <a href="/" style={{ color: "#94a3b8", fontSize: 13, textDecoration: "none" }}>Home</a>
             <span style={{ color: "#475569" }}>›</span>
@@ -1253,7 +1253,7 @@ function ContactPage() {
       </section>
 
       <section style={{ background: "white", padding: "80px 24px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }} className="hero-grid">
 
             {/* LEFT — Contact Form */}
@@ -1438,7 +1438,7 @@ function ContactPage() {
 
       {/* Map */}
       <section style={{ background: "#f8fafc", padding: "0 24px 80px", borderTop: "1px solid #e2e8f0" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", paddingTop: 56 }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", paddingTop: 56 }}>
           <h2 style={{ color: DARK, fontSize: 24, fontWeight: 800, margin: "0 0 6px", letterSpacing: "-0.02em" }}>Find Us</h2>
           <p style={{ color: "#64748b", fontSize: 15, margin: "0 0 24px" }}>37 Waldron St, Hillsdale, MI 49242</p>
           <div style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", height: 380, border: "1px solid #e2e8f0" }}>
