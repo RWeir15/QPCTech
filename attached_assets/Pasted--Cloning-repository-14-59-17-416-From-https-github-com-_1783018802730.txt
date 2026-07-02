@@ -1,0 +1,80 @@
+	Cloning repository...
+14:59:17.416	From https://github.com/RWeir15/QPCTech
+14:59:17.417	 * branch            967c1de75572f4402d5dcdf64bf39477b6eef7e6 -> FETCH_HEAD
+14:59:17.417	
+14:59:17.897	HEAD is now at 967c1de Implement a Cloudflare Worker for fetching and caching website reviews
+14:59:17.898	
+14:59:18.236	
+14:59:18.236	Using v2 root directory strategy
+14:59:18.252	Success: Finished cloning repository files
+14:59:19.903	Checking for configuration in a Wrangler configuration file (BETA)
+14:59:19.904	
+14:59:20.093	No Wrangler configuration file found. Continuing.
+14:59:20.558	Detected the following tools from environment: nodejs@24.13.1, pnpm@10.11.1
+14:59:20.559	Installing nodejs 24.13.1
+14:59:21.451	Trying to update node-build... ok
+14:59:21.551	To follow progress, use 'tail -f /tmp/node-build.20260702185921.803.log' or pass --verbose
+14:59:21.608	Downloading node-v24.13.1-linux-x64.tar.gz...
+14:59:21.776	-> https://nodejs.org/dist/v24.13.1/node-v24.13.1-linux-x64.tar.gz
+14:59:24.601	Installing node-v24.13.1-linux-x64...
+14:59:25.068	Installed node-v24.13.1-linux-x64 to /opt/buildhome/.asdf/installs/nodejs/24.13.1
+14:59:25.068	
+14:59:26.778	npm warn EBADENGINE Unsupported engine {
+14:59:26.778	npm warn EBADENGINE   package: 'corepack@0.35.0',
+14:59:26.778	npm warn EBADENGINE   required: { node: '^22.22.2 || ^24.15.0 || >=26.0.0' },
+14:59:26.778	npm warn EBADENGINE   current: { node: 'v24.13.1', npm: '11.8.0' }
+14:59:26.778	npm warn EBADENGINE }
+14:59:26.911	
+14:59:26.911	changed 1 package in 924ms
+14:59:27.453	Reshimming asdf nodejs...
+14:59:29.456	Preparing pnpm@10.11.1 for immediate activation...
+14:59:30.428	Installing project dependencies: pnpm install
+14:59:31.006	(node:3285) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+14:59:31.007	(Use `node --trace-deprecation ...` to show where the warning was created)
+14:59:31.010	Scope: all 9 workspace projects
+14:59:31.082	Lockfile is up to date, resolution step is skipped
+14:59:31.126	Progress: resolved 1, reused 0, downloaded 0, added 0
+14:59:31.221	Packages: +485
+14:59:31.222	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+14:59:32.127	Progress: resolved 485, reused 0, downloaded 50, added 0
+14:59:33.128	Progress: resolved 485, reused 0, downloaded 106, added 16
+14:59:34.128	Progress: resolved 485, reused 0, downloaded 181, added 44
+14:59:35.128	Progress: resolved 485, reused 0, downloaded 292, added 89
+14:59:36.128	Progress: resolved 485, reused 0, downloaded 341, added 110
+14:59:37.133	Progress: resolved 485, reused 0, downloaded 469, added 236
+14:59:37.657	Progress: resolved 485, reused 0, downloaded 485, added 485, done
+14:59:37.921	.../esbuild@0.27.3/node_modules/esbuild postinstall$ node install.js
+14:59:38.029	.../esbuild@0.27.3/node_modules/esbuild postinstall: Done
+14:59:38.302	
+14:59:38.302	devDependencies:
+14:59:38.302	+ prettier 3.8.3
+14:59:38.302	+ typescript 5.9.3
+14:59:38.302	
+14:59:38.329	. preinstall$ sh -c 'rm -f package-lock.json yarn.lock; case "$npm_config_user_agent" in pnpm/*) ;; *) echo "Use pnpm instead" >&2; exit 1 ;; esac'
+14:59:38.366	. preinstall: Done
+14:59:38.510	Done in 7.9s using pnpm v10.11.1
+14:59:38.573	Executing user command: pnpm --filter @workspace/qpctech run build
+14:59:39.139	(node:3419) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+14:59:39.139	(Use `node --trace-deprecation ...` to show where the warning was created)
+14:59:39.155	
+14:59:39.159	> @workspace/qpctech@0.0.0 build /opt/buildhome/repo/artifacts/qpctech
+14:59:39.159	> vite build --config vite.config.ts
+14:59:39.160	
+14:59:39.586	failed to load config from /opt/buildhome/repo/artifacts/qpctech/vite.config.ts
+14:59:39.589	error during build:
+14:59:39.589	Error: PORT environment variable is required but was not provided.
+14:59:39.589	    at file:///opt/buildhome/repo/artifacts/qpctech/node_modules/.vite-temp/vite.config.ts.timestamp-1783018779396-590a2f46f6566.mjs:10:9
+14:59:39.589	    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)
+14:59:39.589	    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)
+14:59:39.589	    at async loadConfigFromBundledFile (file:///opt/buildhome/repo/node_modules/.pnpm/vite@7.3.3_@types+node@25.6.2_jiti@2.7.0_lightningcss@1.32.0_tsx@4.21.0_yaml@2.8.4/node_modules/vite/dist/node/chunks/config.js:35936:12)
+14:59:39.590	    at async bundleAndLoadConfigFile (file:///opt/buildhome/repo/node_modules/.pnpm/vite@7.3.3_@types+node@25.6.2_jiti@2.7.0_lightningcss@1.32.0_tsx@4.21.0_yaml@2.8.4/node_modules/vite/dist/node/chunks/config.js:35824:17)
+14:59:39.590	    at async loadConfigFromFile (file:///opt/buildhome/repo/node_modules/.pnpm/vite@7.3.3_@types+node@25.6.2_jiti@2.7.0_lightningcss@1.32.0_tsx@4.21.0_yaml@2.8.4/node_modules/vite/dist/node/chunks/config.js:35791:42)
+14:59:39.590	    at async resolveConfig (file:///opt/buildhome/repo/node_modules/.pnpm/vite@7.3.3_@types+node@25.6.2_jiti@2.7.0_lightningcss@1.32.0_tsx@4.21.0_yaml@2.8.4/node_modules/vite/dist/node/chunks/config.js:35440:22)
+14:59:39.590	    at async createBuilder (file:///opt/buildhome/repo/node_modules/.pnpm/vite@7.3.3_@types+node@25.6.2_jiti@2.7.0_lightningcss@1.32.0_tsx@4.21.0_yaml@2.8.4/node_modules/vite/dist/node/chunks/config.js:33895:19)
+14:59:39.590	    at async CAC.<anonymous> (file:///opt/buildhome/repo/node_modules/.pnpm/vite@7.3.3_@types+node@25.6.2_jiti@2.7.0_lightningcss@1.32.0_tsx@4.21.0_yaml@2.8.4/node_modules/vite/dist/node/cli.js:629:10)
+14:59:39.641	/opt/buildhome/repo/artifacts/qpctech:
+14:59:39.641	 ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/qpctech@0.0.0 build: `vite build --config vite.config.ts`
+14:59:39.641	Exit status 1
+14:59:40.780	Failed: Error while executing user command. Exited with error code: 1
+14:59:40.788	Failed: build command exited with code: 1
+14:59:41.623	Failed: error occurred while running build command
