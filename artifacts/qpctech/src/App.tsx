@@ -1155,8 +1155,8 @@ function WhoWeArePage() {
             {teamMembers.map(member => (
               <div key={member.name} className="team-card" style={{ background: "#f8fafc", borderRadius: 16, padding: "32px 28px", border: "1px solid #e2e8f0", borderTop: `4px solid ${TEAL}`, display: "flex", flexDirection: "column", gap: 12 }}>
                 {member.photo ? (
-                  <div style={{ width: 100, height: 100, borderRadius: "50%", overflow: "hidden", border: `3px solid ${TEAL}`, margin: "0 auto 4px", flexShrink: 0 }}>
-                    <img src={member.photo} alt={member.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: member.photoPosition }} />
+                  <div style={{ width: 130, height: 130, borderRadius: "50%", overflow: "hidden", border: `3px solid ${TEAL}`, margin: "0 auto 4px", flexShrink: 0 }}>
+                    <img src={member.photo} alt={member.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: member.photoPosition, imageRendering: "auto" }} />
                   </div>
                 ) : (
                   <div style={{ width: 64, height: 64, borderRadius: "50%", background: `linear-gradient(135deg, #0c4a6e, ${TEAL})`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 4, margin: "0 auto 4px" }}>
