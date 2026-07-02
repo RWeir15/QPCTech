@@ -473,7 +473,7 @@ function HomePage() {
       </section>
 
       {/* ── Q-BITS TEASER ── */}
-      <section style={{ padding: "0 24px 0", background: "white" }}>
+      <section style={{ padding: "72px 24px 0", background: "white" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{
             background: `linear-gradient(135deg, ${DARK} 0%, #0c3a5a 50%, #0f172a 100%)`,
