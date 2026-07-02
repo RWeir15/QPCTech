@@ -514,14 +514,14 @@ function HomePage() {
             {/* right side buttons */}
             <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "stretch", position: "relative", flexShrink: 0 }}>
               <a
-                href="/q-bits/"
+                href="/managed-it-systems"
                 className="btn-teal"
                 style={{ background: `linear-gradient(135deg, ${TEAL}, ${TEAL2})`, color: "white", padding: "13px 28px", borderRadius: 10, fontWeight: 700, fontSize: 14, textDecoration: "none", textAlign: "center", whiteSpace: "nowrap", boxShadow: `0 4px 20px ${TEAL}40` }}
               >
                 Learn About Q-BITS →
               </a>
               <a
-                href="tel:5176105372"
+                href="/contact"
                 style={{ background: "rgba(255,255,255,0.08)", color: "#e2e8f0", padding: "12px 28px", borderRadius: 10, fontWeight: 600, fontSize: 14, textDecoration: "none", border: "1px solid rgba(255,255,255,0.15)", textAlign: "center", whiteSpace: "nowrap" }}
               >
                 Call to Ask
@@ -1081,12 +1081,58 @@ function WhoWeArePage() {
 }
 
 /* ──────────────────────────────────── CONTACT PAGE ── */
+const INPUT_STYLE: React.CSSProperties = {
+  width: "100%",
+  padding: "11px 14px",
+  borderRadius: 8,
+  border: "1px solid #e2e8f0",
+  fontSize: 14,
+  color: "#1e293b",
+  background: "white",
+  outline: "none",
+  boxSizing: "border-box",
+  transition: "border-color 0.18s, box-shadow 0.18s",
+  fontFamily: "'Inter', sans-serif",
+};
+
 function ContactPage() {
+  const [form, setForm] = useState({ name: "", email: "", phone: "", company: "" });
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  function set(field: string) {
+    return (e: React.ChangeEvent<HTMLInputElement>) =>
+      setForm(f => ({ ...f, [field]: e.target.value }));
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus("submitting");
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/support@qpctech.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          Name: form.name,
+          Email: form.email,
+          Phone: form.phone,
+          Company: form.company || "—",
+          _subject: "New Contact Form Submission — QPCTech Website",
+          _template: "table",
+        }),
+      });
+      setStatus(res.ok ? "success" : "error");
+      if (res.ok) setForm({ name: "", email: "", phone: "", company: "" });
+    } catch {
+      setStatus("error");
+    }
+  }
+
   return (
     <div style={{ fontFamily: "'Inter', sans-serif", color: "#1e293b", overflowX: "hidden" }}>
       <style>{GLOBAL_CSS}</style>
       <Header />
 
+      {/* Hero */}
       <section style={{ background: "linear-gradient(160deg, #0f172a 0%, #1e3a5f 55%, #0d3050 100%)", padding: "72px 24px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)", backgroundSize: "28px 28px", pointerEvents: "none" }} />
         <div style={{ position: "absolute", right: -60, top: -80, width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle, rgba(55,181,230,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
@@ -1102,7 +1148,7 @@ function ContactPage() {
           </div>
           <h1 style={{ color: "white", fontSize: 48, fontWeight: 800, margin: "0 0 16px", letterSpacing: "-0.02em", lineHeight: 1.1 }}>Contact Us</h1>
           <p style={{ color: "#94a3b8", fontSize: 17, lineHeight: 1.7, maxWidth: 560, margin: 0 }}>
-            Have a question, need a quote, or ready to get started? Reach out — we typically respond within one business day.
+            Have a question, need a quote, or ready to get started? Fill out the form and we'll get back to you within one business day.
           </p>
         </div>
       </section>
@@ -1111,54 +1157,122 @@ function ContactPage() {
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }} className="hero-grid">
 
-            {/* LEFT — Contact Info */}
+            {/* LEFT — Contact Form */}
             <div>
               <div style={{ width: 40, height: 4, background: `linear-gradient(to right, #0c4a6e, ${TEAL})`, borderRadius: 2, marginBottom: 20 }} />
-              <h2 style={{ color: DARK, fontSize: 28, fontWeight: 800, margin: "0 0 8px", letterSpacing: "-0.02em" }}>We'd Love To Hear From You</h2>
-              <p style={{ color: "#475569", fontSize: 15, lineHeight: 1.8, margin: "0 0 36px" }}>
-                Stop in, give us a call, or send us an email. Whether it's a quick question or a full IT assessment, we're always happy to help.
+              <h2 style={{ color: DARK, fontSize: 28, fontWeight: 800, margin: "0 0 8px", letterSpacing: "-0.02em" }}>Send Us a Message</h2>
+              <p style={{ color: "#475569", fontSize: 15, lineHeight: 1.8, margin: "0 0 32px" }}>
+                Tell us a little about what you need and we'll reach back out right away.
               </p>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: 20, marginBottom: 36 }}>
-                {[
-                  { Icon: MapPin, label: "Address", value: "37 Waldron St, Hillsdale, MI 49242", href: "https://maps.google.com/?q=37+Waldron+St+Hillsdale+MI" },
-                  { Icon: Phone, label: "Phone", value: "(517) 610-5372", href: "tel:5176105372" },
-                  { Icon: Mail, label: "Email", value: "support@qpctech.com", href: "mailto:support@qpctech.com" },
-                ].map(({ Icon, label, value, href }) => (
-                  <div key={label} style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
-                    <div style={{ width: 44, height: 44, borderRadius: 12, background: `${TEAL}15`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      <Icon size={20} color={TEAL} />
-                    </div>
-                    <div>
-                      <p style={{ color: "#94a3b8", fontSize: 12, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.07em", margin: "0 0 4px" }}>{label}</p>
-                      <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined}
-                        style={{ color: DARK, fontSize: 15, fontWeight: 600, textDecoration: "none", transition: "color 0.18s" }}
-                        onMouseEnter={e => (e.currentTarget.style.color = TEAL)}
-                        onMouseLeave={e => (e.currentTarget.style.color = DARK)}
-                      >{value}</a>
-                    </div>
+              {status === "success" ? (
+                <div style={{ background: "#f0fdf4", border: "1px solid #bbf7d0", borderRadius: 12, padding: "32px", textAlign: "center" }}>
+                  <div style={{ width: 52, height: 52, borderRadius: "50%", background: "#dcfce7", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
+                    <CheckCircle size={26} color="#16a34a" />
                   </div>
-                ))}
-              </div>
-
-              <div style={{ background: "#f8fafc", borderRadius: 14, padding: "24px", border: "1px solid #e2e8f0" }}>
-                <p style={{ color: DARK, fontWeight: 700, fontSize: 14, margin: "0 0 12px" }}>Office Hours</p>
-                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                  {[
-                    { day: "Monday – Friday", hours: "9:00 AM – 5:00 PM" },
-                    { day: "Saturday", hours: "By Appointment" },
-                    { day: "Sunday", hours: "Closed" },
-                  ].map(({ day, hours }) => (
-                    <div key={day} style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
-                      <span style={{ color: "#475569" }}>{day}</span>
-                      <span style={{ color: DARK, fontWeight: 600 }}>{hours}</span>
-                    </div>
-                  ))}
+                  <h3 style={{ color: "#15803d", fontSize: 18, fontWeight: 800, margin: "0 0 8px" }}>Message Sent!</h3>
+                  <p style={{ color: "#166534", fontSize: 14, margin: "0 0 20px", lineHeight: 1.6 }}>
+                    Thanks for reaching out. We'll respond to <strong>{form.email || "your email"}</strong> within one business day.
+                  </p>
+                  <button
+                    onClick={() => setStatus("idle")}
+                    style={{ background: TEAL, color: "white", border: "none", padding: "10px 24px", borderRadius: 8, fontWeight: 700, fontSize: 14, cursor: "pointer" }}
+                  >
+                    Send Another Message
+                  </button>
                 </div>
-              </div>
+              ) : (
+                <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+                  {/* Name */}
+                  <div>
+                    <label style={{ display: "block", color: "#374151", fontSize: 13, fontWeight: 600, marginBottom: 6 }}>
+                      Full Name <span style={{ color: TEAL }}>*</span>
+                    </label>
+                    <input
+                      required
+                      type="text"
+                      placeholder="Jane Smith"
+                      value={form.name}
+                      onChange={set("name")}
+                      style={INPUT_STYLE}
+                      onFocus={e => { e.currentTarget.style.borderColor = TEAL; e.currentTarget.style.boxShadow = `0 0 0 3px ${TEAL}20`; }}
+                      onBlur={e => { e.currentTarget.style.borderColor = "#e2e8f0"; e.currentTarget.style.boxShadow = "none"; }}
+                    />
+                  </div>
+
+                  {/* Email */}
+                  <div>
+                    <label style={{ display: "block", color: "#374151", fontSize: 13, fontWeight: 600, marginBottom: 6 }}>
+                      Email Address <span style={{ color: TEAL }}>*</span>
+                    </label>
+                    <input
+                      required
+                      type="email"
+                      placeholder="jane@example.com"
+                      value={form.email}
+                      onChange={set("email")}
+                      style={INPUT_STYLE}
+                      onFocus={e => { e.currentTarget.style.borderColor = TEAL; e.currentTarget.style.boxShadow = `0 0 0 3px ${TEAL}20`; }}
+                      onBlur={e => { e.currentTarget.style.borderColor = "#e2e8f0"; e.currentTarget.style.boxShadow = "none"; }}
+                    />
+                  </div>
+
+                  {/* Phone */}
+                  <div>
+                    <label style={{ display: "block", color: "#374151", fontSize: 13, fontWeight: 600, marginBottom: 6 }}>
+                      Phone Number <span style={{ color: TEAL }}>*</span>
+                    </label>
+                    <input
+                      required
+                      type="tel"
+                      placeholder="(555) 000-0000"
+                      value={form.phone}
+                      onChange={set("phone")}
+                      style={INPUT_STYLE}
+                      onFocus={e => { e.currentTarget.style.borderColor = TEAL; e.currentTarget.style.boxShadow = `0 0 0 3px ${TEAL}20`; }}
+                      onBlur={e => { e.currentTarget.style.borderColor = "#e2e8f0"; e.currentTarget.style.boxShadow = "none"; }}
+                    />
+                  </div>
+
+                  {/* Company (optional) */}
+                  <div>
+                    <label style={{ display: "block", color: "#374151", fontSize: 13, fontWeight: 600, marginBottom: 6 }}>
+                      Company Name <span style={{ color: "#94a3b8", fontWeight: 400 }}>(optional)</span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Acme Corp"
+                      value={form.company}
+                      onChange={set("company")}
+                      style={INPUT_STYLE}
+                      onFocus={e => { e.currentTarget.style.borderColor = TEAL; e.currentTarget.style.boxShadow = `0 0 0 3px ${TEAL}20`; }}
+                      onBlur={e => { e.currentTarget.style.borderColor = "#e2e8f0"; e.currentTarget.style.boxShadow = "none"; }}
+                    />
+                  </div>
+
+                  {status === "error" && (
+                    <p style={{ color: "#dc2626", fontSize: 13, margin: 0, background: "#fef2f2", border: "1px solid #fecaca", borderRadius: 8, padding: "10px 14px" }}>
+                      Something went wrong. Please try again or call us directly at (517) 610-5372.
+                    </p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={status === "submitting"}
+                    className="btn-teal"
+                    style={{ background: `linear-gradient(135deg, ${TEAL}, ${TEAL2})`, color: "white", border: "none", padding: "13px 28px", borderRadius: 8, fontWeight: 700, fontSize: 15, cursor: status === "submitting" ? "not-allowed" : "pointer", opacity: status === "submitting" ? 0.7 : 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, boxShadow: `0 4px 16px ${TEAL}35` }}
+                  >
+                    {status === "submitting" ? "Sending…" : <>Send Message <ArrowRight size={16} /></>}
+                  </button>
+
+                  <p style={{ color: "#94a3b8", fontSize: 12, margin: 0 }}>
+                    We'll reply to your email within one business day. Fields marked <span style={{ color: TEAL }}>*</span> are required.
+                  </p>
+                </form>
+              )}
             </div>
 
-            {/* RIGHT — Remote & Walk-In Options */}
+            {/* RIGHT — Call & Walk-In */}
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
               <div className="why-card" style={{ background: "#f0f9ff", borderRadius: 16, padding: "32px", border: `1px solid ${TEAL}30` }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
@@ -1178,45 +1292,27 @@ function ContactPage() {
               <div className="why-card" style={{ background: "#f8fafc", borderRadius: 16, padding: "32px", border: "1px solid #e2e8f0" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                   <div style={{ width: 44, height: 44, borderRadius: 12, background: `${TEAL}15`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <Mail size={20} color={TEAL} />
-                  </div>
-                  <h3 style={{ color: DARK, fontSize: 17, fontWeight: 800, margin: 0 }}>Email Us</h3>
-                </div>
-                <p style={{ color: "#475569", fontSize: 14, lineHeight: 1.75, margin: "0 0 20px" }}>
-                  Send us a message and we'll respond within one business day with next steps.
-                </p>
-                <a href="mailto:support@qpctech.com" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "white", color: DARK, padding: "12px 24px", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none", border: "1px solid #e2e8f0" }}>
-                  <Mail size={15} /> support@qpctech.com
-                </a>
-              </div>
-
-              <div className="why-card" style={{ background: "#f8fafc", borderRadius: 16, padding: "32px", border: "1px solid #e2e8f0" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                  <div style={{ width: 44, height: 44, borderRadius: 12, background: `${TEAL}15`, display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <MapPin size={20} color={TEAL} />
                   </div>
                   <h3 style={{ color: DARK, fontSize: 17, fontWeight: 800, margin: 0 }}>Walk Right In</h3>
                 </div>
-                <p style={{ color: "#475569", fontSize: 14, lineHeight: 1.75, margin: "0 0 20px" }}>
+                <p style={{ color: "#475569", fontSize: 14, lineHeight: 1.75, margin: "0 0 8px" }}>
                   No appointment needed for most in-store services. Stop by our Hillsdale office Monday through Friday.
                 </p>
+                <div style={{ background: "white", borderRadius: 10, padding: "14px 16px", border: "1px solid #e2e8f0", marginBottom: 20 }}>
+                  {[
+                    { day: "Monday – Friday", hours: "9:00 AM – 5:00 PM" },
+                    { day: "Saturday", hours: "By Appointment" },
+                    { day: "Sunday", hours: "Closed" },
+                  ].map(({ day, hours }) => (
+                    <div key={day} style={{ display: "flex", justifyContent: "space-between", fontSize: 13, padding: "4px 0" }}>
+                      <span style={{ color: "#475569" }}>{day}</span>
+                      <span style={{ color: DARK, fontWeight: 600 }}>{hours}</span>
+                    </div>
+                  ))}
+                </div>
                 <a href="https://maps.google.com/?q=37+Waldron+St+Hillsdale+MI" target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "white", color: DARK, padding: "12px 24px", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none", border: "1px solid #e2e8f0" }}>
                   <MapPin size={15} /> Get Directions <ArrowUpRight size={13} />
-                </a>
-              </div>
-
-              <div className="why-card" style={{ background: "#f8fafc", borderRadius: 16, padding: "32px", border: "1px solid #e2e8f0" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                  <div style={{ width: 44, height: 44, borderRadius: 12, background: `${TEAL}15`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <Monitor size={20} color={TEAL} />
-                  </div>
-                  <h3 style={{ color: DARK, fontSize: 17, fontWeight: 800, margin: 0 }}>Remote Support</h3>
-                </div>
-                <p style={{ color: "#475569", fontSize: 14, lineHeight: 1.75, margin: "0 0 20px" }}>
-                  Need us to take a look right now? Connect with a technician remotely — no travel required.
-                </p>
-                <a href="https://qpctech.rmmservices.net/connect/#/9951961931" target="_blank" rel="noreferrer" className="btn-teal" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: TEAL, color: "white", padding: "12px 24px", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none" }}>
-                  Start Remote Session <ArrowRight size={14} />
                 </a>
               </div>
             </div>
