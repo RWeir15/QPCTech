@@ -29,6 +29,9 @@ const GLOBAL_CSS = `
   .why-card { transition: transform 0.22s ease, box-shadow 0.22s ease; }
   .why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08) !important; }
 
+  .nav-logo { height: 60px; width: auto; background: none !important; box-shadow: none !important; }
+  @media (max-width: 600px) { .nav-logo { height: 40px; } }
+
   .nav-link { position: relative; transition: color 0.18s ease; }
   .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #37b5e6; border-radius: 2px; transition: width 0.2s ease; }
   .nav-link:hover { color: #37b5e6 !important; }
@@ -139,11 +142,12 @@ function Header() {
   return (
     <header style={{ background: "#111827", position: "sticky", top: 0, zIndex: 100, boxShadow: "0 2px 20px rgba(0,0,0,0.4)" }}>
       <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 80 }}>
-        <a href="/" style={{ display: "flex", alignItems: "center" }}>
+        <a href="/" style={{ display: "flex", alignItems: "center", background: "none", boxShadow: "none" }}>
           <img
-            src="/logo.png"
+            src="/QPCTech%20logo.png"
             alt="QPCTech"
-            style={{ height: 56, width: "auto" }}
+            className="nav-logo"
+            style={{ height: 60, width: "auto", display: "block", background: "none" }}
           />
         </a>
 
