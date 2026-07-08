@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "Wgv1GVeQsB2zG5W6TSNK6"
+uri = "file://website-build-playbook.md"
+type = "text"
+title = "Website Build Playbook"
