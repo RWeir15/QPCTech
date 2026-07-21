@@ -4,9 +4,9 @@ export const modules: ModuleMap = {
   "./components/mockups/qpctech-palettes/PaletteA.tsx": () => import("../components/mockups/qpctech-palettes/PaletteA.tsx"),
   "./components/mockups/qpctech-palettes/PaletteB.tsx": () => import("../components/mockups/qpctech-palettes/PaletteB.tsx"),
   "./components/mockups/qpctech-palettes/PaletteC.tsx": () => import("../components/mockups/qpctech-palettes/PaletteC.tsx"),
-  "./components/mockups/qpctech-redesign/Homepage.tsx": () => import("../components/mockups/qpctech-redesign/Homepage.tsx"),
   "./components/mockups/qpctech-variants/BoldDark.tsx": () => import("../components/mockups/qpctech-variants/BoldDark.tsx"),
   "./components/mockups/qpctech-variants/HeroCleanMix.tsx": () => import("../components/mockups/qpctech-variants/HeroCleanMix.tsx"),
   "./components/mockups/qpctech-variants/HeroVibrant.tsx": () => import("../components/mockups/qpctech-variants/HeroVibrant.tsx"),
-  "./components/mockups/qpctech-variants/ModernClean.tsx": () => import("../components/mockups/qpctech-variants/ModernClean.tsx")
+  "./components/mockups/qpctech-variants/ModernClean.tsx": () => import("../components/mockups/qpctech-variants/ModernClean.tsx"),
+  "./components/mockups/qpctech-redesign/Homepage.tsx": () => import("../components/mockups/qpctech-redesign/Homepage.tsx")
 };

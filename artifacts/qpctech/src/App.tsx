@@ -9,6 +9,7 @@ import {
 
 const TEAL = "#37b5e6";
 const TEAL2 = "#0ea5e9";
+const GREEN = "#7FC343";
 const REMOTE_URL = "https://qpctech.rmmservices.net/connect/#/9951961931";
 const DARK = "#0f172a";
 
@@ -39,6 +40,9 @@ const GLOBAL_CSS = `
 
   .btn-teal { transition: opacity 0.18s, transform 0.18s, box-shadow 0.18s; }
   .btn-teal:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(55,181,230,0.38); }
+
+  .btn-green { transition: opacity 0.18s, transform 0.18s, box-shadow 0.18s; }
+  .btn-green:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(127,195,67,0.42); }
 `;
 
 const services = [
@@ -92,7 +96,7 @@ const stats = [
 ];
 
 const trust = [
-  { Icon: Shield, label: "Trusted & Local", sub: "Serving Hillsdale since 2014" },
+  { Icon: Shield, label: "Trusted & Local", sub: "Serving Hillsdale since 2022" },
   { Icon: Clock, label: "Fast Turnaround", sub: "Most repairs done same-day" },
   { Icon: Star, label: "5-Star Rated", sub: "Loved by 1,000+ customers" },
   { Icon: Phone, label: "Easy to Reach", sub: "(517) 610-5372" },
@@ -185,8 +189,8 @@ function Header() {
             href="https://qpctech.rmmservices.net/connect/#/9951961931"
             target="_blank"
             rel="noreferrer"
-            className="btn-teal"
-            style={{ background: TEAL, color: "white", padding: "9px 22px", borderRadius: 6, fontSize: 14, fontWeight: 600, textDecoration: "none" }}
+            className="btn-green"
+            style={{ background: GREEN, color: "white", padding: "9px 22px", borderRadius: 6, fontSize: 14, fontWeight: 600, textDecoration: "none" }}
           >Remote Support</a>
         </nav>
 
@@ -226,7 +230,7 @@ function Header() {
             href="https://qpctech.rmmservices.net/connect/#/9951961931"
             target="_blank"
             rel="noreferrer"
-            style={{ display: "inline-block", background: TEAL, color: "white", textDecoration: "none", fontSize: 15, borderRadius: 6, padding: "8px 22px", marginTop: 8, fontWeight: 600 }}
+            style={{ display: "inline-block", background: GREEN, color: "white", textDecoration: "none", fontSize: 15, borderRadius: 6, padding: "8px 22px", marginTop: 8, fontWeight: 600 }}
           >Remote Support</a>
         </div>
       )}
@@ -376,7 +380,7 @@ function HomePage() {
           <div>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(55,181,230,0.15)", border: "1px solid rgba(55,181,230,0.3)", borderRadius: 20, padding: "5px 14px", marginBottom: 20 }}>
               <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL }} />
-              <span style={{ color: TEAL, fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Hillsdale's IT Experts Since 2014</span>
+              <span style={{ color: TEAL, fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Hillsdale's IT Experts Since 2022</span>
             </div>
             <h1 style={{ color: "white", fontSize: 54, fontWeight: 900, lineHeight: 1.08, margin: "0 0 20px", letterSpacing: "-0.03em" }}>
               Technology That{" "}
