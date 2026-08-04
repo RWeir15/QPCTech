@@ -348,8 +348,6 @@ const FALLBACK_REVIEWS = [
   { name: "McCord Family", date: "5 days ago", stars: 5, text: "I took my elderly mom's laptop in due to pop ups, potential virus and advice. Josh was amazing in understanding what had occurred, how to fix it (quickly) and prevention in the future. He was friendly and worked fast and efficiently. I'll definitely be back!" },
   { name: "KATHY The shamplo", date: "a week ago", stars: 5, text: "Rodney took excellent care of my issue. Very knowledgeable and informative. This is the best place for any of your computer needs and questions!" },
   { name: "Google Reviewer", date: "3 weeks ago", stars: 5, text: "I went to this company for a gaming PC — I personally didn't know much about PCs. They not only took the task of building my gaming rig, but they took the time to educate me. Mike was very knowledgeable and very respectful through the entire process." },
-  { name: "Brenda Reed", date: "2 months ago", stars: 5, text: "Always friendly, knowledgeable, and helpful!" },
-  { name: "Ashton St John", date: "1 year ago", stars: 5, text: "Excellent customer service and very efficient. Jeremy was fantastic — he took the time to explain what was wrong with my PC, and once the parts arrived, he had it fixed in under an hour. If I ever have another computer issue, this is where I'll go." },
 ];
 
 function HomePage() {
