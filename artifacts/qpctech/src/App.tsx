@@ -589,7 +589,7 @@ function HomePage() {
             </p>
             {/* Overall rating badge */}
             <a
-              href="https://www.google.com/maps/place/QPCTech,+37+Waldron+St,+Hillsdale,+MI+49242"
+              href="https://www.google.com/maps/place/QPCTech+(formerly+Quality+PC+Repairs+%26+Service)/@41.9190719,-84.6356513,17z/data=!4m8!3m7!1s0x883d72e41028b345:0x66376c140f8d23c5!8m2!3d41.9190719!4d-84.6330764!9m1!1b1!16s%2Fg%2F11c6dzwbnk?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noreferrer"
               style={{ display: "inline-flex", alignItems: "center", gap: 14, background: "white", border: "1px solid #e2e8f0", borderRadius: 16, padding: "16px 28px", textDecoration: "none", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}
@@ -646,7 +646,7 @@ function HomePage() {
           {/* CTA to Google */}
           <div style={{ textAlign: "center" }}>
             <a
-              href="https://www.google.com/maps/place/QPCTech,+37+Waldron+St,+Hillsdale,+MI+49242"
+              href="https://www.google.com/maps/place/QPCTech+(formerly+Quality+PC+Repairs+%26+Service)/@41.9190719,-84.6356513,17z/data=!4m8!3m7!1s0x883d72e41028b345:0x66376c140f8d23c5!8m2!3d41.9190719!4d-84.6330764!9m1!1b1!16s%2Fg%2F11c6dzwbnk?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noreferrer"
               className="btn-teal"
