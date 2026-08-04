@@ -345,6 +345,8 @@ function ContactBox({ headline, body }: { headline: string; body: string }) {
 
 /* ────────────────────────────────────── HOME PAGE ── */
 const FALLBACK_REVIEWS = [
+  { name: "McCord Family", date: "5 days ago", stars: 5, text: "I took my elderly mom's laptop in due to pop ups, potential virus and advice. Josh was amazing in understanding what had occurred, how to fix it (quickly) and prevention in the future. He was friendly and worked fast and efficiently. I'll definitely be back!" },
+  { name: "KATHY The shamplo", date: "a week ago", stars: 5, text: "Rodney took excellent care of my issue. Very knowledgeable and informative. This is the best place for any of your computer needs and questions!" },
   { name: "Google Reviewer", date: "3 weeks ago", stars: 5, text: "I went to this company for a gaming PC — I personally didn't know much about PCs. They not only took the task of building my gaming rig, but they took the time to educate me. Mike was very knowledgeable and very respectful through the entire process." },
   { name: "Brenda Reed", date: "2 months ago", stars: 5, text: "Always friendly, knowledgeable, and helpful!" },
   { name: "Ashton St John", date: "1 year ago", stars: 5, text: "Excellent customer service and very efficient. Jeremy was fantastic — he took the time to explain what was wrong with my PC, and once the parts arrived, he had it fixed in under an hour. If I ever have another computer issue, this is where I'll go." },
@@ -353,7 +355,7 @@ const FALLBACK_REVIEWS = [
 function HomePage() {
   const displayReviews = FALLBACK_REVIEWS;
   const rating = 4.7;
-  const total = 59;
+  const total = 61;
 
   return (
     <div style={{ fontFamily: "'Inter', sans-serif", color: "#1e293b", overflowX: "hidden" }}>
@@ -615,7 +617,7 @@ function HomePage() {
           </div>
 
           {/* Review cards */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, marginBottom: 40 }} className="reviews-grid">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, marginBottom: 40 }} className="reviews-grid reviews-grid-5">
             {displayReviews.map(({ name, date, stars, text }) => (
               <div key={name} className="why-card" style={{ background: "#f8fafc", borderRadius: 16, padding: "28px 32px", border: "1px solid #e2e8f0", display: "flex", flexDirection: "column", gap: 16 }}>
                 <div style={{ display: "flex", gap: 3 }}>
@@ -681,9 +683,57 @@ function HomePage() {
       <Footer />
 
       <style>{`
-        @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr !important; } .trust-grid { display: none !important; } .qbits-grid { grid-template-columns: 1fr !important; } .reviews-grid { grid-template-columns: 1fr !important; } }
-        @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(2,1fr) !important; } .why-grid { grid-template-columns: 1fr !important; } .stats-flex { flex-direction: column; gap: 20px; } .footer-grid { grid-template-columns: 1fr 1fr !important; } .reviews-grid { grid-template-columns: repeat(2,1fr) !important; } }
-        @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr !important; } .stats-flex { flex-direction: column; gap: 20px; } .footer-grid { grid-template-columns: 1fr !important; } .reviews-grid { grid-template-columns: 1fr !important; } h1 { font-size: 38px !important; } }
+        /* ── Tablet (≤1024px) ── */
+        @media (max-width: 1024px) {
+          .services-grid { grid-template-columns: repeat(2,1fr) !important; }
+          .why-grid { grid-template-columns: repeat(2,1fr) !important; }
+          .stats-flex { flex-direction: row; flex-wrap: wrap; gap: 16px; justify-content: center; }
+          .stats-flex > div { flex: 0 0 calc(33% - 16px); border-right: none !important; }
+          .footer-grid { grid-template-columns: 1fr 1fr !important; }
+          .reviews-grid { grid-template-columns: repeat(2,1fr) !important; }
+          .reviews-grid-5 { grid-template-columns: repeat(2,1fr) !important; }
+          .qbits-grid { grid-template-columns: repeat(2,1fr) !important; }
+          .team-grid { grid-template-columns: repeat(2,1fr) !important; }
+        }
+
+        /* ── Large phone / small tablet (≤900px) ── */
+        @media (max-width: 900px) {
+          .hero-grid { grid-template-columns: 1fr !important; text-align: center; }
+          .hero-grid > div:first-child > div[style*="inline-flex"] { justify-content: center; }
+          .hero-grid > div:first-child > div[style*="flex-wrap"] { justify-content: center; }
+          .trust-grid { display: none !important; }
+          .qbits-grid { grid-template-columns: 1fr !important; }
+          .reviews-grid { grid-template-columns: repeat(2,1fr) !important; }
+          .reviews-grid-5 { grid-template-columns: repeat(2,1fr) !important; }
+          .why-grid { grid-template-columns: 1fr !important; }
+          .team-grid { grid-template-columns: repeat(2,1fr) !important; }
+          .footer-grid { grid-template-columns: 1fr !important; }
+        }
+
+        /* ── Phone (≤640px) ── */
+        @media (max-width: 640px) {
+          h1 { font-size: 36px !important; line-height: 1.12 !important; }
+          h2 { font-size: 26px !important; }
+          .services-grid { grid-template-columns: 1fr !important; }
+          .why-grid { grid-template-columns: 1fr !important; }
+          .reviews-grid { grid-template-columns: 1fr !important; }
+          .reviews-grid-5 { grid-template-columns: 1fr !important; }
+          .stats-flex { flex-direction: column !important; align-items: center; gap: 24px; }
+          .stats-flex > div { border-right: none !important; border-bottom: 1px solid rgba(55,181,230,0.2); padding-bottom: 20px; width: 100%; max-width: 100% !important; }
+          .stats-flex > div:last-child { border-bottom: none; }
+          .footer-grid { grid-template-columns: 1fr !important; }
+          .team-grid { grid-template-columns: 1fr !important; }
+          .qbits-grid { grid-template-columns: 1fr !important; }
+          section { padding-left: 16px !important; padding-right: 16px !important; }
+          .hero-grid > div:first-child p { font-size: 15px !important; }
+          .location-bar { flex-wrap: wrap; justify-content: center; gap: 8px; text-align: center; }
+        }
+
+        /* ── Very small phones (≤380px) ── */
+        @media (max-width: 380px) {
+          h1 { font-size: 30px !important; }
+          .btn-teal, .btn-green { padding: 11px 18px !important; font-size: 13px !important; }
+        }
       `}</style>
     </div>
   );
