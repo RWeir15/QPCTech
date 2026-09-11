@@ -139,7 +139,7 @@ const externalLinks = [
 ];
 
 /* ────────────────────────────────────── HEADER ── */
-function Header() {
+export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
 
@@ -183,6 +183,7 @@ function Header() {
             )}
           </div>
 
+          <a href="/q-bits" className="nav-link" style={{ color: "#e5e7eb", textDecoration: "none", fontSize: 14, fontWeight: 500 }}>Q-BITS</a>
           <a href="/who-we-are" className="nav-link" style={{ color: "#e5e7eb", textDecoration: "none", fontSize: 14, fontWeight: 500 }}>Who We Are</a>
           <a href="/contact" className="nav-link" style={{ color: "#e5e7eb", textDecoration: "none", fontSize: 14, fontWeight: 500 }}>Contact Us</a>
           <a
@@ -224,6 +225,7 @@ function Header() {
               </div>
             )}
           </div>
+          <a href="/q-bits" style={{ display: "block", color: "#e5e7eb", textDecoration: "none", padding: "10px 0", fontSize: 15 }}>Q-BITS</a>
           <a href="/who-we-are" style={{ display: "block", color: "#e5e7eb", textDecoration: "none", padding: "10px 0", fontSize: 15 }}>Who We Are</a>
           <a href="/contact" style={{ display: "block", color: "#e5e7eb", textDecoration: "none", padding: "10px 0", fontSize: 15 }}>Contact Us</a>
           <a
@@ -236,14 +238,14 @@ function Header() {
       )}
 
       <style>{`
-        @media (max-width: 768px) { .desktop-nav { display: none !important; } .mobile-menu-btn { display: block !important; } }
+        @media (max-width: 860px) { .desktop-nav { display: none !important; } .mobile-menu-btn { display: block !important; } }
       `}</style>
     </header>
   );
 }
 
 /* ────────────────────────────────────── FOOTER ── */
-function Footer() {
+export function Footer() {
   return (
     <footer style={{ background: DARK, borderTop: `3px solid ${TEAL}`, color: "#64748b", padding: "56px 24px 0" }}>
       <div style={{ maxWidth: 1400, margin: "0 auto", display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: 48, paddingBottom: 48 }} className="footer-grid">
@@ -292,7 +294,7 @@ function Footer() {
 }
 
 /* ────────────────────────────── PAGE HERO (shared) ── */
-function PageHero({ breadcrumb, label, icon: Icon, title, subtitle }: {
+export function PageHero({ breadcrumb, label, icon: Icon, title, subtitle }: {
   breadcrumb: string;
   label: string;
   icon: React.ElementType;
@@ -326,7 +328,7 @@ function PageHero({ breadcrumb, label, icon: Icon, title, subtitle }: {
 }
 
 /* ────────────────────────────────── CONTACT CTA BOX ── */
-function ContactBox({ headline, body }: { headline: string; body: string }) {
+export function ContactBox({ headline, body }: { headline: string; body: string }) {
   return (
     <div style={{ background: "#f0f9ff", borderRadius: 12, padding: "24px", border: `1px solid ${TEAL}30` }}>
       <p style={{ color: "#0f172a", fontWeight: 700, fontSize: 15, margin: "0 0 8px" }}>{headline}</p>
@@ -533,7 +535,7 @@ function HomePage() {
             {/* right side buttons */}
             <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "stretch", position: "relative", flexShrink: 0 }}>
               <a
-                href="/managed-it-systems"
+                href="/q-bits"
                 className="btn-teal"
                 style={{ background: `linear-gradient(135deg, ${TEAL}, ${TEAL2})`, color: "white", padding: "13px 28px", borderRadius: 10, fontWeight: 700, fontSize: 14, textDecoration: "none", textAlign: "center", whiteSpace: "nowrap", boxShadow: `0 4px 20px ${TEAL}40` }}
               >
@@ -1514,10 +1516,14 @@ function ContactPage() {
   );
 }
 
+import { QBitsPage } from "./pages/QBits";
+
 /* ──────────────────────────────────── ROUTER ── */
 export default function App() {
   return (
     <Switch>
+      <Route path="/q-bits"><QBitsPage Header={Header} Footer={Footer} PageHero={PageHero} ContactBox={ContactBox} /></Route>
+      <Route path="/q-bits/"><QBitsPage Header={Header} Footer={Footer} PageHero={PageHero} ContactBox={ContactBox} /></Route>
       <Route path="/network-infrastructure" component={NetworkInfrastructurePage} />
       <Route path="/cybersecurity" component={CybersecurityPage} />
       <Route path="/managed-it-systems" component={ManagedITPage} />
