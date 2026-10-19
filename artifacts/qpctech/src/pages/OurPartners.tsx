@@ -8,6 +8,7 @@ interface OurPartnersPageProps {
 }
 
 const JUD_URL = "https://judllc.com";
+const PSP_URL = "https://printersourceplus.com/";
 
 const judServices = [
   "Monitored intrusion alarms",
@@ -27,7 +28,7 @@ export function OurPartnersPage({ Header, Footer }: OurPartnersPageProps) {
     const originalDesc = metaDesc ? metaDesc.getAttribute("content") : null;
     document.title = "Our Partners | QPCTech";
     if (metaDesc) {
-      metaDesc.setAttribute("content", "QPCTech partners with Jud LLC of Jackson, Michigan for security and low-voltage systems that complement our IT services.");
+      metaDesc.setAttribute("content", "Meet QPCTech's partners: Jud LLC for security and low-voltage systems, and Printer Source Plus for office equipment and managed print services.");
     }
     return () => {
       document.title = originalTitle;
@@ -97,6 +98,38 @@ export function OurPartnersPage({ Header, Footer }: OurPartnersPageProps) {
                 data-testid="link-visit-jud"
               >
                 Visit Jud LLC <ArrowUpRight size={16} />
+              </a>
+            </div>
+          </article>
+          <article className={styles.partnerCard} data-testid="card-partner-printer-source-plus">
+            <a
+              href={PSP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.thumbLink}
+            >
+              <img
+                src="/printer-source-plus-website.png"
+                alt="Printer Source Plus website homepage screenshot"
+                className={styles.thumb}
+                loading="lazy"
+              />
+            </a>
+            <div className={styles.partnerBody}>
+              <p className={styles.eyebrow}>Printing &amp; Office Solutions Partner</p>
+              <h2 className={styles.partnerName}>Printer Source Plus</h2>
+              <p className={styles.location}><MapPin size={14} color="#7FC343" /> Jackson, Michigan · Serving Michigan</p>
+              <p className={styles.paragraph}>
+                Printer Source Plus, also known as PSP Office Solutions, is a locally owned company headquartered in Jackson with service locations in Albion and Hillsdale. They help businesses, schools, and organizations across Michigan with printers, copiers, office equipment, ink and toner, and managed print services—from a single office printer to a fleet of devices.
+              </p>
+              <p className={styles.paragraph}>
+                Their printing expertise complements QPCTech's computer, network, and managed IT services. Through our partnership, we help connect customers with printing solutions that fit their needs, including Epson equipment and ongoing print support, so their office technology works together.
+              </p>
+              <ul className={styles.serviceList}>
+                {["Printers and copiers", "Managed print services", "Ink and toner", "Office equipment", "Epson printing solutions", "Multi-brand service and support"].map(s => <li key={s}>{s}</li>)}
+              </ul>
+              <a href={PSP_URL} target="_blank" rel="noopener noreferrer" className={styles.visitBtn}>
+                Visit Printer Source Plus <ArrowUpRight size={16} />
               </a>
             </div>
           </article>
