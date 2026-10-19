@@ -136,6 +136,7 @@ const externalLinks = [
   { label: "UniFi Portal", href: "http://unifi.ui.com" },
   { label: "ConnectWise Portal", href: "http://home.connectwise.com" },
   { label: "Q-BITS Landing Page", href: "/q-bits/" },
+  { label: "Our Partners", href: "/our-partners" },
 ];
 
 /* ────────────────────────────────────── HEADER ── */
@@ -156,7 +157,7 @@ export function Header() {
         </a>
 
         {/* Desktop Nav */}
-        <nav style={{ display: "flex", alignItems: "center", gap: 32 }} className="desktop-nav">
+        <nav style={{ display: "flex", alignItems: "center", gap: 28 }} className="desktop-nav">
           <a href="/" className="nav-link" style={{ color: "#e5e7eb", textDecoration: "none", fontSize: 14, fontWeight: 500 }}>Home</a>
 
           <div style={{ position: "relative" }} onMouseLeave={() => setServicesOpen(false)}>
@@ -184,6 +185,7 @@ export function Header() {
           </div>
 
           <a href="/q-bits" className="nav-link" style={{ color: "#e5e7eb", textDecoration: "none", fontSize: 14, fontWeight: 500 }}>Q-BITS</a>
+          <a href="/our-partners" className="nav-link" style={{ color: "#e5e7eb", textDecoration: "none", fontSize: 14, fontWeight: 500 }}>Our Partners</a>
           <a href="/who-we-are" className="nav-link" style={{ color: "#e5e7eb", textDecoration: "none", fontSize: 14, fontWeight: 500 }}>Who We Are</a>
           <a href="/contact" className="nav-link" style={{ color: "#e5e7eb", textDecoration: "none", fontSize: 14, fontWeight: 500 }}>Contact Us</a>
           <a
@@ -226,6 +228,7 @@ export function Header() {
             )}
           </div>
           <a href="/q-bits" style={{ display: "block", color: "#e5e7eb", textDecoration: "none", padding: "10px 0", fontSize: 15 }}>Q-BITS</a>
+          <a href="/our-partners" style={{ display: "block", color: "#e5e7eb", textDecoration: "none", padding: "10px 0", fontSize: 15 }}>Our Partners</a>
           <a href="/who-we-are" style={{ display: "block", color: "#e5e7eb", textDecoration: "none", padding: "10px 0", fontSize: 15 }}>Who We Are</a>
           <a href="/contact" style={{ display: "block", color: "#e5e7eb", textDecoration: "none", padding: "10px 0", fontSize: 15 }}>Contact Us</a>
           <a
@@ -238,7 +241,7 @@ export function Header() {
       )}
 
       <style>{`
-        @media (max-width: 860px) { .desktop-nav { display: none !important; } .mobile-menu-btn { display: block !important; } }
+        @media (max-width: 1080px) { .desktop-nav { gap: 20px !important; } } @media (max-width: 960px) { .desktop-nav { display: none !important; } .mobile-menu-btn { display: block !important; } }
       `}</style>
     </header>
   );
@@ -759,11 +762,6 @@ function NetworkInfrastructurePage() {
               <p style={{ color: "#334155", fontSize: 16, lineHeight: 1.8, margin: "0 0 32px" }}>
                 Our technicians and contractors have experience in Industrial, Residential, Hospitality and Healthcare installations and maintenance of all aspects of any network project.
               </p>
-              <p style={{ color: "#334155", fontSize: 16, lineHeight: 1.8, margin: "0 0 24px" }}>
-                QPCTech partners with{" "}
-                <a href="https://judllc.com" target="_blank" rel="noopener noreferrer" style={{ color: "#0369a1", fontWeight: 700, textDecoration: "underline" }}>Jud LLC</a>
-                {" "}to bring together security, low-voltage, and IT expertise. Low-voltage systems include the cabling and connections that support your business technology. Jud LLC’s security and low-voltage expertise complements QPCTech’s network infrastructure and managed IT services, helping cover more of your business’s technology needs.
-              </p>
               <ContactBox headline="Ready for a quote?" body="Contact us and we'll assess your needs and provide a detailed estimate." />
             </div>
             <div style={{ background: "#f8fafc", borderRadius: 16, padding: "36px", border: "1px solid #e2e8f0", borderLeft: `4px solid ${TEAL}` }}>
@@ -1009,11 +1007,6 @@ function PhysicalSecurityPage() {
               </p>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.8, margin: "0 0 32px" }}>
                 <strong>Burglar Alarms and Building Access Control</strong> — QPC's expert contractors are licensed by the State of Michigan to provide installation and service of these critical security technologies.
-              </p>
-              <p style={{ color: "#334155", fontSize: 16, lineHeight: 1.8, margin: "0 0 24px" }}>
-                QPCTech partners with{" "}
-                <a href="https://judllc.com" target="_blank" rel="noopener noreferrer" style={{ color: "#0369a1", fontWeight: 700, textDecoration: "underline" }}>Jud LLC</a>
-                {" "}to help businesses address both physical security and IT needs. Jud LLC brings security and low-voltage expertise, while QPCTech provides network support, computer services, and ongoing IT management through Q-BITS. Together, our complementary services help support your facility and the technology your team relies on.
               </p>
               <ContactBox headline="Ready to secure your facility?" body="Call us for a free consultation and we'll help you build the right security strategy." />
             </div>
@@ -1527,6 +1520,7 @@ function ContactPage() {
 }
 
 import { QBitsPage } from "./pages/QBits";
+import { OurPartnersPage } from "./pages/OurPartners";
 
 /* ──────────────────────────────────── ROUTER ── */
 export default function App() {
@@ -1534,6 +1528,8 @@ export default function App() {
     <Switch>
       <Route path="/q-bits"><QBitsPage Header={Header} Footer={Footer} PageHero={PageHero} ContactBox={ContactBox} /></Route>
       <Route path="/q-bits/"><QBitsPage Header={Header} Footer={Footer} PageHero={PageHero} ContactBox={ContactBox} /></Route>
+      <Route path="/our-partners"><OurPartnersPage Header={Header} Footer={Footer} /></Route>
+      <Route path="/our-partners/"><OurPartnersPage Header={Header} Footer={Footer} /></Route>
       <Route path="/network-infrastructure" component={NetworkInfrastructurePage} />
       <Route path="/cybersecurity" component={CybersecurityPage} />
       <Route path="/managed-it-systems" component={ManagedITPage} />
