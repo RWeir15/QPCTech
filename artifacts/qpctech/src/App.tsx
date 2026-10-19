@@ -760,8 +760,9 @@ function NetworkInfrastructurePage() {
                 Our technicians and contractors have experience in Industrial, Residential, Hospitality and Healthcare installations and maintenance of all aspects of any network project.
               </p>
               <p style={{ color: "#334155", fontSize: 16, lineHeight: 1.8, margin: "0 0 24px" }}>
-                Meet our partner:{" "}
-                <a href="https://judllc.com" target="_blank" rel="noopener noreferrer" style={{ color: "#0369a1", fontWeight: 700, textDecoration: "underline" }}>Judllc.com (opens in a new tab)</a>
+                QPCTech partners with{" "}
+                <a href="https://judllc.com" target="_blank" rel="noopener noreferrer" style={{ color: "#0369a1", fontWeight: 700, textDecoration: "underline" }}>Jud LLC</a>
+                {" "}to bring together security, low-voltage, and IT expertise. Low-voltage systems include the cabling and connections that support your business technology. Jud LLC’s security and low-voltage expertise complements QPCTech’s network infrastructure and managed IT services, helping cover more of your business’s technology needs.
               </p>
               <ContactBox headline="Ready for a quote?" body="Contact us and we'll assess your needs and provide a detailed estimate." />
             </div>
@@ -1010,8 +1011,9 @@ function PhysicalSecurityPage() {
                 <strong>Burglar Alarms and Building Access Control</strong> — QPC's expert contractors are licensed by the State of Michigan to provide installation and service of these critical security technologies.
               </p>
               <p style={{ color: "#334155", fontSize: 16, lineHeight: 1.8, margin: "0 0 24px" }}>
-                Meet our partner:{" "}
-                <a href="https://judllc.com" target="_blank" rel="noopener noreferrer" style={{ color: "#0369a1", fontWeight: 700, textDecoration: "underline" }}>Judllc.com (opens in a new tab)</a>
+                QPCTech partners with{" "}
+                <a href="https://judllc.com" target="_blank" rel="noopener noreferrer" style={{ color: "#0369a1", fontWeight: 700, textDecoration: "underline" }}>Jud LLC</a>
+                {" "}to help businesses address both physical security and IT needs. Jud LLC brings security and low-voltage expertise, while QPCTech provides network support, computer services, and ongoing IT management through Q-BITS. Together, our complementary services help support your facility and the technology your team relies on.
               </p>
               <ContactBox headline="Ready to secure your facility?" body="Call us for a free consultation and we'll help you build the right security strategy." />
             </div>
