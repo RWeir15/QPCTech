@@ -1121,6 +1121,7 @@ function CommunityWorkPage() {
 const teamMembers = [
   {
     name: "Tim Lindley",
+    linkedin: "https://www.linkedin.com/in/tim-lindley-b7b7419/",
     title: "Owner / Senior Technician",
     bio: "Tim attended Jackson College, Spring Arbor University, and New Tribes Bible Institute.",
     certs: ["MS Certified Technology Specialist", "MCTS 70-673", "MCTS 4-678", "ITIL V3 Foundations"],
@@ -1137,6 +1138,7 @@ const teamMembers = [
   },
   {
     name: "Rodney Weir",
+    linkedin: "https://www.linkedin.com/in/rodney-weir-a822b3275/",
     title: "Cloud Administrator",
     bio: "Microsoft 365 Specialist | Domain Management | Web Development",
     certs: ["ITF+", "TestOut PC Pro", "TestOut Security Pro", "TestOut Linux Pro", "TestOut Networking Pro", "TestOut CyberDefense Pro", "TestOut Ethical Hacker Pro"],
@@ -1145,6 +1147,7 @@ const teamMembers = [
   },
   {
     name: "Nolan Korman",
+    linkedin: "https://www.linkedin.com/in/nolan-korman-38630340a/",
     title: "System Administrator",
     bio: "Server & Infrastructure Management | Security Management | Network Analyst",
     education: "Bachelor’s Degree in Cybersecurity — Spring Arbor University",
@@ -1205,6 +1208,17 @@ function WhoWeArePage() {
                 <div style={{ textAlign: "center" }}>
                   <h3 style={{ color: DARK, fontSize: 19, fontWeight: 800, margin: "0 0 4px" }}>{member.name}</h3>
                   <p style={{ color: TEAL, fontSize: 12, fontWeight: 700, margin: 0, textTransform: "uppercase", letterSpacing: "0.07em" }}>{member.title}</p>
+                  {member.linkedin && (
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${member.name} on LinkedIn (opens in a new tab)`}
+                      style={{ display: "inline-flex", alignItems: "center", gap: 6, color: "#0a66c2", fontSize: 14, fontWeight: 600, minHeight: 44, textDecoration: "underline", textUnderlineOffset: 3 }}
+                    >
+                      LinkedIn <ArrowUpRight size={15} aria-hidden="true" />
+                    </a>
+                  )}
                 </div>
                 {member.bio && (
                   <p style={{ color: "#475569", fontSize: 14, lineHeight: 1.7, margin: 0, textAlign: "center" }}>{member.bio}</p>
