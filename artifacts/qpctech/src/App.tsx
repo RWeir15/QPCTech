@@ -1147,6 +1147,7 @@ const teamMembers = [
     name: "Nolan Korman",
     title: "System Administrator",
     bio: "Server & Infrastructure Management | Security Management | Network Analyst",
+    education: "Bachelor’s Degree in Cybersecurity — Spring Arbor University",
     certs: ["ITF+", "TestOut PC Pro", "TestOut Security Pro"],
     photo: "/nolan-korman.jpg",
     photoPosition: "center 30%",
@@ -1207,6 +1208,9 @@ function WhoWeArePage() {
                 </div>
                 {member.bio && (
                   <p style={{ color: "#475569", fontSize: 14, lineHeight: 1.7, margin: 0, textAlign: "center" }}>{member.bio}</p>
+                )}
+                {member.education && (
+                  <p style={{ color: "#475569", fontSize: 14, lineHeight: 1.7, margin: "12px 0 0", textAlign: "center" }}>{member.education}</p>
                 )}
                 {member.certs.length > 0 && (
                   <div>
