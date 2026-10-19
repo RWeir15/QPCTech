@@ -1138,7 +1138,7 @@ const teamMembers = [
   {
     name: "Rodney Weir",
     title: "Technician",
-    bio: "Experienced Web Designer and Cloud Based Provider.",
+    bio: "Cloud Administrator",
     certs: ["ITF+", "TestOut PC Pro", "TestOut Security Pro", "TestOut Linux Pro", "TestOut Networking Pro", "TestOut CyberDefense Pro", "TestOut Ethical Hacker Pro"],
     photo: "/rodney-weir.jpg",
     photoPosition: "center 52%",
@@ -1146,7 +1146,7 @@ const teamMembers = [
   {
     name: "Nolan Korman",
     title: "IT System Specialist",
-    bio: "Experienced in Networking, Cloud-Based Services, and Administration.",
+    bio: "System administrator",
     certs: ["ITF+", "TestOut PC Pro", "TestOut Security Pro"],
     photo: "/nolan-korman.jpg",
     photoPosition: "center 30%",
