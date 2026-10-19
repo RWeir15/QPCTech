@@ -1159,14 +1159,6 @@ const teamMembers = [
     photo: "/josh-hall.jpg",
     photoPosition: "center 42%",
   },
-  {
-    name: "Mike Raker",
-    title: "Technician",
-    bio: "Experienced in NinjaOne Services and Sales.",
-    certs: [],
-    photo: "/mike-raker.jpg",
-    photoPosition: "center 30%",
-  },
 ];
 
 function WhoWeArePage() {
