@@ -1230,7 +1230,16 @@ function WhoWeArePage() {
       </section>
 
       <Footer />
-      <style>{`@media (max-width: 1024px) { .team-grid { grid-template-columns: repeat(2,1fr) !important; } .footer-grid { grid-template-columns: 1fr 1fr !important; } } @media (max-width: 600px) { .team-grid { grid-template-columns: 1fr !important; } .footer-grid { grid-template-columns: 1fr !important; } }`}</style>
+      <style>{`
+        @media (min-width: 1025px) {
+          .team-grid { grid-template-columns: repeat(6, minmax(0, 1fr)) !important; }
+          .team-grid > .team-card { grid-column: span 2; }
+          .team-grid > .team-card:nth-child(4) { grid-column: 2 / span 2; }
+          .team-grid > .team-card:nth-child(5) { grid-column: 4 / span 2; }
+        }
+        @media (max-width: 1024px) { .team-grid { grid-template-columns: repeat(2,1fr) !important; } .footer-grid { grid-template-columns: 1fr 1fr !important; } }
+        @media (max-width: 600px) { .team-grid { grid-template-columns: 1fr !important; } .footer-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
     </div>
   );
 }
