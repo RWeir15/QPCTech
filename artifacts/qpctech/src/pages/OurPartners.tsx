@@ -79,7 +79,10 @@ export function OurPartnersPage({ Header, Footer }: OurPartnersPageProps) {
 
             <div className={styles.partnerBody}>
               <p className={styles.eyebrow}>Security &amp; Low-Voltage Partner</p>
-              <h2 className={styles.partnerName}>Jud LLC</h2>
+              <div className={styles.partnerIdentity}>
+                <h2 className={styles.partnerName}>Jud LLC</h2>
+                <img src="/jud-partner-logo.png" alt="Jud LLC logo" className={styles.partnerLogo} loading="lazy" />
+              </div>
               <p className={styles.location}><MapPin size={14} color="#7FC343" /> Jackson, Michigan</p>
               <p className={styles.paragraph}>
                 Jud LLC is an owner-operated company serving homes, businesses, and industrial customers in Jackson and surrounding counties. They design, install, and service monitored intrusion alarms, access control, surveillance cameras, and managed wired and wireless networks.
@@ -117,7 +120,10 @@ export function OurPartnersPage({ Header, Footer }: OurPartnersPageProps) {
             </a>
             <div className={styles.partnerBody}>
               <p className={styles.eyebrow}>Printing &amp; Office Solutions Partner</p>
-              <h2 className={styles.partnerName}>Printer Source Plus</h2>
+              <div className={styles.partnerIdentity}>
+                <h2 className={styles.partnerName}>Printer Source Plus</h2>
+                <img src="/psp-partner-logo.png" alt="Printer Source Plus logo" className={styles.partnerLogo} loading="lazy" />
+              </div>
               <p className={styles.location}><MapPin size={14} color="#7FC343" /> Jackson, Michigan · Serving Michigan</p>
               <p className={styles.paragraph}>
                 Printer Source Plus, also known as PSP Office Solutions, is a locally owned company headquartered in Jackson with service locations in Albion and Hillsdale. They help businesses, schools, and organizations across Michigan with printers, copiers, office equipment, ink and toner, and managed print services—from a single office printer to a fleet of devices.
