@@ -759,6 +759,10 @@ function NetworkInfrastructurePage() {
               <p style={{ color: "#334155", fontSize: 16, lineHeight: 1.8, margin: "0 0 32px" }}>
                 Our technicians and contractors have experience in Industrial, Residential, Hospitality and Healthcare installations and maintenance of all aspects of any network project.
               </p>
+              <p style={{ color: "#334155", fontSize: 16, lineHeight: 1.8, margin: "0 0 24px" }}>
+                Meet our partner:{" "}
+                <a href="https://judllc.com" target="_blank" rel="noopener noreferrer" style={{ color: "#0369a1", fontWeight: 700, textDecoration: "underline" }}>Judllc.com (opens in a new tab)</a>
+              </p>
               <ContactBox headline="Ready for a quote?" body="Contact us and we'll assess your needs and provide a detailed estimate." />
             </div>
             <div style={{ background: "#f8fafc", borderRadius: 16, padding: "36px", border: "1px solid #e2e8f0", borderLeft: `4px solid ${TEAL}` }}>
@@ -1004,6 +1008,10 @@ function PhysicalSecurityPage() {
               </p>
               <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.8, margin: "0 0 32px" }}>
                 <strong>Burglar Alarms and Building Access Control</strong> — QPC's expert contractors are licensed by the State of Michigan to provide installation and service of these critical security technologies.
+              </p>
+              <p style={{ color: "#334155", fontSize: 16, lineHeight: 1.8, margin: "0 0 24px" }}>
+                Meet our partner:{" "}
+                <a href="https://judllc.com" target="_blank" rel="noopener noreferrer" style={{ color: "#0369a1", fontWeight: 700, textDecoration: "underline" }}>Judllc.com (opens in a new tab)</a>
               </p>
               <ContactBox headline="Ready to secure your facility?" body="Call us for a free consultation and we'll help you build the right security strategy." />
             </div>
