@@ -6,6 +6,7 @@ import {
   ArrowUpRight, Shield, Clock, Star, CheckCircle, Network, Users,
   Zap, HeartHandshake, Award,
 } from "lucide-react";
+import { QBitsCoverageCard } from "./components/QBitsCoverageCard";
 
 const TEAL = "#37b5e6";
 const TEAL2 = "#0ea5e9";
@@ -554,6 +555,8 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      <QBitsCoverageCard />
 
       {/* ── CTA CALLOUT ── */}
       <section style={{ padding: "80px 24px", background: "white" }}>
