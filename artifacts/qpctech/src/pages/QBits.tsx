@@ -150,6 +150,44 @@ export function QBitsPage({ Header, Footer, PageHero, ContactBox }: QBitsPagePro
         </div>
       </section>
 
+      {/* Q-BITS Coverage Card */}
+      <section className={styles.bingoSection} aria-labelledby="qbits-bingo-title">
+        <div className={styles.bingoContainer}>
+          <div className={styles.bingoHeading}>
+            <span className={styles.bingoEyebrow}>A layered approach</span>
+            <h2 id="qbits-bingo-title" className={styles.heading}>Q-BITS Coverage Card</h2>
+            <p className={styles.bingoIntro}>
+              A quick view of the tools we work with across protection, detection, and response.
+            </p>
+          </div>
+
+          <div className={styles.bingoBoard} role="table" aria-label="Q-BITS tools across protection, detection, and response">
+            <div className={`${styles.bingoRow} ${styles.bingoHeader}`} role="row">
+              <div className={styles.bingoCell} role="columnheader">Area</div>
+              <div className={styles.bingoCell} role="columnheader">Protection</div>
+              <div className={styles.bingoCell} role="columnheader">Detection</div>
+              <div className={styles.bingoCell} role="columnheader">Response</div>
+            </div>
+            {[
+              { area: "PC", protection: "Q-BITS", detection: "Huntress", response: "NinjaOne" },
+              { area: "Network", protection: "UniFi", detection: "SIEM", response: "UniFi" },
+              { area: "Identity", protection: "Entra ID", detection: "TechIDManager", response: "Entra ID" },
+              { area: "WEB", protection: "Cloudflare", detection: "DNS", response: "Cloudflare" },
+            ].map((row) => (
+              <div className={styles.bingoRow} role="row" key={row.area}>
+                <div className={`${styles.bingoCell} ${styles.bingoArea}`} role="rowheader">{row.area}</div>
+                <div className={styles.bingoCell} role="cell" data-label="Protection"><span className={styles.bingoTerm}>{row.protection}</span></div>
+                <div className={styles.bingoCell} role="cell" data-label="Detection"><span className={styles.bingoTerm}>{row.detection}</span></div>
+                <div className={styles.bingoCell} role="cell" data-label="Response"><span className={styles.bingoTerm}>{row.response}</span></div>
+              </div>
+            ))}
+          </div>
+          <p className={styles.bingoNote}>
+            Tools and coverage depend on your setup and Q-BITS service scope. We’ll confirm what applies to your business.
+          </p>
+        </div>
+      </section>
+
       {/* Local Support Section */}
       <section className={styles.localSupportSection}>
         <div className={styles.container}>
