@@ -333,6 +333,35 @@
   overflow-wrap: anywhere;
 }
 
+.bingoPending {
+  border-style: dashed;
+  border-color: #cbd5e1;
+  background: #f8fafc;
+  color: #64748b;
+}
+
+.bingoDetails {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.bingoDetail {
+  margin: 0;
+  padding: 16px;
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.82);
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.bingoDetail strong {
+  color: #0f172a;
+}
+
 .bingoNote {
   margin: 16px 0 0;
   color: #64748b;
@@ -366,6 +395,10 @@
 @media (max-width: 768px) {
   .bingoSection {
     padding: 60px 16px;
+  }
+
+  .bingoDetails {
+    grid-template-columns: 1fr;
   }
 
   .bingoRow {

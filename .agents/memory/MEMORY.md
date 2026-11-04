@@ -1,0 +1,1 @@
+- [Q-BITS coverage roles](qbits-coverage-roles.md) — Huntress covers PC protection, detection, and response; UniFi is standard across Network, with SIEM on some clients.

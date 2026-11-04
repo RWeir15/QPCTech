@@ -157,7 +157,7 @@ export function QBitsPage({ Header, Footer, PageHero, ContactBox }: QBitsPagePro
             <span className={styles.bingoEyebrow}>A layered approach</span>
             <h2 id="qbits-bingo-title" className={styles.heading}>Q-BITS Coverage Card</h2>
             <p className={styles.bingoIntro}>
-              A quick view of the tools we work with across protection, detection, and response.
+              See how we protect, detect, and respond across your technology.
             </p>
           </div>
 
@@ -169,21 +169,32 @@ export function QBitsPage({ Header, Footer, PageHero, ContactBox }: QBitsPagePro
               <div className={styles.bingoCell} role="columnheader">Response</div>
             </div>
             {[
-              { area: "PC", protection: "Q-BITS", detection: "Huntress", response: "NinjaOne" },
-              { area: "Network", protection: "UniFi", detection: "SIEM", response: "UniFi" },
-              { area: "Identity", protection: "Entra ID", detection: "TechIDManager", response: "Entra ID" },
-              { area: "WEB", protection: "Cloudflare", detection: "DNS", response: "Cloudflare" },
+              { area: "PC", protection: "Huntress", detection: "Huntress", response: "Huntress", confirmed: true },
+              { area: "Network", protection: "UniFi", detection: "UniFi", response: "UniFi", confirmed: true },
+              { area: "Online Identity", protection: "To be confirmed", detection: "To be confirmed", response: "To be confirmed", confirmed: false },
+              { area: "Web Presence", protection: "To be confirmed", detection: "To be confirmed", response: "To be confirmed", confirmed: false },
             ].map((row) => (
               <div className={styles.bingoRow} role="row" key={row.area}>
                 <div className={`${styles.bingoCell} ${styles.bingoArea}`} role="rowheader">{row.area}</div>
-                <div className={styles.bingoCell} role="cell" data-label="Protection"><span className={styles.bingoTerm}>{row.protection}</span></div>
-                <div className={styles.bingoCell} role="cell" data-label="Detection"><span className={styles.bingoTerm}>{row.detection}</span></div>
-                <div className={styles.bingoCell} role="cell" data-label="Response"><span className={styles.bingoTerm}>{row.response}</span></div>
+                <div className={styles.bingoCell} role="cell" data-label="Protection"><span className={`${styles.bingoTerm} ${row.confirmed ? "" : styles.bingoPending}`}>{row.protection}</span></div>
+                <div className={styles.bingoCell} role="cell" data-label="Detection"><span className={`${styles.bingoTerm} ${row.confirmed ? "" : styles.bingoPending}`}>{row.detection}</span></div>
+                <div className={styles.bingoCell} role="cell" data-label="Response"><span className={`${styles.bingoTerm} ${row.confirmed ? "" : styles.bingoPending}`}>{row.response}</span></div>
               </div>
             ))}
           </div>
+          <div className={styles.bingoDetails}>
+            <p className={styles.bingoDetail}>
+              <strong>NinjaOne (RMM):</strong> Used alongside Huntress to remotely access computers, troubleshoot and resolve issues, and review detailed device information.
+            </p>
+            <p className={styles.bingoDetail}>
+              <strong>Network:</strong> UniFi covers the network categories shown. Some clients use SIEM instead, depending on their setup.
+            </p>
+            <p className={styles.bingoDetail}>
+              <strong>Still being categorized:</strong> Entra ID and TechIDManager for online identity; Cloudflare and DNS for web presence. Their exact protection, detection, and response roles are still being confirmed.
+            </p>
+          </div>
           <p className={styles.bingoNote}>
-            Tools and coverage depend on your setup and Q-BITS service scope. We’ll confirm what applies to your business.
+            Huntress provides PC protection, detection, and response. Exact tools and coverage depend on your setup and Q-BITS service scope.
           </p>
         </div>
       </section>
