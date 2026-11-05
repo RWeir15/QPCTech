@@ -221,7 +221,7 @@ async function verifyRoute(client, baseUrl, route) {
     const rows = [...(board?.querySelectorAll('[role="row"]') ?? [])]
       .filter((row) => !row.querySelector('[role="columnheader"]'))
       .map((row) => [...row.querySelectorAll('[role="rowheader"], [role="cell"]')]
-        .map((cell) => cell.textContent.replace(/Read topic/g, "").replace(/\\\\s+/g, " ").trim()));
+        .map((cell) => cell.textContent.replace(/\\\\s+/g, " ").trim()));
     const rect = (element) => {
       const bounds = element.getBoundingClientRect();
       return { left: bounds.left, right: bounds.right, width: bounds.width, scrollWidth: element.scrollWidth, clientWidth: element.clientWidth };

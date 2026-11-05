@@ -1,6 +1,5 @@
 import {
   Activity,
-  ArrowUpRight,
   Globe2,
   KeyRound,
   Monitor,
@@ -238,9 +237,6 @@ export function QBitsCoverageCard() {
                         </div>
                         <p className={styles.cellDescription}>{step.copy}</p>
                         {step.note && <p className={styles.stepNote}>{step.note}</p>}
-                        <span className={styles.linkHint}>
-                          Read topic <ArrowUpRight size={13} aria-hidden="true" />
-                        </span>
                       </div>
                     </Link>
                   </div>
