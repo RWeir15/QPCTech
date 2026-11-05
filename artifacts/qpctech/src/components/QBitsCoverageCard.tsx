@@ -1,11 +1,180 @@
+import {
+  Activity,
+  Globe2,
+  KeyRound,
+  Monitor,
+  Network,
+  ShieldCheck,
+  Wrench,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import styles from "./QBitsCoverageCard.module.css";
 
-const coverageRows = [
-  { area: "PC", protection: "Huntress", detection: "Huntress", response: "Huntress", confirmed: true },
-  { area: "Network", protection: "UniFi", detection: "UniFi", response: "UniFi", confirmed: true },
-  { area: "Online Identity", protection: "To be confirmed", detection: "To be confirmed", response: "To be confirmed", confirmed: false },
-  { area: "Web Presence", protection: "To be confirmed", detection: "To be confirmed", response: "To be confirmed", confirmed: false },
+const coverageColumns = [
+  { kind: "protection", label: "Protection" },
+  { kind: "detection", label: "Detection" },
+  { kind: "response", label: "Response" },
 ] as const;
+
+type ProviderBadge = {
+  label: string;
+  type: "partner" | "qpc";
+};
+
+type CoverageStep = {
+  kind: "protection" | "detection" | "response";
+  title: string;
+  phase: string;
+  icon: LucideIcon;
+  providers: ProviderBadge[];
+  copy: string;
+  note?: string;
+};
+
+type CoverageLayer = {
+  title: string;
+  icon: LucideIcon;
+  steps: CoverageStep[];
+};
+
+const layers: CoverageLayer[] = [
+  {
+    title: "PC / Endpoint Security",
+    icon: Monitor,
+    steps: [
+      {
+        kind: "protection",
+        title: "Protection",
+        phase: "Preventative",
+        icon: ShieldCheck,
+        providers: [{ label: "NinjaOne", type: "partner" }],
+        copy: "Provides preventative maintenance, patching, OS updates, and system hardening. Used alongside Huntress to remotely access computers, troubleshoot and resolve issues, and review detailed device information.",
+      },
+      {
+        kind: "detection",
+        title: "Detection",
+        phase: "Monitoring",
+        icon: Activity,
+        providers: [{ label: "Huntress EDR", type: "partner" }],
+        copy: "Huntress EDR monitors endpoints 24/7 for suspicious behavior and persistent access.",
+      },
+      {
+        kind: "response",
+        title: "Response",
+        phase: "Remediation",
+        icon: Wrench,
+        providers: [
+          { label: "Huntress SOC", type: "partner" },
+          { label: "QPC", type: "qpc" },
+        ],
+        copy: "Huntress SOC hunts threats and isolates devices; QPC provides local remediation and support.",
+      },
+    ],
+  },
+  {
+    title: "Network Security",
+    icon: Network,
+    steps: [
+      {
+        kind: "protection",
+        title: "Protection",
+        phase: "Preventative",
+        icon: ShieldCheck,
+        providers: [{ label: "Ubiquiti UniFi", type: "partner" }],
+        copy: "UniFi secures network hardware with segmentation, firewalls, and VLANs.",
+      },
+      {
+        kind: "detection",
+        title: "Detection",
+        phase: "Monitoring",
+        icon: Activity,
+        providers: [
+          { label: "UniFi", type: "partner" },
+          { label: "SIEM · some clients", type: "partner" },
+        ],
+        copy: "UniFi is standard; SIEM analyzes network logs for anomalies on some client setups.",
+        note: "SIEM means Security Information and Event Management.",
+      },
+      {
+        kind: "response",
+        title: "Response",
+        phase: "Remediation",
+        icon: Wrench,
+        providers: [{ label: "QPC", type: "qpc" }],
+        copy: "QPC investigates alerts, isolates affected systems, and resolves network threats.",
+      },
+    ],
+  },
+  {
+    title: "Online Identity",
+    icon: KeyRound,
+    steps: [
+      {
+        kind: "protection",
+        title: "Protection",
+        phase: "Preventative",
+        icon: ShieldCheck,
+        providers: [
+          { label: "Microsoft Entra ID", type: "partner" },
+          { label: "Google Admin Console", type: "partner" },
+        ],
+        copy: "Entra ID and Google Admin Console use MFA, admin controls, and Conditional Access to help secure accounts.",
+      },
+      {
+        kind: "detection",
+        title: "Detection",
+        phase: "Monitoring",
+        icon: Activity,
+        providers: [
+          { label: "ITDR", type: "partner" },
+          { label: "QPC", type: "qpc" },
+        ],
+        copy: "ITDR (Identity Threat Detection and Response) and QPC monitor for compromised credentials, unauthorized logins, and privilege abuse.",
+      },
+      {
+        kind: "response",
+        title: "Response",
+        phase: "Remediation",
+        icon: Wrench,
+        providers: [{ label: "QPC", type: "qpc" }],
+        copy: "QPC takes immediate action to lock down compromised accounts.",
+      },
+    ],
+  },
+  {
+    title: "Web Presence & Email Security",
+    icon: Globe2,
+    steps: [
+      {
+        kind: "protection",
+        title: "Protection",
+        phase: "Preventative",
+        icon: ShieldCheck,
+        providers: [
+          { label: "DNS", type: "partner" },
+          { label: "SPF · DKIM · DMARC", type: "partner" },
+        ],
+        copy: "DNS, SPF, DKIM, and DMARC records help protect domain reputation and secure email delivery.",
+      },
+      {
+        kind: "detection",
+        title: "Detection",
+        phase: "Monitoring",
+        icon: Activity,
+        providers: [{ label: "Cloudflare", type: "partner" }],
+        copy: "Cloudflare monitors traffic and helps mitigate DDoS attacks and malicious bots.",
+      },
+      {
+        kind: "response",
+        title: "Response",
+        phase: "Remediation",
+        icon: Wrench,
+        providers: [{ label: "QPC", type: "qpc" }],
+        copy: "QPC reviews Cloudflare alerts and resolves web threats, DNS changes, or site-security issues.",
+      },
+    ],
+  },
+];
 
 export function QBitsCoverageCard() {
   return (
@@ -15,44 +184,52 @@ export function QBitsCoverageCard() {
           <span className={styles.bingoEyebrow}>A layered approach</span>
           <h2 id="qbits-bingo-title" className={styles.heading}>Q-BITS Coverage Card</h2>
           <p className={styles.bingoIntro}>
-            See how we protect, detect, and respond across your technology.
+            See how each area is protected, monitored, and supported.
           </p>
+          <div className={styles.legend} aria-label="Coverage providers">
+            <span className={styles.legendItem}><span className={styles.partnerKey} aria-hidden="true" /> Technology partner</span>
+            <span className={styles.legendItem}><span className={styles.qpcKey} aria-hidden="true" /> QPC team</span>
+          </div>
         </div>
 
-        <div className={styles.bingoBoard} role="table" aria-label="Q-BITS tools across protection, detection, and response">
+        <div className={styles.bingoBoard} role="table" aria-label="Q-BITS coverage by technology area">
           <div className={`${styles.bingoRow} ${styles.bingoHeader}`} role="row">
             <div className={styles.bingoCell} role="columnheader">Area</div>
-            <div className={styles.bingoCell} role="columnheader">Protection</div>
-            <div className={styles.bingoCell} role="columnheader">Detection</div>
-            <div className={styles.bingoCell} role="columnheader">Response</div>
+            {coverageColumns.map((column) => (
+              <div className={styles.bingoCell} role="columnheader" key={column.kind}>{column.label}</div>
+            ))}
           </div>
-          {coverageRows.map((row) => {
-            const termClassName = `${styles.bingoTerm} ${row.confirmed ? "" : styles.bingoPending}`;
-
-            return (
-              <div className={styles.bingoRow} role="row" key={row.area}>
-                <div className={`${styles.bingoCell} ${styles.bingoArea}`} role="rowheader">{row.area}</div>
-                <div className={styles.bingoCell} role="cell" data-label="Protection"><span className={termClassName}>{row.protection}</span></div>
-                <div className={styles.bingoCell} role="cell" data-label="Detection"><span className={termClassName}>{row.detection}</span></div>
-                <div className={styles.bingoCell} role="cell" data-label="Response"><span className={termClassName}>{row.response}</span></div>
+          {layers.map((layer, index) => (
+            <div className={styles.bingoRow} role="row" key={layer.title}>
+              <div className={`${styles.bingoCell} ${styles.bingoArea}`} role="rowheader" data-testid={`text-qbits-area-${index + 1}`}>
+                {layer.title}
               </div>
-            );
-          })}
-        </div>
+              {coverageColumns.map((column) => {
+                const step = layer.steps.find((item) => item.kind === column.kind);
+                if (!step) return null;
 
-        <div className={styles.bingoDetails}>
-          <p className={styles.bingoDetail}>
-            <strong>NinjaOne (RMM):</strong> Used alongside Huntress to remotely access computers, troubleshoot and resolve issues, and review detailed device information.
-          </p>
-          <p className={styles.bingoDetail}>
-            <strong>Network:</strong> UniFi covers the network categories shown. Some clients use SIEM instead, depending on their setup.
-          </p>
-          <p className={styles.bingoDetail}>
-            <strong>Still being categorized:</strong> Entra ID and TechIDManager for online identity; Cloudflare and DNS for web presence. Their exact protection, detection, and response roles are still being confirmed.
-          </p>
+                return (
+                  <div className={styles.bingoCell} role="cell" data-label={column.label} data-testid={`text-qbits-${index + 1}-${column.kind}`} key={column.kind}>
+                    <span className={styles.cellLabel}>{column.label}</span>
+                    <div className={styles.cellContent}>
+                      <div className={styles.providerList}>
+                        {step.providers.map((provider) => (
+                          <span className={`${styles.providerBadge} ${provider.type === "qpc" ? styles.qpcBadge : styles.partnerBadge}`} key={provider.label}>
+                            {provider.label}
+                          </span>
+                        ))}
+                      </div>
+                      <p className={styles.cellDescription}>{step.copy}</p>
+                      {step.note && <p className={styles.stepNote}>{step.note}</p>}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ))}
         </div>
         <p className={styles.bingoNote}>
-          Huntress provides PC protection, detection, and response. Exact tools and coverage depend on your setup and Q-BITS service scope.
+          Tools and coverage vary by client setup and Q-BITS service scope.
         </p>
       </div>
     </section>

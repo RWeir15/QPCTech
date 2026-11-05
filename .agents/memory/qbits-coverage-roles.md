@@ -1,19 +1,16 @@
 ---
 name: Q-BITS coverage roles
-description: Owner-confirmed distinctions for PC and Network coverage and unconfirmed Identity/Web Presence cell assignments.
+description: Owner-confirmed Protection, Detection, and Response responsibilities across Q-BITS service areas.
 ---
 
-## Confirmed coverage
+## Current coverage map
 
-- PC: Huntress provides antivirus/security protection, compromise detection, and response.
-- NinjaOne is an RMM tool used alongside Huntress to remotely access client computers, resolve issues, and review device details.
-- Network: UniFi is used for protection, detection, and response in most cases. A few clients use SIEM instead.
+- PC / Endpoint Security: NinjaOne provides preventative maintenance, patching, OS updates, and system hardening. Huntress EDR detects threats; Huntress SOC and QPC handle isolation, remediation, and support.
+- Network Security: Ubiquiti UniFi is the standard network platform. Some clients use SIEM for network detection; QPC investigates, isolates, and resolves alerts.
+- Online Identity: Microsoft Entra ID and Google Admin Console support identity protection. ITDR and QPC monitor for compromise; QPC locks down affected accounts.
+- Web Presence & Email Security: DNS, SPF, DKIM, and DMARC protect domains and email; Cloudflare detects web threats; QPC monitors alerts and resolves web, DNS, and site issues.
+- NinjaOne is also the RMM used alongside Huntress to remotely access computers, troubleshoot, resolve issues, and review device details.
 
-## Not yet confirmed
+**Why:** The user supplied the detailed coverage map in the Q-BITS redesign brief and specified SIEM is only used for some clients.
 
-- The user has not specified the exact Network column where SIEM belongs.
-- The user's original reference names Entra ID and TechIDManager for Online Identity, and Cloudflare and DNS for Web Presence, but their Protection/Detection/Response roles still need confirmation.
-
-**Why:** These service distinctions and the user's requested category boundaries are not recoverable from the code alone.
-
-**How to apply:** Keep confirmed roles explicit in Q-BITS content. Do not place SIEM in a specific Network column or assign Identity/Web Presence tools to columns until the user confirms those roles.
+**How to apply:** Keep all four areas separated into Protection, Detection, and Response, label SIEM as client-specific, and distinguish partner tools from QPC-managed work.
