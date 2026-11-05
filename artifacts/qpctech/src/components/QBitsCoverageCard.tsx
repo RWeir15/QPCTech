@@ -7,6 +7,7 @@ import {
   ShieldCheck,
   Wrench,
 } from "lucide-react";
+import type { MouseEvent } from "react";
 import type { LucideIcon } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import styles from "./QBitsCoverageCard.module.css";
@@ -189,8 +190,17 @@ const layers: CoverageLayer[] = [
 ];
 
 export function QBitsCoverageCard() {
-  const [location] = useLocation();
+  const [location, navigate] = useLocation();
   const source = location === "/q-bits" || location === "/q-bits/" ? "q-bits" : "home";
+
+  const openTopicPage = (event: MouseEvent<HTMLAnchorElement>, slug: string) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    navigate(`/q-bits/topics/${slug}?from=${source}`);
+    window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    });
+  };
 
   return (
     <section className={styles.bingoSection} aria-labelledby="qbits-bingo-title">
@@ -228,6 +238,7 @@ export function QBitsCoverageCard() {
                       href={`/q-bits/topics/${step.slug}?from=${source}`}
                       className={styles.cellAction}
                       aria-label={`Read the ${column.label.toLowerCase()} article for ${layer.title}`}
+                      onClick={(event) => openTopicPage(event, step.slug)}
                     >
                       <span className={styles.cellLabel}>{column.label}</span>
                       <div className={styles.cellContent}>

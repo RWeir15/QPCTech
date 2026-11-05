@@ -362,6 +362,28 @@ async function verifyReturnFlow(client, baseUrl, source, expectedPath, expectedL
   console.log(`PASS ${route}: return link leads back to ${expectedPath} and its coverage card.`);
 }
 
+async function verifyTopicNavigationScroll(client, baseUrl, sourceRoute, source) {
+  await client.send("Page.navigate", {
+    url: new URL(sourceRoute.replace(/^\//, ""), baseUrl).toString(),
+  });
+  const linkSelector = `a[href="/q-bits/topics/pc-protection?from=${source}"]`;
+  await waitFor(
+    () => client.evaluate(`Boolean(document.querySelector(${JSON.stringify(linkSelector)}))`),
+    `the topic link from ${sourceRoute}`,
+  );
+  await client.evaluate(`(() => {
+    const link = document.querySelector(${JSON.stringify(linkSelector)});
+    link.scrollIntoView({ block: "center" });
+    link.click();
+  })()`);
+
+  await waitFor(
+    () => client.evaluate(`location.pathname === "/q-bits/topics/pc-protection" && window.scrollY <= 1`),
+    `the topic page to open at the top from ${sourceRoute}`,
+  );
+  console.log(`PASS ${sourceRoute}: clicking a coverage box opens its article at the top.`);
+}
+
 async function verifyCoverageHover(client, baseUrl) {
   const route = "/q-bits";
   await client.send("Emulation.setDeviceMetricsOverride", {
@@ -435,6 +457,8 @@ async function main() {
     for (const slug of expectedTopicSlugs) {
       await verifyTopicPage(chromium.client, vite.baseUrl, slug);
     }
+    await verifyTopicNavigationScroll(chromium.client, vite.baseUrl, "/", "home");
+    await verifyTopicNavigationScroll(chromium.client, vite.baseUrl, "/q-bits", "q-bits");
     await verifyReturnFlow(chromium.client, vite.baseUrl, "home", "/", "main-page");
     await verifyReturnFlow(chromium.client, vite.baseUrl, "q-bits", "/q-bits", "Q-BITS coverage card");
     await verifyCoverageHover(chromium.client, vite.baseUrl);
