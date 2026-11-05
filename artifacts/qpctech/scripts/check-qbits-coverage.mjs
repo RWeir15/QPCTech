@@ -19,7 +19,7 @@ const expectedRows = [
   ],
   [
     "Network Security",
-    "ProtectionUbiquiti UniFiUniFi secures network hardware with segmentation, firewalls, and VLANs.",
+    "ProtectionUbiquitiUnifiUniFi secures network hardware with segmentation, firewalls, and VLANs.",
     "DetectionUniFiSIEMUniFi is standard; SIEM analyzes network logs for anomalies on some client setups.SIEM means Security Information and Event Management.",
     "ResponseUniFiSIEMAlerts are investigated, affected systems are isolated, and network threats are resolved.",
   ],

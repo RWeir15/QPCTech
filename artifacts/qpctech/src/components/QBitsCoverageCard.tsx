@@ -83,7 +83,7 @@ const layers: CoverageLayer[] = [
         title: "Protection",
         phase: "Preventative",
         icon: ShieldCheck,
-        providers: [{ label: "Ubiquiti UniFi" }],
+        providers: [{ label: "Ubiquiti" }, { label: "Unifi" }],
         copy: "UniFi secures network hardware with segmentation, firewalls, and VLANs.",
       },
       {
