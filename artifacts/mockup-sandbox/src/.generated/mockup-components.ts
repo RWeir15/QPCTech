@@ -3,10 +3,10 @@ type ModuleMap = Record<string, () => Promise<Record<string, unknown>>>;
 export const modules: ModuleMap = {
   "./components/mockups/qbits-coverage-card/Current.tsx": () => import("../components/mockups/qbits-coverage-card/Current.tsx"),
   "./components/mockups/qbits-coverage-card/Redesign.tsx": () => import("../components/mockups/qbits-coverage-card/Redesign.tsx"),
-  "./components/mockups/qpctech-redesign/Homepage.tsx": () => import("../components/mockups/qpctech-redesign/Homepage.tsx"),
   "./components/mockups/qpctech-palettes/PaletteA.tsx": () => import("../components/mockups/qpctech-palettes/PaletteA.tsx"),
   "./components/mockups/qpctech-palettes/PaletteB.tsx": () => import("../components/mockups/qpctech-palettes/PaletteB.tsx"),
   "./components/mockups/qpctech-palettes/PaletteC.tsx": () => import("../components/mockups/qpctech-palettes/PaletteC.tsx"),
+  "./components/mockups/qpctech-redesign/Homepage.tsx": () => import("../components/mockups/qpctech-redesign/Homepage.tsx"),
   "./components/mockups/qpctech-variants/BoldDark.tsx": () => import("../components/mockups/qpctech-variants/BoldDark.tsx"),
   "./components/mockups/qpctech-variants/HeroCleanMix.tsx": () => import("../components/mockups/qpctech-variants/HeroCleanMix.tsx"),
   "./components/mockups/qpctech-variants/HeroVibrant.tsx": () => import("../components/mockups/qpctech-variants/HeroVibrant.tsx"),

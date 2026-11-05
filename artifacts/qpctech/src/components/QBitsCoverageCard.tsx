@@ -50,7 +50,7 @@ const layers: CoverageLayer[] = [
         title: "Protection",
         phase: "Preventative",
         icon: ShieldCheck,
-        providers: [{ label: "NinjaOne" }],
+        providers: [{ label: "NinjaOne" }, { label: "Windows Defender" }],
         copy: "Provides preventative maintenance, patching, OS updates, and system hardening. Used alongside Huntress to remotely access computers, troubleshoot and resolve issues, and review detailed device information.",
       },
       {
@@ -83,7 +83,7 @@ const layers: CoverageLayer[] = [
         title: "Protection",
         phase: "Preventative",
         icon: ShieldCheck,
-        providers: [{ label: "Ubiquiti" }, { label: "Unifi" }],
+        providers: [{ label: "Unifi" }],
         copy: "UniFi secures network hardware with segmentation, firewalls, and VLANs.",
       },
       {

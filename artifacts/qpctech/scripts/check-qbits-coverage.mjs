@@ -13,13 +13,13 @@ const routes = ["/", "/q-bits"];
 const expectedRows = [
   [
     "PC / Endpoint Security",
-    "ProtectionNinjaOneProvides preventative maintenance, patching, OS updates, and system hardening. Used alongside Huntress to remotely access computers, troubleshoot and resolve issues, and review detailed device information.",
+    "ProtectionNinjaOneWindows DefenderProvides preventative maintenance, patching, OS updates, and system hardening. Used alongside Huntress to remotely access computers, troubleshoot and resolve issues, and review detailed device information.",
     "DetectionHuntress EDRHuntress EDR monitors endpoints 24/7 for suspicious behavior and persistent access.",
     "ResponseHuntress SOCHuntress SOC hunts threats and isolates devices; local remediation and support are provided.",
   ],
   [
     "Network Security",
-    "ProtectionUbiquitiUnifiUniFi secures network hardware with segmentation, firewalls, and VLANs.",
+    "ProtectionUnifiUniFi secures network hardware with segmentation, firewalls, and VLANs.",
     "DetectionUniFiSIEMUniFi is standard; SIEM analyzes network logs for anomalies on some client setups.SIEM means Security Information and Event Management.",
     "ResponseUniFiSIEMAlerts are investigated, affected systems are isolated, and network threats are resolved.",
   ],
