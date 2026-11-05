@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { ArrowLeft, ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ShieldCheck } from "lucide-react";
 import { Link } from "wouter";
-import { getQBitsTopic, qbitsTopics } from "./qbits-topic-content";
+import { getQBitsTopic } from "./qbits-topic-content";
 import styles from "./QBitsTopic.module.css";
 
 interface QBitsTopicPageProps {
@@ -57,10 +57,6 @@ export function QBitsTopicPage({
     );
   }
 
-  const relatedTopics = qbitsTopics.filter(
-    (candidate) => candidate.area === topic.area && candidate.slug !== topic.slug,
-  );
-
   return (
     <div className={styles.pageContainer}>
       <Header />
@@ -99,11 +95,6 @@ export function QBitsTopicPage({
               </section>
             ))}
 
-            <aside className={styles.takeaway}>
-              <p className={styles.takeawayLabel}>The short version</p>
-              <p>{topic.takeaway}</p>
-            </aside>
-
             <Link href="/q-bits" className={styles.backLink}>
               <ArrowLeft size={16} aria-hidden="true" />
               Back to the Q-BITS coverage card
@@ -121,10 +112,6 @@ export function QBitsTopicPage({
                   <span className={styles.toolBadge} key={tool}>{tool}</span>
                 ))}
               </div>
-              <Link href="/q-bits" className={styles.coverageLink}>
-                View all coverage
-                <ArrowRight size={15} aria-hidden="true" />
-              </Link>
             </div>
             <ContactBox
               headline="Have a question about Q-BITS?"
@@ -132,33 +119,6 @@ export function QBitsTopicPage({
             />
           </aside>
         </div>
-
-        {relatedTopics.length > 0 && (
-          <section className={styles.relatedSection} aria-labelledby="related-topics-heading">
-            <div className={styles.relatedHeader}>
-              <div>
-                <p className={styles.eyebrow}>Continue reading</p>
-                <h2 id="related-topics-heading">More in {topic.area}</h2>
-              </div>
-              <Link href="/q-bits" className={styles.textLink}>All coverage</Link>
-            </div>
-            <div className={styles.relatedGrid}>
-              {relatedTopics.map((related) => (
-                <Link
-                  href={`/q-bits/topics/${related.slug}`}
-                  className={styles.relatedCard}
-                  key={related.slug}
-                >
-                  <span className={styles.relatedStage}>{related.stage}</span>
-                  <span className={styles.relatedTitle}>{related.title}</span>
-                  <span className={styles.relatedArrow} aria-hidden="true">
-                    <ArrowRight size={16} />
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </section>
-        )}
       </main>
       <Footer />
     </div>

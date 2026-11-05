@@ -19,6 +19,14 @@ The user plans to confirm the exact Q-BITS coverage content with coworkers befor
 
 **How to apply:** Treat current Q-BITS coverage and topic articles as drafts that may need revision after that discussion.
 
+## Article navigation
+
+Do not link Q-BITS topic articles to one another in a "Continue reading" section unless the user supplies specific links.
+
+**Why:** the user wants each topic page to stand alone and plans to provide the destinations they want used for future reading links.
+
+**How to apply:** Keep sibling-article links off the pages; add "Continue reading" links only after the user supplies their preferred destinations.
+
 **Why:** The user supplied the detailed coverage map in the Q-BITS redesign brief and specified SIEM is only used for some clients.
 
 **How to apply:** Keep all four areas separated into Protection, Detection, and Response, label SIEM as client-specific, and distinguish partner tools from QPC-managed work.

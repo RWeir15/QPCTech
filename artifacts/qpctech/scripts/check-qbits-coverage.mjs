@@ -287,6 +287,10 @@ async function verifyTopicPage(client, baseUrl, slug) {
       heading: document.querySelector("h1")?.textContent.trim(),
       sectionCount: article?.querySelectorAll("section h2").length ?? 0,
       textLength: article?.textContent.trim().length ?? 0,
+      hasShortVersion: article?.textContent.includes("The short version") ?? false,
+      hasContinueReading: [...document.querySelectorAll("main p")]
+        .some((paragraph) => paragraph.textContent.trim() === "Continue reading"),
+      relatedTopicLinkCount: document.querySelectorAll('main a[href^="/q-bits/topics/"]').length,
       backLink: article?.querySelector('a[href="/q-bits"]')?.textContent.trim() ?? "",
       articleBounds: bounds ? { left: bounds.left, right: bounds.right, width: bounds.width } : null,
       viewportWidth: window.innerWidth,
@@ -297,6 +301,9 @@ async function verifyTopicPage(client, baseUrl, slug) {
   assert(Boolean(page.heading), `${route}: article heading is missing.`);
   assert(page.sectionCount >= 2, `${route}: article needs at least two explanatory sections.`);
   assert(page.textLength > 400, `${route}: article content is too short.`);
+  assert(!page.hasShortVersion, `${route}: the short-version summary should not be shown.`);
+  assert(!page.hasContinueReading, `${route}: sibling article navigation should not be shown.`);
+  assert(page.relatedTopicLinkCount === 0, `${route}: article links to another topic page.`);
   assert(page.backLink.includes("Back to the Q-BITS coverage card"), `${route}: back link is missing.`);
   assert(
     page.articleBounds && page.articleBounds.left >= -1 && page.articleBounds.right <= page.viewportWidth + 1,
@@ -341,7 +348,10 @@ async function verifyCoverageHover(client, baseUrl) {
 
   assert(hovered.top < before.top - 3, `${route}: coverage box did not lift on hover.`);
   assert(hovered.transform !== "none", `${route}: coverage box hover transform is missing.`);
-  assert(hovered.borderColor === "rgb(55, 181, 230)", `${route}: coverage box hover border color is missing.`);
+  assert(
+    hovered.borderColor === "rgb(55, 181, 230)",
+    `${route}: coverage box hover border color is missing (received ${hovered.borderColor}).`,
+  );
   assert(hovered.boxShadow !== "none", `${route}: coverage box hover shadow is missing.`);
   console.log("PASS /q-bits: coverage box lifts and gains the matching border and shadow on hover.");
 }

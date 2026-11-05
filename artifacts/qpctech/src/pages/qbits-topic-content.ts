@@ -11,7 +11,6 @@ export type QBitsTopic = {
   lead: string;
   tools: string[];
   sections: QBitsTopicSection[];
-  takeaway: string;
 };
 
 export const qbitsTopics: QBitsTopic[] = [
@@ -37,7 +36,6 @@ export const qbitsTopics: QBitsTopic[] = [
         ],
       },
     ],
-    takeaway: "NinjaOne helps monitor, maintain, and remotely troubleshoot computers.",
   },
   {
     slug: "pc-detection",
@@ -61,7 +59,6 @@ export const qbitsTopics: QBitsTopic[] = [
         ],
       },
     ],
-    takeaway: "Huntress EDR monitors endpoints around the clock for suspicious activity.",
   },
   {
     slug: "pc-response",
@@ -85,7 +82,6 @@ export const qbitsTopics: QBitsTopic[] = [
         ],
       },
     ],
-    takeaway: "Huntress SOC investigates threats and isolates affected devices; local support handles remediation.",
   },
   {
     slug: "network-protection",
@@ -109,7 +105,6 @@ export const qbitsTopics: QBitsTopic[] = [
         ],
       },
     ],
-    takeaway: "UniFi provides the network platform for segmentation, firewall controls, and VLANs.",
   },
   {
     slug: "network-detection",
@@ -133,7 +128,6 @@ export const qbitsTopics: QBitsTopic[] = [
         ],
       },
     ],
-    takeaway: "UniFi is standard for network coverage; SIEM can provide additional log analysis.",
   },
   {
     slug: "network-response",
@@ -157,7 +151,6 @@ export const qbitsTopics: QBitsTopic[] = [
         ],
       },
     ],
-    takeaway: "Network response focuses on investigating alerts, containing affected systems, and resolving threats.",
   },
   {
     slug: "identity-protection",
@@ -181,7 +174,6 @@ export const qbitsTopics: QBitsTopic[] = [
         ],
       },
     ],
-    takeaway: "Entra ID and Google Admin Console support MFA, administrative controls, and Conditional Access.",
   },
   {
     slug: "identity-detection",
@@ -205,7 +197,6 @@ export const qbitsTopics: QBitsTopic[] = [
         ],
       },
     ],
-    takeaway: "ITDR helps monitor for compromised credentials, unauthorized logins, and privilege abuse.",
   },
   {
     slug: "identity-response",
@@ -229,7 +220,6 @@ export const qbitsTopics: QBitsTopic[] = [
         ],
       },
     ],
-    takeaway: "Identity response focuses on securing affected accounts and reviewing the incident.",
   },
   {
     slug: "web-protection",
@@ -253,7 +243,6 @@ export const qbitsTopics: QBitsTopic[] = [
         ],
       },
     ],
-    takeaway: "DNS, SPF, DKIM, and DMARC support domain reputation and secure email delivery.",
   },
   {
     slug: "web-detection",
@@ -277,7 +266,6 @@ export const qbitsTopics: QBitsTopic[] = [
         ],
       },
     ],
-    takeaway: "Cloudflare monitors traffic and helps mitigate DDoS attacks and malicious bots.",
   },
   {
     slug: "web-response",
@@ -301,7 +289,6 @@ export const qbitsTopics: QBitsTopic[] = [
         ],
       },
     ],
-    takeaway: "Web response includes reviewing Cloudflare alerts and resolving web, DNS, or site-security issues.",
   },
 ];
 
