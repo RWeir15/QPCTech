@@ -249,7 +249,10 @@ async function verifyRoute(client, baseUrl, route) {
     JSON.stringify(page.rows) === JSON.stringify(expectedRows),
     `${route}: expected coverage rows were not found. Received: ${JSON.stringify(page.rows)}`,
   );
-  const expectedTopicLinks = expectedTopicSlugs.map((slug) => `/q-bits/topics/${slug}`).sort();
+  const source = route === "/q-bits" ? "q-bits" : "home";
+  const expectedTopicLinks = expectedTopicSlugs
+    .map((slug) => `/q-bits/topics/${slug}?from=${source}`)
+    .sort();
   assert(
     JSON.stringify(page.topicLinks) === JSON.stringify(expectedTopicLinks),
     `${route}: expected every coverage box to link to its own topic page.`,
@@ -291,7 +294,8 @@ async function verifyTopicPage(client, baseUrl, slug) {
       hasContinueReading: [...document.querySelectorAll("main p")]
         .some((paragraph) => paragraph.textContent.trim() === "Continue reading"),
       relatedTopicLinkCount: document.querySelectorAll('main a[href^="/q-bits/topics/"]').length,
-      backLink: article?.querySelector('a[href="/q-bits"]')?.textContent.trim() ?? "",
+      backHref: article?.querySelector("a")?.getAttribute("href") ?? "",
+      backLink: article?.querySelector("a")?.textContent.trim() ?? "",
       articleBounds: bounds ? { left: bounds.left, right: bounds.right, width: bounds.width } : null,
       viewportWidth: window.innerWidth,
     };
@@ -304,6 +308,7 @@ async function verifyTopicPage(client, baseUrl, slug) {
   assert(!page.hasShortVersion, `${route}: the short-version summary should not be shown.`);
   assert(!page.hasContinueReading, `${route}: sibling article navigation should not be shown.`);
   assert(page.relatedTopicLinkCount === 0, `${route}: article links to another topic page.`);
+  assert(page.backHref === "/q-bits#qbits-bingo-title", `${route}: direct-visit fallback return link is wrong.`);
   assert(page.backLink.includes("Back to the Q-BITS coverage card"), `${route}: back link is missing.`);
   assert(
     page.articleBounds && page.articleBounds.left >= -1 && page.articleBounds.right <= page.viewportWidth + 1,
@@ -311,6 +316,50 @@ async function verifyTopicPage(client, baseUrl, slug) {
   );
 
   console.log(`PASS ${route}: topic article renders and fits ${page.viewportWidth}px phone viewport.`);
+}
+
+async function verifyReturnFlow(client, baseUrl, source, expectedPath, expectedLabel) {
+  const route = `/q-bits/topics/pc-protection?from=${source}`;
+  await client.send("Page.navigate", { url: new URL(route.replace(/^\//, ""), baseUrl).toString() });
+  await waitFor(
+    () => client.evaluate("Boolean(document.querySelector('main article a'))"),
+    `the ${source} return link`,
+  );
+
+  const backLink = await client.evaluate(`(() => {
+    const link = document.querySelector("main article a");
+    return { href: link.getAttribute("href"), text: link.textContent.trim() };
+  })()`);
+  const expectedHref = `${expectedPath}#qbits-bingo-title`;
+  assert(backLink.href === expectedHref, `${route}: return link does not preserve its source page.`);
+  assert(backLink.text.includes(expectedLabel), `${route}: return link label does not match its source page.`);
+
+  await client.evaluate(`document.querySelector("main article a").click()`);
+  await waitFor(
+    () => client.evaluate(`(() => {
+      const heading = document.getElementById("qbits-bingo-title");
+      return location.pathname === ${JSON.stringify(expectedPath)}
+        && Boolean(heading)
+        && heading.getBoundingClientRect().top < window.innerHeight;
+    })()`),
+    `return to ${expectedPath} coverage card`,
+  );
+  const destination = await client.evaluate(`(() => {
+    const heading = document.getElementById("qbits-bingo-title");
+    return {
+      pathname: location.pathname,
+      hash: location.hash,
+      headingTop: heading.getBoundingClientRect().top,
+      viewportHeight: window.innerHeight,
+    };
+  })()`);
+  assert(destination.hash === "#qbits-bingo-title", `${route}: return navigation lost the coverage-card anchor.`);
+  assert(
+    destination.headingTop >= -20 && destination.headingTop < destination.viewportHeight,
+    `${route}: return navigation did not bring the original coverage card into view.`,
+  );
+
+  console.log(`PASS ${route}: return link leads back to ${expectedPath} and its coverage card.`);
 }
 
 async function verifyCoverageHover(client, baseUrl) {
@@ -323,12 +372,12 @@ async function verifyCoverageHover(client, baseUrl) {
   });
   await client.send("Page.navigate", { url: new URL("q-bits", baseUrl).toString() });
   await waitFor(
-    () => client.evaluate("Boolean(document.querySelector('a[href=\"/q-bits/topics/pc-protection\"]'))"),
+    () => client.evaluate("Boolean(document.querySelector('a[href^=\"/q-bits/topics/pc-protection\"]'))"),
     "the desktop Q-BITS coverage card",
   );
 
   const before = await client.evaluate(`(() => {
-    const link = document.querySelector('a[href="/q-bits/topics/pc-protection"]');
+    const link = document.querySelector('a[href^="/q-bits/topics/pc-protection"]');
     link.scrollIntoView({ block: "center" });
     const bounds = link.getBoundingClientRect();
     return { x: bounds.left + bounds.width / 2, y: bounds.top + bounds.height / 2, top: bounds.top };
@@ -341,7 +390,7 @@ async function verifyCoverageHover(client, baseUrl) {
   await delay(280);
 
   const hovered = await client.evaluate(`(() => {
-    const link = document.querySelector('a[href="/q-bits/topics/pc-protection"]');
+    const link = document.querySelector('a[href^="/q-bits/topics/pc-protection"]');
     const style = getComputedStyle(link);
     return { top: link.getBoundingClientRect().top, transform: style.transform, borderColor: style.borderColor, boxShadow: style.boxShadow };
   })()`);
@@ -349,7 +398,7 @@ async function verifyCoverageHover(client, baseUrl) {
   assert(hovered.top < before.top - 3, `${route}: coverage box did not lift on hover.`);
   assert(hovered.transform !== "none", `${route}: coverage box hover transform is missing.`);
   assert(
-    hovered.borderColor === "rgb(55, 181, 230)",
+    /^rgba?\(\s*55,\s*181,\s*230(?:\s*,|\s*\))/.test(hovered.borderColor),
     `${route}: coverage box hover border color is missing (received ${hovered.borderColor}).`,
   );
   assert(hovered.boxShadow !== "none", `${route}: coverage box hover shadow is missing.`);
@@ -386,6 +435,8 @@ async function main() {
     for (const slug of expectedTopicSlugs) {
       await verifyTopicPage(chromium.client, vite.baseUrl, slug);
     }
+    await verifyReturnFlow(chromium.client, vite.baseUrl, "home", "/", "main-page");
+    await verifyReturnFlow(chromium.client, vite.baseUrl, "q-bits", "/q-bits", "Q-BITS coverage card");
     await verifyCoverageHover(chromium.client, vite.baseUrl);
   } finally {
     chromium?.client.socket.close();

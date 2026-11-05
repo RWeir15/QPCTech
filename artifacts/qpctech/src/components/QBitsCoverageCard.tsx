@@ -8,7 +8,7 @@ import {
   Wrench,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import styles from "./QBitsCoverageCard.module.css";
 
 const coverageColumns = [
@@ -189,6 +189,9 @@ const layers: CoverageLayer[] = [
 ];
 
 export function QBitsCoverageCard() {
+  const [location] = useLocation();
+  const source = location === "/q-bits" || location === "/q-bits/" ? "q-bits" : "home";
+
   return (
     <section className={styles.bingoSection} aria-labelledby="qbits-bingo-title">
       <div className={styles.bingoContainer}>
@@ -222,7 +225,7 @@ export function QBitsCoverageCard() {
                 return (
                   <div className={`${styles.bingoCell} ${styles.coverageCell}`} role="cell" data-label={column.label} data-testid={`text-qbits-${index + 1}-${column.kind}`} key={column.kind}>
                     <Link
-                      href={`/q-bits/topics/${step.slug}`}
+                      href={`/q-bits/topics/${step.slug}?from=${source}`}
                       className={styles.cellAction}
                       aria-label={`Read the ${column.label.toLowerCase()} article for ${layer.title}`}
                     >

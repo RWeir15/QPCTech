@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { ArrowLeft, ShieldCheck } from "lucide-react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { getQBitsTopic } from "./qbits-topic-content";
 import styles from "./QBitsTopic.module.css";
 
@@ -20,6 +20,28 @@ export function QBitsTopicPage({
   ContactBox,
 }: QBitsTopicPageProps) {
   const topic = getQBitsTopic(slug);
+  const [, navigate] = useLocation();
+  const source = typeof window !== "undefined"
+    ? new URLSearchParams(window.location.search).get("from")
+    : null;
+  const returnTo = source === "home" ? "/#qbits-bingo-title" : "/q-bits#qbits-bingo-title";
+  const returnLabel = source === "home"
+    ? "Back to the main-page coverage card"
+    : "Back to the Q-BITS coverage card";
+
+  const returnToCoverageCard = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    navigate(returnTo);
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        const cardHeading = document.getElementById("qbits-bingo-title");
+        if (!cardHeading) return;
+        const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+        cardHeading.scrollIntoView({ behavior, block: "start" });
+      });
+    });
+  };
 
   useEffect(() => {
     if (!topic) return;
@@ -47,9 +69,9 @@ export function QBitsTopicPage({
           <p className={styles.eyebrow}>Q-BITS guide</p>
           <h1>Topic not found</h1>
           <p>This topic may have moved. Return to the coverage card to choose another one.</p>
-          <Link href="/q-bits" className={styles.backLink}>
+          <Link href={returnTo} className={styles.backLink} onClick={returnToCoverageCard}>
             <ArrowLeft size={16} aria-hidden="true" />
-            Back to Q-BITS
+            {returnLabel}
           </Link>
         </main>
         <Footer />
@@ -95,9 +117,9 @@ export function QBitsTopicPage({
               </section>
             ))}
 
-            <Link href="/q-bits" className={styles.backLink}>
+            <Link href={returnTo} className={styles.backLink} onClick={returnToCoverageCard}>
               <ArrowLeft size={16} aria-hidden="true" />
-              Back to the Q-BITS coverage card
+              {returnLabel}
             </Link>
           </article>
 
