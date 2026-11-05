@@ -18,7 +18,6 @@ const coverageColumns = [
 
 type ProviderBadge = {
   label: string;
-  type: "partner" | "qpc";
 };
 
 type CoverageStep = {
@@ -47,7 +46,7 @@ const layers: CoverageLayer[] = [
         title: "Protection",
         phase: "Preventative",
         icon: ShieldCheck,
-        providers: [{ label: "NinjaOne", type: "partner" }],
+        providers: [{ label: "NinjaOne" }],
         copy: "Provides preventative maintenance, patching, OS updates, and system hardening. Used alongside Huntress to remotely access computers, troubleshoot and resolve issues, and review detailed device information.",
       },
       {
@@ -55,7 +54,7 @@ const layers: CoverageLayer[] = [
         title: "Detection",
         phase: "Monitoring",
         icon: Activity,
-        providers: [{ label: "Huntress EDR", type: "partner" }],
+        providers: [{ label: "Huntress EDR" }],
         copy: "Huntress EDR monitors endpoints 24/7 for suspicious behavior and persistent access.",
       },
       {
@@ -63,11 +62,8 @@ const layers: CoverageLayer[] = [
         title: "Response",
         phase: "Remediation",
         icon: Wrench,
-        providers: [
-          { label: "Huntress SOC", type: "partner" },
-          { label: "QPC", type: "qpc" },
-        ],
-        copy: "Huntress SOC hunts threats and isolates devices; QPC provides local remediation and support.",
+        providers: [{ label: "Huntress SOC" }],
+        copy: "Huntress SOC hunts threats and isolates devices; local remediation and support are provided.",
       },
     ],
   },
@@ -80,7 +76,7 @@ const layers: CoverageLayer[] = [
         title: "Protection",
         phase: "Preventative",
         icon: ShieldCheck,
-        providers: [{ label: "Ubiquiti UniFi", type: "partner" }],
+        providers: [{ label: "Ubiquiti UniFi" }],
         copy: "UniFi secures network hardware with segmentation, firewalls, and VLANs.",
       },
       {
@@ -89,8 +85,8 @@ const layers: CoverageLayer[] = [
         phase: "Monitoring",
         icon: Activity,
         providers: [
-          { label: "UniFi", type: "partner" },
-          { label: "SIEM · some clients", type: "partner" },
+          { label: "UniFi" },
+          { label: "SIEM" },
         ],
         copy: "UniFi is standard; SIEM analyzes network logs for anomalies on some client setups.",
         note: "SIEM means Security Information and Event Management.",
@@ -100,8 +96,11 @@ const layers: CoverageLayer[] = [
         title: "Response",
         phase: "Remediation",
         icon: Wrench,
-        providers: [{ label: "QPC", type: "qpc" }],
-        copy: "QPC investigates alerts, isolates affected systems, and resolves network threats.",
+        providers: [
+          { label: "UniFi" },
+          { label: "SIEM" },
+        ],
+        copy: "Alerts are investigated, affected systems are isolated, and network threats are resolved.",
       },
     ],
   },
@@ -115,8 +114,8 @@ const layers: CoverageLayer[] = [
         phase: "Preventative",
         icon: ShieldCheck,
         providers: [
-          { label: "Microsoft Entra ID", type: "partner" },
-          { label: "Google Admin Console", type: "partner" },
+          { label: "Microsoft Entra ID" },
+          { label: "Google Admin Console" },
         ],
         copy: "Entra ID and Google Admin Console use MFA, admin controls, and Conditional Access to help secure accounts.",
       },
@@ -126,18 +125,17 @@ const layers: CoverageLayer[] = [
         phase: "Monitoring",
         icon: Activity,
         providers: [
-          { label: "ITDR", type: "partner" },
-          { label: "QPC", type: "qpc" },
+          { label: "ITDR" },
         ],
-        copy: "ITDR (Identity Threat Detection and Response) and QPC monitor for compromised credentials, unauthorized logins, and privilege abuse.",
+        copy: "ITDR monitors for compromised credentials, unauthorized logins, and privilege abuse.",
       },
       {
         kind: "response",
         title: "Response",
         phase: "Remediation",
         icon: Wrench,
-        providers: [{ label: "QPC", type: "qpc" }],
-        copy: "QPC takes immediate action to lock down compromised accounts.",
+        providers: [{ label: "ITDR" }],
+        copy: "Compromised accounts are quickly locked down.",
       },
     ],
   },
@@ -151,8 +149,8 @@ const layers: CoverageLayer[] = [
         phase: "Preventative",
         icon: ShieldCheck,
         providers: [
-          { label: "DNS", type: "partner" },
-          { label: "SPF · DKIM · DMARC", type: "partner" },
+          { label: "DNS" },
+          { label: "SPF · DKIM · DMARC" },
         ],
         copy: "DNS, SPF, DKIM, and DMARC records help protect domain reputation and secure email delivery.",
       },
@@ -161,7 +159,7 @@ const layers: CoverageLayer[] = [
         title: "Detection",
         phase: "Monitoring",
         icon: Activity,
-        providers: [{ label: "Cloudflare", type: "partner" }],
+        providers: [{ label: "Cloudflare" }],
         copy: "Cloudflare monitors traffic and helps mitigate DDoS attacks and malicious bots.",
       },
       {
@@ -169,8 +167,8 @@ const layers: CoverageLayer[] = [
         title: "Response",
         phase: "Remediation",
         icon: Wrench,
-        providers: [{ label: "QPC", type: "qpc" }],
-        copy: "QPC reviews Cloudflare alerts and resolves web threats, DNS changes, or site-security issues.",
+        providers: [{ label: "Cloudflare" }],
+        copy: "Cloudflare alerts are reviewed, and web threats, DNS changes, or site-security issues are resolved.",
       },
     ],
   },
@@ -187,8 +185,7 @@ export function QBitsCoverageCard() {
             See how each area is protected, monitored, and supported.
           </p>
           <div className={styles.legend} aria-label="Coverage providers">
-            <span className={styles.legendItem}><span className={styles.partnerKey} aria-hidden="true" /> Technology partner</span>
-            <span className={styles.legendItem}><span className={styles.qpcKey} aria-hidden="true" /> QPC team</span>
+            <span className={styles.legendItem}><span className={styles.partnerKey} aria-hidden="true" /> Services</span>
           </div>
         </div>
 
@@ -214,7 +211,7 @@ export function QBitsCoverageCard() {
                     <div className={styles.cellContent}>
                       <div className={styles.providerList}>
                         {step.providers.map((provider) => (
-                          <span className={`${styles.providerBadge} ${provider.type === "qpc" ? styles.qpcBadge : styles.partnerBadge}`} key={provider.label}>
+                          <span className={styles.providerBadge} key={provider.label}>
                             {provider.label}
                           </span>
                         ))}
