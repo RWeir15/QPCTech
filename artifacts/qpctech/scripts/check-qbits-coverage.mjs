@@ -11,10 +11,44 @@ const packageDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".
 const viewport = { width: 390, height: 844, deviceScaleFactor: 1, mobile: true };
 const routes = ["/", "/q-bits"];
 const expectedRows = [
-  ["PC", "Huntress", "Huntress", "Huntress"],
-  ["Network", "UniFi", "UniFi", "UniFi"],
-  ["Online Identity", "To be confirmed", "To be confirmed", "To be confirmed"],
-  ["Web Presence", "To be confirmed", "To be confirmed", "To be confirmed"],
+  [
+    "PC / Endpoint Security",
+    "ProtectionNinjaOneProvides preventative maintenance, patching, OS updates, and system hardening. Used alongside Huntress to remotely access computers, troubleshoot and resolve issues, and review detailed device information.",
+    "DetectionHuntress EDRHuntress EDR monitors endpoints 24/7 for suspicious behavior and persistent access.",
+    "ResponseHuntress SOCHuntress SOC hunts threats and isolates devices; local remediation and support are provided.",
+  ],
+  [
+    "Network Security",
+    "ProtectionUbiquiti UniFiUniFi secures network hardware with segmentation, firewalls, and VLANs.",
+    "DetectionUniFiSIEMUniFi is standard; SIEM analyzes network logs for anomalies on some client setups.SIEM means Security Information and Event Management.",
+    "ResponseUniFiSIEMAlerts are investigated, affected systems are isolated, and network threats are resolved.",
+  ],
+  [
+    "Online Identity",
+    "ProtectionMicrosoft Entra IDGoogle Admin ConsoleEntra ID and Google Admin Console use MFA, admin controls, and Conditional Access to help secure accounts.",
+    "DetectionITDRITDR monitors for compromised credentials, unauthorized logins, and privilege abuse.",
+    "ResponseITDRCompromised accounts are quickly locked down.",
+  ],
+  [
+    "Web Presence & Email Security",
+    "ProtectionDNSSPF · DKIM · DMARCDNS, SPF, DKIM, and DMARC records help protect domain reputation and secure email delivery.",
+    "DetectionCloudflareCloudflare monitors traffic and helps mitigate DDoS attacks and malicious bots.",
+    "ResponseCloudflareCloudflare alerts are reviewed, and web threats, DNS changes, or site-security issues are resolved.",
+  ],
+];
+const expectedTopicSlugs = [
+  "pc-protection",
+  "pc-detection",
+  "pc-response",
+  "network-protection",
+  "network-detection",
+  "network-response",
+  "identity-protection",
+  "identity-detection",
+  "identity-response",
+  "web-protection",
+  "web-detection",
+  "web-response",
 ];
 
 function assert(condition, message) {
@@ -187,7 +221,7 @@ async function verifyRoute(client, baseUrl, route) {
     const rows = [...(board?.querySelectorAll('[role="row"]') ?? [])]
       .filter((row) => !row.querySelector('[role="columnheader"]'))
       .map((row) => [...row.querySelectorAll('[role="rowheader"], [role="cell"]')]
-        .map((cell) => cell.textContent.replace(/\\\\s+/g, " ").trim()));
+        .map((cell) => cell.textContent.replace(/Read topic/g, "").replace(/\\\\s+/g, " ").trim()));
     const rect = (element) => {
       const bounds = element.getBoundingClientRect();
       return { left: bounds.left, right: bounds.right, width: bounds.width, scrollWidth: element.scrollWidth, clientWidth: element.clientWidth };
@@ -196,6 +230,9 @@ async function verifyRoute(client, baseUrl, route) {
       title: card?.querySelector("h2")?.textContent.trim(),
       headers: [...(board?.querySelectorAll('[role="columnheader"]') ?? [])].map((cell) => cell.textContent.trim()),
       rows,
+      topicLinks: [...(card?.querySelectorAll('a[href^="/q-bits/topics/"]') ?? [])]
+        .map((link) => link.getAttribute("href"))
+        .sort(),
       viewportWidth: window.innerWidth,
       section: rect(card),
       board: rect(board),
@@ -211,6 +248,11 @@ async function verifyRoute(client, baseUrl, route) {
   assert(
     JSON.stringify(page.rows) === JSON.stringify(expectedRows),
     `${route}: expected coverage rows were not found. Received: ${JSON.stringify(page.rows)}`,
+  );
+  const expectedTopicLinks = expectedTopicSlugs.map((slug) => `/q-bits/topics/${slug}`).sort();
+  assert(
+    JSON.stringify(page.topicLinks) === JSON.stringify(expectedTopicLinks),
+    `${route}: expected every coverage box to link to its own topic page.`,
   );
 
   const bounds = [page.section, page.board, ...page.descendants];
@@ -228,6 +270,54 @@ async function verifyRoute(client, baseUrl, route) {
   console.log(`PASS ${route}: Q-BITS rows present and card fits ${page.viewportWidth}px phone viewport.`);
 }
 
+async function verifyTopicPage(client, baseUrl, slug) {
+  const route = `/q-bits/topics/${slug}`;
+  await client.send("Page.navigate", { url: new URL(route.replace(/^\//, ""), baseUrl).toString() });
+
+  await waitFor(
+    () => client.evaluate("Boolean(document.querySelector('main article h2'))"),
+    `the ${slug} topic article`,
+  );
+
+  const page = await client.evaluate(`(() => {
+    const article = document.querySelector("main article");
+    const bounds = article?.getBoundingClientRect();
+    return {
+      title: document.title,
+      heading: document.querySelector("h1")?.textContent.trim(),
+      sectionCount: article?.querySelectorAll("section h2").length ?? 0,
+      textLength: article?.textContent.trim().length ?? 0,
+      backLink: article?.querySelector('a[href="/q-bits"]')?.textContent.trim() ?? "",
+      articleBounds: bounds ? { left: bounds.left, right: bounds.right, width: bounds.width } : null,
+      viewportWidth: window.innerWidth,
+    };
+  })()`);
+
+  assert(page.title.includes("Q-BITS by QPCTech"), `${route}: page title is missing.`);
+  assert(Boolean(page.heading), `${route}: article heading is missing.`);
+  assert(page.sectionCount >= 2, `${route}: article needs at least two explanatory sections.`);
+  assert(page.textLength > 400, `${route}: article content is too short.`);
+  assert(page.backLink.includes("Back to the Q-BITS coverage card"), `${route}: back link is missing.`);
+  assert(
+    page.articleBounds && page.articleBounds.left >= -1 && page.articleBounds.right <= page.viewportWidth + 1,
+    `${route}: article extends beyond the ${page.viewportWidth}px phone viewport.`,
+  );
+
+  console.log(`PASS ${route}: topic article renders and fits ${page.viewportWidth}px phone viewport.`);
+}
+
+async function stopProcess(child) {
+  if (!child || child.exitCode !== null) return;
+  const exited = new Promise((resolve) => child.once("exit", resolve));
+  child.kill("SIGTERM");
+  await Promise.race([exited, delay(3000)]);
+
+  if (child.exitCode === null) {
+    child.kill("SIGKILL");
+    await exited;
+  }
+}
+
 async function main() {
   const chromiumPath = findChromium();
   const port = await findAvailablePort();
@@ -243,11 +333,16 @@ async function main() {
     for (const route of routes) {
       await verifyRoute(chromium.client, vite.baseUrl, route);
     }
+    for (const slug of expectedTopicSlugs) {
+      await verifyTopicPage(chromium.client, vite.baseUrl, slug);
+    }
   } finally {
     chromium?.client.socket.close();
-    chromium?.browser.kill("SIGTERM");
-    vite?.server.kill("SIGTERM");
-    if (chromium) await rm(chromium.profileDir, { recursive: true, force: true });
+    await stopProcess(chromium?.browser);
+    await stopProcess(vite?.server);
+    if (chromium) {
+      await rm(chromium.profileDir, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
+    }
   }
 }
 

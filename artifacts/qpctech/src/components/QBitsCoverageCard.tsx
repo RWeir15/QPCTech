@@ -1,5 +1,6 @@
 import {
   Activity,
+  ArrowUpRight,
   Globe2,
   KeyRound,
   Monitor,
@@ -8,6 +9,7 @@ import {
   Wrench,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { Link } from "wouter";
 import styles from "./QBitsCoverageCard.module.css";
 
 const coverageColumns = [
@@ -22,6 +24,7 @@ type ProviderBadge = {
 
 type CoverageStep = {
   kind: "protection" | "detection" | "response";
+  slug: string;
   title: string;
   phase: string;
   icon: LucideIcon;
@@ -43,6 +46,7 @@ const layers: CoverageLayer[] = [
     steps: [
       {
         kind: "protection",
+        slug: "pc-protection",
         title: "Protection",
         phase: "Preventative",
         icon: ShieldCheck,
@@ -51,6 +55,7 @@ const layers: CoverageLayer[] = [
       },
       {
         kind: "detection",
+        slug: "pc-detection",
         title: "Detection",
         phase: "Monitoring",
         icon: Activity,
@@ -59,6 +64,7 @@ const layers: CoverageLayer[] = [
       },
       {
         kind: "response",
+        slug: "pc-response",
         title: "Response",
         phase: "Remediation",
         icon: Wrench,
@@ -73,6 +79,7 @@ const layers: CoverageLayer[] = [
     steps: [
       {
         kind: "protection",
+        slug: "network-protection",
         title: "Protection",
         phase: "Preventative",
         icon: ShieldCheck,
@@ -81,6 +88,7 @@ const layers: CoverageLayer[] = [
       },
       {
         kind: "detection",
+        slug: "network-detection",
         title: "Detection",
         phase: "Monitoring",
         icon: Activity,
@@ -93,6 +101,7 @@ const layers: CoverageLayer[] = [
       },
       {
         kind: "response",
+        slug: "network-response",
         title: "Response",
         phase: "Remediation",
         icon: Wrench,
@@ -110,6 +119,7 @@ const layers: CoverageLayer[] = [
     steps: [
       {
         kind: "protection",
+        slug: "identity-protection",
         title: "Protection",
         phase: "Preventative",
         icon: ShieldCheck,
@@ -121,6 +131,7 @@ const layers: CoverageLayer[] = [
       },
       {
         kind: "detection",
+        slug: "identity-detection",
         title: "Detection",
         phase: "Monitoring",
         icon: Activity,
@@ -131,6 +142,7 @@ const layers: CoverageLayer[] = [
       },
       {
         kind: "response",
+        slug: "identity-response",
         title: "Response",
         phase: "Remediation",
         icon: Wrench,
@@ -145,6 +157,7 @@ const layers: CoverageLayer[] = [
     steps: [
       {
         kind: "protection",
+        slug: "web-protection",
         title: "Protection",
         phase: "Preventative",
         icon: ShieldCheck,
@@ -156,6 +169,7 @@ const layers: CoverageLayer[] = [
       },
       {
         kind: "detection",
+        slug: "web-detection",
         title: "Detection",
         phase: "Monitoring",
         icon: Activity,
@@ -164,6 +178,7 @@ const layers: CoverageLayer[] = [
       },
       {
         kind: "response",
+        slug: "web-response",
         title: "Response",
         phase: "Remediation",
         icon: Wrench,
@@ -206,19 +221,28 @@ export function QBitsCoverageCard() {
                 if (!step) return null;
 
                 return (
-                  <div className={styles.bingoCell} role="cell" data-label={column.label} data-testid={`text-qbits-${index + 1}-${column.kind}`} key={column.kind}>
-                    <span className={styles.cellLabel}>{column.label}</span>
-                    <div className={styles.cellContent}>
-                      <div className={styles.providerList}>
-                        {step.providers.map((provider) => (
-                          <span className={styles.providerBadge} key={provider.label}>
-                            {provider.label}
-                          </span>
-                        ))}
+                  <div className={`${styles.bingoCell} ${styles.coverageCell}`} role="cell" data-label={column.label} data-testid={`text-qbits-${index + 1}-${column.kind}`} key={column.kind}>
+                    <Link
+                      href={`/q-bits/topics/${step.slug}`}
+                      className={styles.cellAction}
+                      aria-label={`Read the ${column.label.toLowerCase()} article for ${layer.title}`}
+                    >
+                      <span className={styles.cellLabel}>{column.label}</span>
+                      <div className={styles.cellContent}>
+                        <div className={styles.providerList}>
+                          {step.providers.map((provider) => (
+                            <span className={styles.providerBadge} key={provider.label}>
+                              {provider.label}
+                            </span>
+                          ))}
+                        </div>
+                        <p className={styles.cellDescription}>{step.copy}</p>
+                        {step.note && <p className={styles.stepNote}>{step.note}</p>}
+                        <span className={styles.linkHint}>
+                          Read topic <ArrowUpRight size={13} aria-hidden="true" />
+                        </span>
                       </div>
-                      <p className={styles.cellDescription}>{step.copy}</p>
-                      {step.note && <p className={styles.stepNote}>{step.note}</p>}
-                    </div>
+                    </Link>
                   </div>
                 );
               })}

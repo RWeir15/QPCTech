@@ -72,7 +72,7 @@
 
 .bingoBoard {
   overflow: hidden;
-  border: 1px solid #cbd5e1;
+  border: 2px solid #38bdf8;
   border-radius: 14px;
   background: #fff;
   box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
@@ -103,6 +103,11 @@
   text-align: left;
 }
 
+.coverageCell {
+  align-items: stretch;
+  padding: 0;
+}
+
 .bingoCell:last-child {
   border-right: 0;
 }
@@ -129,6 +134,49 @@
 
 .cellLabel {
   display: none;
+}
+
+.cellAction {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  min-height: 148px;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 8px;
+  padding: 18px 16px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 140ms ease, box-shadow 140ms ease;
+}
+
+.cellAction:hover {
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.cellAction:focus-visible {
+  outline: 3px solid #0284c7;
+  outline-offset: -4px;
+}
+
+.linkHint {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 12px;
+  color: #0284c7;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.cellAction:hover .linkHint {
+  text-decoration: underline;
 }
 
 .cellContent {
@@ -209,6 +257,11 @@
     flex-direction: column;
     gap: 8px;
     border-bottom: 1px solid #e2e8f0;
+  }
+
+  .cellAction {
+    min-height: 0;
+    padding: 14px 16px;
   }
 
   .bingoRow:not(.bingoHeader) .bingoCell:nth-child(3) {

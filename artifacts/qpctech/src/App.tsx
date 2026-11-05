@@ -1542,12 +1542,16 @@ function ContactPage() {
 }
 
 import { QBitsPage } from "./pages/QBits";
+import { QBitsTopicPage } from "./pages/QBitsTopic";
 import { OurPartnersPage } from "./pages/OurPartners";
 
 /* ──────────────────────────────────── ROUTER ── */
 export default function App() {
   return (
     <Switch>
+      <Route path="/q-bits/topics/:slug">
+        {(params) => <QBitsTopicPage slug={params.slug} Header={Header} Footer={Footer} PageHero={PageHero} ContactBox={ContactBox} />}
+      </Route>
       <Route path="/q-bits"><QBitsPage Header={Header} Footer={Footer} PageHero={PageHero} ContactBox={ContactBox} /></Route>
       <Route path="/q-bits/"><QBitsPage Header={Header} Footer={Footer} PageHero={PageHero} ContactBox={ContactBox} /></Route>
       <Route path="/our-partners"><OurPartnersPage Header={Header} Footer={Footer} /></Route>

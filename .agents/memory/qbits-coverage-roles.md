@@ -11,6 +11,14 @@ description: Owner-confirmed Protection, Detection, and Response responsibilitie
 - Web Presence & Email Security: DNS, SPF, DKIM, and DMARC protect domains and email; Cloudflare detects web threats; QPC monitors alerts and resolves web, DNS, and site issues.
 - NinjaOne is also the RMM used alongside Huntress to remotely access computers, troubleshoot, resolve issues, and review device details.
 
+## Review status
+
+The user plans to confirm the exact Q-BITS coverage content with coworkers before considering the card and related article copy final.
+
+**Why:** the user said they would finish the page after discussing what should go in it with coworkers.
+
+**How to apply:** Treat current Q-BITS coverage and topic articles as drafts that may need revision after that discussion.
+
 **Why:** The user supplied the detailed coverage map in the Q-BITS redesign brief and specified SIEM is only used for some clients.
 
 **How to apply:** Keep all four areas separated into Protection, Detection, and Response, label SIEM as client-specific, and distinguish partner tools from QPC-managed work.
