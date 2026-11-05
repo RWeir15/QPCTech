@@ -75,6 +75,8 @@ export function QBitsPage({ Header, Footer, PageHero, ContactBox }: QBitsPagePro
         </div>
       </section>
 
+      <QBitsCoverageCard />
+
       {/* NinjaOne Section */}
       <section className={styles.featureSection}>
         <div className={styles.container}>
@@ -150,8 +152,6 @@ export function QBitsPage({ Header, Footer, PageHero, ContactBox }: QBitsPagePro
           </div>
         </div>
       </section>
-
-      <QBitsCoverageCard />
 
       {/* Local Support Section */}
       <section className={styles.localSupportSection}>
