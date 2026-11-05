@@ -306,6 +306,46 @@ async function verifyTopicPage(client, baseUrl, slug) {
   console.log(`PASS ${route}: topic article renders and fits ${page.viewportWidth}px phone viewport.`);
 }
 
+async function verifyCoverageHover(client, baseUrl) {
+  const route = "/q-bits";
+  await client.send("Emulation.setDeviceMetricsOverride", {
+    width: 1440,
+    height: 1000,
+    deviceScaleFactor: 1,
+    mobile: false,
+  });
+  await client.send("Page.navigate", { url: new URL("q-bits", baseUrl).toString() });
+  await waitFor(
+    () => client.evaluate("Boolean(document.querySelector('a[href=\"/q-bits/topics/pc-protection\"]'))"),
+    "the desktop Q-BITS coverage card",
+  );
+
+  const before = await client.evaluate(`(() => {
+    const link = document.querySelector('a[href="/q-bits/topics/pc-protection"]');
+    link.scrollIntoView({ block: "center" });
+    const bounds = link.getBoundingClientRect();
+    return { x: bounds.left + bounds.width / 2, y: bounds.top + bounds.height / 2, top: bounds.top };
+  })()`);
+  await client.send("Input.dispatchMouseEvent", {
+    type: "mouseMoved",
+    x: before.x,
+    y: before.y,
+  });
+  await delay(280);
+
+  const hovered = await client.evaluate(`(() => {
+    const link = document.querySelector('a[href="/q-bits/topics/pc-protection"]');
+    const style = getComputedStyle(link);
+    return { top: link.getBoundingClientRect().top, transform: style.transform, borderColor: style.borderColor, boxShadow: style.boxShadow };
+  })()`);
+
+  assert(hovered.top < before.top - 3, `${route}: coverage box did not lift on hover.`);
+  assert(hovered.transform !== "none", `${route}: coverage box hover transform is missing.`);
+  assert(hovered.borderColor === "rgb(55, 181, 230)", `${route}: coverage box hover border color is missing.`);
+  assert(hovered.boxShadow !== "none", `${route}: coverage box hover shadow is missing.`);
+  console.log("PASS /q-bits: coverage box lifts and gains the matching border and shadow on hover.");
+}
+
 async function stopProcess(child) {
   if (!child || child.exitCode !== null) return;
   const exited = new Promise((resolve) => child.once("exit", resolve));
@@ -336,6 +376,7 @@ async function main() {
     for (const slug of expectedTopicSlugs) {
       await verifyTopicPage(chromium.client, vite.baseUrl, slug);
     }
+    await verifyCoverageHover(chromium.client, vite.baseUrl);
   } finally {
     chromium?.client.socket.close();
     await stopProcess(chromium?.browser);
