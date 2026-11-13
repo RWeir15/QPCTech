@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Switch, Route } from "wouter";
 import {
   Wrench, Laptop, Monitor, Printer, KeyRound, Cpu, Bug, Tv2,
@@ -13,127 +13,6 @@ const TEAL2 = "#0ea5e9";
 const GREEN = "#7FC343";
 const REMOTE_URL = "https://qpctech.rmmservices.net/connect/#/9951961931";
 const DARK = "#0f172a";
-const GOOGLE_REVIEWS_URL =
-  "https://www.google.com/maps/place/QPCTech+(formerly+Quality+PC+Repairs+%26+Service)/@41.9190719,-84.6356513,17z/data=!4m8!3m7!1s0x883d72e41028b345:0x66376c140f8d23c5!8m2!3d41.9190719!4d-84.6330764!9m1!1b1!16s%2Fg%2F11c6dzwbnk?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D";
-
-type GoogleReviewCard = {
-  name: string;
-  date: string;
-  stars: number;
-  text: string;
-  originalText: string | null;
-  authorUri: string | null;
-  photoUri: string | null;
-  googleMapsUri: string;
-};
-
-type GoogleReviewsData = {
-  rating: number;
-  totalReviews: number;
-  googleMapsUri: string | null;
-  reviewOrder: "relevance";
-  reviews: GoogleReviewCard[];
-};
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null && !Array.isArray(value);
-}
-
-function safeGoogleMapsLink(value: unknown): string | null {
-  if (typeof value !== "string") return null;
-
-  try {
-    const url = new URL(value);
-    return url.protocol === "https:" &&
-      (url.hostname === "google.com" || url.hostname.endsWith(".google.com"))
-      ? url.toString()
-      : null;
-  } catch {
-    return null;
-  }
-}
-
-function safeGooglePhotoLink(value: unknown): string | null {
-  if (typeof value !== "string") return null;
-
-  try {
-    const url = new URL(value);
-    const trustedHost =
-      url.hostname === "googleusercontent.com" ||
-      url.hostname.endsWith(".googleusercontent.com") ||
-      url.hostname === "ggpht.com" ||
-      url.hostname.endsWith(".ggpht.com");
-    return url.protocol === "https:" && trustedHost ? url.toString() : null;
-  } catch {
-    return null;
-  }
-}
-
-function parseGoogleReviewsData(value: unknown): GoogleReviewsData | null {
-  if (!isRecord(value)) return null;
-
-  const { rating, totalReviews, reviewOrder, reviews } = value;
-  if (
-    typeof rating !== "number" ||
-    !Number.isFinite(rating) ||
-    rating < 1 ||
-    rating > 5 ||
-    typeof totalReviews !== "number" ||
-    !Number.isInteger(totalReviews) ||
-    totalReviews < 0 ||
-    reviewOrder !== "relevance" ||
-    !Array.isArray(reviews)
-  ) {
-    return null;
-  }
-
-  const parsedReviews = reviews
-    .map((item): GoogleReviewCard | null => {
-      if (!isRecord(item)) return null;
-
-      const name = typeof item.name === "string" ? item.name.trim().slice(0, 120) : "";
-      const text = typeof item.text === "string" ? item.text.trim().slice(0, 6000) : "";
-      const date = typeof item.date === "string" ? item.date.trim().slice(0, 100) : "";
-      const stars = item.stars;
-      const googleMapsUri = safeGoogleMapsLink(item.googleMapsUri);
-
-      if (
-        !name ||
-        !text ||
-        typeof stars !== "number" ||
-        !Number.isFinite(stars) ||
-        stars < 1 ||
-        stars > 5 ||
-        !googleMapsUri
-      ) {
-        return null;
-      }
-
-      return {
-        name,
-        date,
-        stars: Math.round(stars),
-        text,
-        originalText:
-          typeof item.originalText === "string" && item.originalText.trim()
-            ? item.originalText.trim().slice(0, 6000)
-            : null,
-        authorUri: safeGoogleMapsLink(item.authorUri),
-        photoUri: safeGooglePhotoLink(item.photoUri),
-        googleMapsUri,
-      };
-    })
-    .filter((review): review is GoogleReviewCard => review !== null)
-    .slice(0, 3);
-
-  return {
-    rating,
-    totalReviews,
-    googleMapsUri: safeGoogleMapsLink(value.googleMapsUri),
-    reviewOrder,
-    reviews: parsedReviews,
-  };
-}
 
 const GLOBAL_CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
@@ -471,51 +350,16 @@ export function ContactBox({ headline, body }: { headline: string; body: string 
 }
 
 /* ────────────────────────────────────── HOME PAGE ── */
-const FALLBACK_REVIEWS: GoogleReviewCard[] = [
-  { name: "McCord Family", date: "5 days ago", stars: 5, text: "I took my elderly mom's laptop in due to pop ups, potential virus and advice. Josh was amazing in understanding what had occurred, how to fix it (quickly) and prevention in the future. He was friendly and worked fast and efficiently. I'll definitely be back!", originalText: null, authorUri: null, photoUri: null, googleMapsUri: GOOGLE_REVIEWS_URL },
-  { name: "KATHY The shamplo", date: "a week ago", stars: 5, text: "Rodney took excellent care of my issue. Very knowledgeable and informative. This is the best place for any of your computer needs and questions!", originalText: null, authorUri: null, photoUri: null, googleMapsUri: GOOGLE_REVIEWS_URL },
-  { name: "Google Reviewer", date: "3 weeks ago", stars: 5, text: "I went to this company for a gaming PC — I personally didn't know much about PCs. They not only took the task of building my gaming rig, but they took the time to educate me. Mike was very knowledgeable and very respectful through the entire process.", originalText: null, authorUri: null, photoUri: null, googleMapsUri: GOOGLE_REVIEWS_URL },
+const FALLBACK_REVIEWS = [
+  { name: "McCord Family", date: "5 days ago", stars: 5, text: "I took my elderly mom's laptop in due to pop ups, potential virus and advice. Josh was amazing in understanding what had occurred, how to fix it (quickly) and prevention in the future. He was friendly and worked fast and efficiently. I'll definitely be back!" },
+  { name: "KATHY The shamplo", date: "a week ago", stars: 5, text: "Rodney took excellent care of my issue. Very knowledgeable and informative. This is the best place for any of your computer needs and questions!" },
+  { name: "Google Reviewer", date: "3 weeks ago", stars: 5, text: "I went to this company for a gaming PC — I personally didn't know much about PCs. They not only took the task of building my gaming rig, but they took the time to educate me. Mike was very knowledgeable and very respectful through the entire process." },
 ];
 
 function HomePage() {
-  const [liveReviews, setLiveReviews] = useState<GoogleReviewsData | null>(null);
-  const [reviewsLoadFailed, setReviewsLoadFailed] = useState(false);
-
-  useEffect(() => {
-    if (import.meta.env.DEV) return;
-
-    const controller = new AbortController();
-    fetch("/api/reviews", {
-      headers: { Accept: "application/json" },
-      cache: "no-store",
-      signal: controller.signal,
-    })
-      .then(async (response) => {
-        if (!response.ok) throw new Error("Review request failed");
-        const parsed = parseGoogleReviewsData(await response.json());
-        if (!parsed) throw new Error("Invalid review response");
-        setLiveReviews(parsed);
-      })
-      .catch(() => {
-        if (!controller.signal.aborted) setReviewsLoadFailed(true);
-      });
-
-    return () => controller.abort();
-  }, []);
-
-  const isPreview = import.meta.env.DEV;
-  const displayReviews = liveReviews?.reviews ?? (isPreview ? FALLBACK_REVIEWS : []);
-  const rating = liveReviews?.rating ?? (isPreview ? 4.7 : null);
-  const total = liveReviews?.totalReviews ?? (isPreview ? 61 : null);
-  const reviewLink = liveReviews?.googleMapsUri ?? GOOGLE_REVIEWS_URL;
-  const reviewStatus = isPreview
-    ? "Replit preview uses sample reviews; live Google reviews load on Cloudflare Pages."
-    : reviewsLoadFailed
-      ? "Live Google reviews are temporarily unavailable. Please visit Google for current reviews."
-      : liveReviews
-        ? ""
-        : "Loading Google reviews…";
-
+  const displayReviews = FALLBACK_REVIEWS;
+  const rating = 4.7;
+  const total = 61;
   return (
     <div style={{ fontFamily: "'Inter', sans-serif", color: "#1e293b", overflowX: "hidden" }}>
       <style>{GLOBAL_CSS}</style>
@@ -744,112 +588,78 @@ function HomePage() {
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", marginBottom: 48 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: `${TEAL}12`, border: `1px solid ${TEAL}35`, borderRadius: 20, padding: "4px 14px", marginBottom: 16 }}>
               <Star size={12} color={TEAL} fill={TEAL} />
-              <span style={{ color: TEAL, fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Google Maps Reviews</span>
+              <span style={{ color: TEAL, fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Google Reviews</span>
             </div>
             <h2 style={{ color: DARK, fontSize: 32, fontWeight: 800, margin: "0 0 12px", letterSpacing: "-0.02em" }}>What Our Customers Say</h2>
             <p style={{ color: "#64748b", fontSize: 15, margin: "0 0 24px", maxWidth: 480, lineHeight: 1.7 }}>
               Don't take our word for it — here's what the Hillsdale community thinks.
             </p>
-            {isPreview && (
-              <p style={{ color: "#64748b", fontSize: 12, margin: "-12px 0 24px", maxWidth: 620, lineHeight: 1.6 }}>
-                {reviewStatus}
-              </p>
-            )}
-            {!isPreview && liveReviews && (
-              <p style={{ color: "#64748b", fontSize: 12, margin: "-12px 0 24px", maxWidth: 620, lineHeight: 1.6 }}>
-                Reviews are shown in the relevance order provided by Google Maps. Google checks for fake reviews and removes them when identified.
-              </p>
-            )}
             {/* Overall rating badge */}
-            {rating !== null && total !== null ? (
-              <a
-                href={reviewLink}
-                target="_blank"
-                rel="noreferrer"
-                style={{ display: "inline-flex", alignItems: "center", gap: 14, background: "white", border: "1px solid #e2e8f0", borderRadius: 16, padding: "16px 28px", textDecoration: "none", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}
-              >
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                  <path d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.83z" fill="#FBBC05"/>
-                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-                </svg>
-                <div style={{ textAlign: "left" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                    <span style={{ color: DARK, fontSize: 22, fontWeight: 800, lineHeight: 1 }}>{rating.toFixed(1)}</span>
-                    <div style={{ display: "flex", gap: 2 }}>
-                      {[1,2,3,4,5].map(i => (
-                        <Star key={i} size={16} color="#FBBC05" fill={i <= Math.round(rating) ? "#FBBC05" : "none"} strokeWidth={i > Math.round(rating) ? 1.5 : 0} />
-                      ))}
-                    </div>
+            <a
+              href="https://www.google.com/maps/place/QPCTech+(formerly+Quality+PC+Repairs+%26+Service)/@41.9190719,-84.6356513,17z/data=!4m8!3m7!1s0x883d72e41028b345:0x66376c140f8d23c5!8m2!3d41.9190719!4d-84.6330764!9m1!1b1!16s%2Fg%2F11c6dzwbnk?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noreferrer"
+              style={{ display: "inline-flex", alignItems: "center", gap: 14, background: "white", border: "1px solid #e2e8f0", borderRadius: 16, padding: "16px 28px", textDecoration: "none", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.83z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              <div style={{ textAlign: "left" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  <span style={{ color: DARK, fontSize: 22, fontWeight: 800, lineHeight: 1 }}>{rating.toFixed(1)}</span>
+                  <div style={{ display: "flex", gap: 2 }}>
+                    {[1,2,3,4,5].map(i => (
+                      <Star key={i} size={16} color="#FBBC05" fill={i <= Math.round(rating) ? "#FBBC05" : "none"} strokeWidth={i > Math.round(rating) ? 1.5 : 0} />
+                    ))}
                   </div>
-                  <p style={{ color: "#64748b", fontSize: 12, margin: "2px 0 0", fontWeight: 500 }}>{total} reviews on Google</p>
                 </div>
-              </a>
-            ) : (
-              <p role={reviewsLoadFailed ? "alert" : "status"} style={{ color: "#64748b", fontSize: 13, margin: 0 }}>
-                {reviewStatus}
-              </p>
-            )}
+                <p style={{ color: "#64748b", fontSize: 12, margin: "2px 0 0", fontWeight: 500 }}>{total} reviews on Google</p>
+              </div>
+            </a>
           </div>
 
           {/* Review cards */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, marginBottom: 40 }} className="reviews-grid reviews-grid-5">
-            {displayReviews.map((review, index) => (
-              <article key={`${review.name}-${review.date}-${index}`} className="why-card" style={{ background: "#f8fafc", borderRadius: 16, padding: "28px 32px", border: "1px solid #e2e8f0", display: "flex", flexDirection: "column", gap: 16 }}>
+            {displayReviews.map(({ name, date, stars, text }) => (
+              <div key={name} className="why-card" style={{ background: "#f8fafc", borderRadius: 16, padding: "28px 32px", border: "1px solid #e2e8f0", display: "flex", flexDirection: "column", gap: 16 }}>
                 <div style={{ display: "flex", gap: 3 }}>
                   {[1,2,3,4,5].map(i => (
-                    <Star key={i} size={15} color="#FBBC05" fill={i <= review.stars ? "#FBBC05" : "none"} strokeWidth={i > review.stars ? 1.5 : 0} />
+                    <Star key={i} size={15} color="#FBBC05" fill={i <= stars ? "#FBBC05" : "none"} strokeWidth={i > stars ? 1.5 : 0} />
                   ))}
                 </div>
-                <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.75, margin: 0, fontStyle: "italic" }}>"{review.text}"</p>
-                {review.originalText && (
-                  <p style={{ color: "#64748b", fontSize: 12, lineHeight: 1.5, margin: "-8px 0 0" }}>
-                    Translated by Google. <a href={review.googleMapsUri} target="_blank" rel="noreferrer" style={{ color: TEAL }}>View the original</a>
-                  </p>
-                )}
+                <p style={{ color: "#334155", fontSize: 15, lineHeight: 1.75, margin: 0, fontStyle: "italic" }}>"{text}"</p>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: "auto" }}>
-                  {review.photoUri ? (
-                    <a href={review.authorUri ?? review.googleMapsUri} target="_blank" rel="noreferrer" aria-label={`View ${review.name}'s Google profile`}>
-                      <img src={review.photoUri} alt="" referrerPolicy="no-referrer" style={{ width: 38, height: 38, borderRadius: "50%", objectFit: "cover", display: "block" }} />
-                    </a>
-                  ) : (
-                    <div aria-hidden="true" style={{ width: 38, height: 38, borderRadius: "50%", background: `linear-gradient(135deg, ${TEAL}, ${TEAL2})`, display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontWeight: 700, fontSize: 15, flexShrink: 0 }}>
-                      {review.name[0]}
-                    </div>
-                  )}
-                  <div>
-                    {review.authorUri ? (
-                      <a href={review.authorUri} target="_blank" rel="noreferrer" style={{ color: DARK, fontWeight: 700, fontSize: 14, textDecoration: "none" }}>{review.name}</a>
-                    ) : (
-                      <p style={{ color: DARK, fontWeight: 700, fontSize: 14, margin: 0 }}>{review.name}</p>
-                    )}
-                    <p style={{ color: "#94a3b8", fontSize: 12, margin: "2px 0 0" }}>{review.date}</p>
+                  <div style={{ width: 38, height: 38, borderRadius: "50%", background: `linear-gradient(135deg, ${TEAL}, ${TEAL2})`, display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontWeight: 700, fontSize: 15, flexShrink: 0 }}>
+                    {name[0]}
                   </div>
+                  <div>
+                    <p style={{ color: DARK, fontWeight: 700, fontSize: 14, margin: 0 }}>{name}</p>
+                    <p style={{ color: "#94a3b8", fontSize: 12, margin: "2px 0 0" }}>{date}</p>
+                  </div>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: "auto", opacity: 0.5 }}>
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.83z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                  </svg>
                 </div>
-                <a href={review.googleMapsUri} target="_blank" rel="noreferrer" style={{ color: TEAL, fontSize: 12, fontWeight: 600, textDecoration: "none" }}>
-                  View review on Google Maps <ArrowUpRight size={12} style={{ verticalAlign: "middle" }} />
-                </a>
-              </article>
+              </div>
             ))}
           </div>
-
-          {liveReviews && displayReviews.length === 0 && (
-            <p style={{ color: "#64748b", fontSize: 14, textAlign: "center", margin: "0 0 32px" }}>
-              No review details are available right now. Please visit Google Maps for current reviews.
-            </p>
-          )}
 
           {/* CTA to Google */}
           <div style={{ textAlign: "center" }}>
             <a
-              href={reviewLink}
+              href="https://www.google.com/maps/place/QPCTech+(formerly+Quality+PC+Repairs+%26+Service)/@41.9190719,-84.6356513,17z/data=!4m8!3m7!1s0x883d72e41028b345:0x66376c140f8d23c5!8m2!3d41.9190719!4d-84.6330764!9m1!1b1!16s%2Fg%2F11c6dzwbnk?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noreferrer"
               className="btn-teal"
               style={{ display: "inline-flex", alignItems: "center", gap: 8, background: TEAL, color: "white", padding: "13px 28px", borderRadius: 10, fontWeight: 700, fontSize: 14, textDecoration: "none", boxShadow: `0 4px 20px ${TEAL}40` }}
             >
-              {total !== null ? `See All ${total} Reviews on Google` : "See All Reviews on Google"} <ArrowUpRight size={16} />
+              See All {total} Reviews on Google <ArrowUpRight size={16} />
             </a>
           </div>
         </div>

@@ -56,11 +56,7 @@ Shared components: `Header` (sticky nav, logo, mobile menu), `Footer` (logo, add
 
 ## 6. Reviews / social proof
 
-- If the client has Google reviews, a `useState` + hardcoded fallback array of their best real reviews is often good enough for launch — avoids the complexity and cost of live API integration.
-- If they want it **live**, options in order of simplicity:
-  1. Backend route on the existing API server that calls Google Places API (needs `GOOGLE_PLACES_API_KEY` secret)
-  2. Cloudflare Worker doing the same fetch, cached at the edge (free tier, no server to maintain) — cleaner if the client is already on Cloudflare
-- Always keep a hardcoded fallback array so the section never breaks if the API call fails.
+- Use a static, curated set of real customer reviews and link to the business's Google review page for current reviews.
 
 ## 7. Contact forms
 
